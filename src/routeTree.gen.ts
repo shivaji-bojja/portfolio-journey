@@ -9,8 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as YogaEcosystemRouteImport } from './routes/yoga-ecosystem'
+import { Route as ProductLabRouteImport } from './routes/product-lab'
+import { Route as ExecutiveJourneyRouteImport } from './routes/executive-journey'
 import { Route as IndexRouteImport } from './routes/index'
 
+const YogaEcosystemRoute = YogaEcosystemRouteImport.update({
+  id: '/yoga-ecosystem',
+  path: '/yoga-ecosystem',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductLabRoute = ProductLabRouteImport.update({
+  id: '/product-lab',
+  path: '/product-lab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExecutiveJourneyRoute = ExecutiveJourneyRouteImport.update({
+  id: '/executive-journey',
+  path: '/executive-journey',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +37,66 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/executive-journey': typeof ExecutiveJourneyRoute
+  '/product-lab': typeof ProductLabRoute
+  '/yoga-ecosystem': typeof YogaEcosystemRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/executive-journey': typeof ExecutiveJourneyRoute
+  '/product-lab': typeof ProductLabRoute
+  '/yoga-ecosystem': typeof YogaEcosystemRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/executive-journey': typeof ExecutiveJourneyRoute
+  '/product-lab': typeof ProductLabRoute
+  '/yoga-ecosystem': typeof YogaEcosystemRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/executive-journey' | '/product-lab' | '/yoga-ecosystem'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/executive-journey' | '/product-lab' | '/yoga-ecosystem'
+  id:
+    | '__root__'
+    | '/'
+    | '/executive-journey'
+    | '/product-lab'
+    | '/yoga-ecosystem'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExecutiveJourneyRoute: typeof ExecutiveJourneyRoute
+  ProductLabRoute: typeof ProductLabRoute
+  YogaEcosystemRoute: typeof YogaEcosystemRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/yoga-ecosystem': {
+      id: '/yoga-ecosystem'
+      path: '/yoga-ecosystem'
+      fullPath: '/yoga-ecosystem'
+      preLoaderRoute: typeof YogaEcosystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product-lab': {
+      id: '/product-lab'
+      path: '/product-lab'
+      fullPath: '/product-lab'
+      preLoaderRoute: typeof ProductLabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/executive-journey': {
+      id: '/executive-journey'
+      path: '/executive-journey'
+      fullPath: '/executive-journey'
+      preLoaderRoute: typeof ExecutiveJourneyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +109,20 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExecutiveJourneyRoute: ExecutiveJourneyRoute,
+  ProductLabRoute: ProductLabRoute,
+  YogaEcosystemRoute: YogaEcosystemRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
