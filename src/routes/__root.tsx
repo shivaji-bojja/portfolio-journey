@@ -181,6 +181,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Professional executive portfolio, yoga ecosystem sandbox, and product lab." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Portfolio & Product Sandbox" },
+      { name: "twitter:description", content: "Professional executive portfolio, yoga ecosystem sandbox, and product lab." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8f7dc963-71f8-4e1a-8fac-35cc1c64485d/id-preview-160e752f--bdf87f55-0d58-4671-bb46-ed8ce0b1881f.lovable.app-1779577133271.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8f7dc963-71f8-4e1a-8fac-35cc1c64485d/id-preview-160e752f--bdf87f55-0d58-4671-bb46-ed8ce0b1881f.lovable.app-1779577133271.png" },
     ],
     links: [
       {
