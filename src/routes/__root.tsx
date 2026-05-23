@@ -237,4 +237,3 @@ function RootComponent() {
   );
 }
 
-import React from "react";
