@@ -67,7 +67,7 @@ function Index() {
             <p className="mt-4 text-muted-foreground font-body max-w-2xl mx-auto">
               Each space is crafted with intent — from corporate leadership to holistic wellness to product innovation.
             </p>
-          </hdiv>
+          </div>
           <div className="grid gap-8 md:grid-cols-3">
             <PillarCard
               icon={<TrendingUp className="h-6 w-6 text-amber-500" />}
