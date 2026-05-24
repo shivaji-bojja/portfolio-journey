@@ -1,240 +1,188 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ChevronRight, BarChart3, Database, Bot, Shield, Users, Zap } from "lucide-react";
+import {
+  Anchor,
+  GraduationCap,
+  Code2,
+  Briefcase,
+  TrendingUp,
+  LineChart,
+  ShoppingBag,
+  Building2,
+  Smartphone,
+  Network,
+  Target,
+} from "lucide-react";
 
 export const Route = createFileRoute("/executive-journey")({
   head: () => ({
     meta: [
-      { title: "Executive Journey — Portfolio" },
-      { name: "description", content: "Interactive timeline of leadership in pricing strategy, data platforms, and AI workflows." },
-      { property: "og:title", content: "Executive Journey — Portfolio" },
-      { property: "og:description", content: "Interactive timeline of leadership in pricing strategy, data platforms, and AI workflows." },
+      { title: "Executive Journey — Career Timeline" },
+      {
+        name: "description",
+        content:
+          "An interactive, premium timeline of a multi-decade journey across engineering, product, and strategic pricing leadership.",
+      },
+      { property: "og:title", content: "Executive Journey — Career Timeline" },
+      {
+        property: "og:description",
+        content:
+          "From the Indian Navy to enterprise pricing strategy — an interactive serpentine career timeline.",
+      },
     ],
   }),
   component: ExecutiveJourney,
 });
 
-interface Milestone {
-  year: string;
-  quarter: string;
+type Milestone = {
+  period: string;
   title: string;
-  company: string;
-  category: "pricing" | "data" | "ai";
-  description: string;
-  impact: string;
-  skills: string[];
-}
+  org: string;
+  location?: string;
+  tag?: string;
+  kind: "service" | "education" | "engineering" | "consulting" | "product" | "strategy";
+  Icon: React.ComponentType<{ className?: string }>;
+};
 
 const milestones: Milestone[] = [
   {
-    year: "2024",
-    quarter: "Q3–Q4",
-    title: "AI Workflow Orchestration Platform",
-    company: "Vertex AI Labs",
-    category: "ai",
-    description: "Led the design and deployment of an enterprise AI workflow engine that reduced manual process time by 68%.",
-    impact: "68% reduction in process time; $2.1M annual savings",
-    skills: ["Agent Architecture", "LangChain", "Process Mining", "Change Management"],
+    period: "2000",
+    title: "INS Viraat",
+    org: "Indian Navy",
+    location: "XYX",
+    kind: "service",
+    Icon: Anchor,
   },
   {
-    year: "2024",
-    quarter: "Q1–Q2",
-    title: "Dynamic Pricing Engine 2.0",
-    company: "Meridian Commerce",
-    category: "pricing",
-    description: "Architected a real-time pricing optimization system using reinforcement learning across 12 markets.",
-    impact: "+14% margin improvement; 3.2M pricing decisions automated",
-    skills: ["Reinforcement Learning", "Price Elasticity", "Go-to-Market", "Revenue Ops"],
+    period: "2000 – 2003",
+    title: "Masters in Computer Applications (MCA)",
+    org: "Osmania University",
+    location: "Hyderabad, India",
+    kind: "education",
+    Icon: GraduationCap,
   },
   {
-    year: "2023",
-    quarter: "Q3–Q4",
-    title: "Unified Data Platform",
-    company: "Meridian Commerce",
-    category: "data",
-    description: "Consolidated 47 disparate data sources into a single lakehouse architecture with real-time streaming.",
-    impact: "99.97% uptime; 400% faster query performance",
-    skills: ["Data Mesh", "Databricks", "Kafka", "Data Governance"],
+    period: "2003 – 2006",
+    title: "Software Engineer",
+    org: "Satyam · Merrill Lynch",
+    location: "Hyderabad, India",
+    kind: "engineering",
+    Icon: Code2,
   },
   {
-    year: "2023",
-    quarter: "Q1–Q2",
-    title: "Predictive Pricing Intelligence",
-    company: "Meridian Commerce",
-    category: "pricing",
-    description: "Built ML models to predict competitor pricing moves 72 hours in advance with 89% accuracy.",
-    impact: "89% prediction accuracy; captured $4.7M in competitive opportunities",
-    skills: ["Time-Series Forecasting", "Competitive Intelligence", "MLOps"],
+    period: "2006 – 2007",
+    title: "IT Consultant",
+    org: "McNeil (Johnson & Johnson)",
+    location: "Hyderabad, India",
+    kind: "consulting",
+    Icon: Briefcase,
   },
   {
-    year: "2022",
-    quarter: "Full Year",
-    title: "Enterprise Data Lake Migration",
-    company: "Nexus Data Systems",
-    category: "data",
-    description: "Directed the migration of on-premise Hadoop clusters to cloud-native Delta Lake architecture.",
-    impact: "$1.8M infrastructure savings; compliance certification achieved",
-    skills: ["Cloud Architecture", "Delta Lake", "GDPR Compliance", "Team Leadership"],
+    period: "2007 – 2010",
+    title: "Sr. Software Engineer",
+    org: "Credit Suisse",
+    location: "Pune, India",
+    kind: "engineering",
+    Icon: LineChart,
   },
   {
-    year: "2021",
-    quarter: "Q2–Q4",
-    title: "Revenue Operations Transformation",
-    company: "Nexus Data Systems",
-    category: "pricing",
-    description: "Redesigned quote-to-cash processes with embedded pricing analytics and approval workflows.",
-    impact: "Quote cycle reduced from 14 days to 48 hours",
-    skills: ["Salesforce CPQ", "Revenue Operations", "Process Design"],
+    period: "2011 – 2012",
+    title: "Business Analyst",
+    org: "Ameriprise Financial",
+    location: "Minneapolis, US",
+    kind: "consulting",
+    Icon: TrendingUp,
+  },
+  {
+    period: "2012 – 2017",
+    title: "Product Manager",
+    org: "BestBuy",
+    location: "Minneapolis, US",
+    kind: "product",
+    Icon: ShoppingBag,
+  },
+  {
+    period: "2016 – 2020",
+    title: "MBA",
+    org: "Carlson School of Management · UMN",
+    location: "Minneapolis, US",
+    kind: "education",
+    Icon: Building2,
+  },
+  {
+    period: "2017 – 2018",
+    title: "Digital Product Manager",
+    org: "Kohl's",
+    kind: "product",
+    Icon: Smartphone,
+  },
+  {
+    period: "2018 – 2023",
+    title: "Lead Product Manager",
+    org: "AT&T",
+    location: "Plano, TX",
+    tag: "MDP, AT&T",
+    kind: "product",
+    Icon: Network,
+  },
+  {
+    period: "2023 – 2025",
+    title: "Lead Strategic Pricing Manager",
+    org: "AT&T Business",
+    location: "Dallas, TX",
+    tag: "VP Events, Oasis, AT&T",
+    kind: "strategy",
+    Icon: Target,
   },
 ];
 
-const categoryMeta = {
-  pricing: { label: "Pricing Strategy", icon: BarChart3, color: "bg-amber-500", text: "text-amber-600" },
-  data: { label: "Data Platforms", icon: Database, color: "bg-slate-700", text: "text-slate-700" },
-  ai: { label: "AI Workflows", icon: Bot, color: "bg-emerald-600", text: "text-emerald-700" },
+const kindLabel: Record<Milestone["kind"], string> = {
+  service: "Service",
+  education: "Education",
+  engineering: "Engineering",
+  consulting: "Consulting",
+  product: "Product",
+  strategy: "Strategy",
 };
 
 function ExecutiveJourney() {
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
-
-  const filtered = activeCategory
-    ? milestones.filter((m) => m.category === activeCategory)
-    : milestones;
-
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col font-body">
       {/* Header */}
-      <section className="bg-primary py-20 sm:py-24">
+      <section className="bg-slate-900 py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
           >
-            <h1 className="font-display text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300/80">
               Executive Journey
+            </p>
+            <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-slate-50 sm:text-5xl">
+              A Twenty‑Five Year Arc
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-primary-foreground/80 font-body">
-              A decade of building pricing intelligence, data platforms, and AI-driven operations
-              at the intersection of technology and commercial strategy.
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+              From the deck of the INS Viraat to enterprise pricing strategy at AT&amp;T — a
+              chronological path through engineering, consulting, product, and strategic
+              leadership.
             </p>
           </motion.div>
-
-          {/* Category Filters */}
-          <div className="mt-10 flex flex-wrap gap-3">
-            <FilterButton
-              active={activeCategory === null}
-              onClick={() => setActiveCategory(null)}
-              label="All"
-              icon={<Zap className="h-4 w-4" />}
-            />
-            {(Object.entries(categoryMeta) as [keyof typeof categoryMeta, typeof categoryMeta["pricing"]][]).map(
-              ([key, meta]) => (
-                <FilterButton
-                  key={key}
-                  active={activeCategory === key}
-                  onClick={() => setActiveCategory(key)}
-                  label={meta.label}
-                  icon={<meta.icon className="h-4 w-4" />}
-                />
-              )
-            )}
-          </div>
         </div>
       </section>
 
       {/* Timeline */}
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-4 top-0 bottom-0 w-px bg-border md:left-1/2 md:-translate-x-px" />
+      <section className="bg-slate-50 py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Mobile / vertical stack */}
+          <div className="md:hidden">
+            <VerticalTimeline />
+          </div>
 
-            {filtered.map((milestone, index) => {
-              const meta = categoryMeta[milestone.category];
-              const isExpanded = expandedIndex === index;
-              const isLeft = index % 2 === 0;
-
-              return (
-                <motion.div
-                  key={`${milestone.year}-${milestone.title}`}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`relative mb-12 md:mb-16 ${isLeft ? "md:pr-[50%] md:text-right" : "md:pl-[50%] md:text-left"}`}
-                >
-                  {/* Dot */}
-                  <div className="absolute left-4 top-0 z-10 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full border-4 border-background bg-card md:left-1/2">
-                    <div className={`h-3 w-3 rounded-full ${meta.color}`} />
-                  </div>
-
-                  {/* Card */}
-                  <div className={`ml-12 md:ml-0 ${isLeft ? "md:mr-10" : "md:ml-10"}`}>
-                    <button
-                      onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                      className="w-full text-left group"
-                    >
-                      <div className="rounded-xl border border-border bg-card p-6 transition-shadow hover:shadow-md">
-                        <div className={`flex items-center gap-2 text-xs font-semibold uppercase tracking-wider ${meta.text} font-body`}>
-                          <meta.icon className="h-4 w-4" />
-                          {meta.label}
-                        </div>
-                        <div className="mt-2 flex items-center gap-3">
-                          <span className="inline-block rounded-md bg-muted px-2 py-1 text-xs font-medium text-muted-foreground font-body">
-                            {milestone.year} · {milestone.quarter}
-                          </span>
-                        </div>
-                        <h3 className="mt-3 font-display text-xl font-semibold text-card-foreground">
-                          {milestone.title}
-                        </h3>
-                        <p className="mt-1 text-sm text-muted-foreground font-body">
-                          {milestone.company}
-                        </p>
-
-                        <p className="mt-3 text-muted-foreground font-body leading-relaxed">
-                          {milestone.description}
-                        </p>
-
-                        {/* Expandable content */}
-                        <motion.div
-                          initial={false}
-                          animate={{ height: isExpanded ? "auto" : 0, opacity: isExpanded ? 1 : 5 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="pt-4 mt-4 border-t border-border">
-                            <div className="flex items-start gap-2">
-                              <Shield className="h-4 w-4 mt-0.5 text-amber-500 shrink-0" />
-                              <div>
-                                <p className="text-sm font-semibold text-foreground font-body">Impact</p>
-                                <p className="text-sm text-muted-foreground font-body">{milestone.impact}</p>
-                              </div>
-                            </div>
-                            <div className="mt-3 flex flex-wrap gap-2">
-                              {milestone.skills.map((skill) => (
-                                <span
-                                  key={skill}
-                                  className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground font-body"
-                                >
-                                  {skill}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        </motion.div>
-
-                        <div className="mt-4 flex items-center gap-1 text-sm font-medium text-amber-500 group-hover:text-amber-600 font-body transition-colors">
-                          {isExpanded ? "Show less" : "Show details"}
-                          <ChevronRight className={`h-4 w-4 transition-transform ${isExpanded ? "rotate-90" : ""}`} />
-                        </div>
-                      </div>
-                    </button>
-                  </div>
-                </motion.div>
-              );
-            })}
+          {/* Desktop serpentine grid */}
+          <div className="hidden md:block">
+            <SerpentineTimeline />
           </div>
         </div>
       </section>
@@ -242,28 +190,145 @@ function ExecutiveJourney() {
   );
 }
 
-function FilterButton({
-  active,
-  onClick,
-  label,
-  icon,
-}: {
-  active: boolean;
-  onClick: () => void;
-  label: string;
-  icon: React.ReactNode;
-}) {
+/* ---------- Mobile vertical ---------- */
+function VerticalTimeline() {
   return (
-    <button
-      onClick={onClick}
-      className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all font-body ${
-        active
-          ? "bg-amber-500 text-slate-900 shadow-sm"
-          : "bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20"
+    <ol className="relative border-l border-slate-200 pl-6">
+      {milestones.map((m, i) => (
+        <motion.li
+          key={i}
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4, delay: i * 0.05 }}
+          className="group mb-8 last:mb-0"
+        >
+          <NodeDot Icon={m.Icon} />
+          <MilestoneCard m={m} />
+        </motion.li>
+      ))}
+    </ol>
+  );
+}
+
+/* ---------- Desktop serpentine (3-col grid, alternating row direction) ---------- */
+function SerpentineTimeline() {
+  const cols = 3;
+  return (
+    <div className="grid grid-cols-3 gap-x-8 gap-y-12 lg:gap-x-12">
+      {milestones.map((m, i) => {
+        const row = Math.floor(i / cols);
+        const reversed = row % 2 === 1;
+        // visual order within row
+        const indexInRow = i % cols;
+        const orderIndex = reversed ? cols - 1 - indexInRow : indexInRow;
+        return (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: indexInRow * 0.08 }}
+            style={{ order: row * cols + orderIndex, gridColumnStart: orderIndex + 1 }}
+            className="relative"
+          >
+            <TimelineCard m={m} index={i + 1} />
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ---------- Card variants ---------- */
+function TimelineCard({ m, index }: { m: Milestone; index: number }) {
+  const [hover, setHover] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      className={`group relative rounded-2xl border bg-white p-6 transition-all duration-300 ease-out ${
+        hover
+          ? "-translate-y-1 border-emerald-200 shadow-[0_18px_40px_-20px_rgba(15,23,42,0.35)]"
+          : "border-slate-200 shadow-sm"
       }`}
     >
-      {icon}
-      {label}
-    </button>
+      {/* Index pill */}
+      <div className="absolute -top-3 left-6 inline-flex items-center rounded-full bg-slate-900 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-50">
+        {String(index).padStart(2, "0")}
+      </div>
+
+      {/* Icon node */}
+      <div className="flex items-center gap-3">
+        <NodeCircle Icon={m.Icon} active={hover} />
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700">
+            {kindLabel[m.kind]}
+          </p>
+          <p className="font-mono text-xs text-slate-500">{m.period}</p>
+        </div>
+      </div>
+
+      <h3 className="mt-4 text-base font-semibold leading-snug text-slate-900">
+        {m.title}
+      </h3>
+      <p className="mt-1 text-sm font-medium text-slate-700">{m.org}</p>
+      {m.location && (
+        <p className="mt-0.5 text-xs text-slate-500">{m.location}</p>
+      )}
+
+      {m.tag && (
+        <div className="mt-3 inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-medium text-emerald-700 ring-1 ring-inset ring-emerald-100">
+          {m.tag}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MilestoneCard({ m }: { m: Milestone }) {
+  return (
+    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-md">
+      <p className="text-[11px] font-semibold uppercase tracking-wider text-emerald-700">
+        {kindLabel[m.kind]} · <span className="font-mono text-slate-500">{m.period}</span>
+      </p>
+      <h3 className="mt-1.5 text-base font-semibold text-slate-900">{m.title}</h3>
+      <p className="mt-0.5 text-sm text-slate-700">{m.org}</p>
+      {m.location && <p className="text-xs text-slate-500">{m.location}</p>}
+      {m.tag && (
+        <div className="mt-2 inline-flex items-center rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700 ring-1 ring-inset ring-emerald-100">
+          {m.tag}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---------- Icon nodes ---------- */
+function NodeCircle({
+  Icon,
+  active,
+}: {
+  Icon: React.ComponentType<{ className?: string }>;
+  active?: boolean;
+}) {
+  return (
+    <div
+      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+        active
+          ? "border-emerald-300 bg-slate-900 text-emerald-200"
+          : "border-slate-200 bg-slate-50 text-slate-900"
+      }`}
+    >
+      <Icon className="h-5 w-5" />
+    </div>
+  );
+}
+
+function NodeDot({ Icon }: { Icon: React.ComponentType<{ className?: string }> }) {
+  return (
+    <span className="absolute -left-[14px] flex h-7 w-7 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-900 shadow-sm">
+      <Icon className="h-3.5 w-3.5" />
+    </span>
   );
 }
