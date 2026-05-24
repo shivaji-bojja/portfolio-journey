@@ -20,7 +20,7 @@ export const Route = createFileRoute("/executive-journey")({
       {
         name: "description",
         content:
-          "A vertical, color-coded executive timeline tracing leadership, education, and engineering foundations in reverse chronological order.",
+          "A comprehensive look across three distinct professional arcs — strategic product leadership, advanced business education, and the technical engineering foundations beneath them",
       },
       { property: "og:title", content: "Executive Journey — Career Timeline" },
       {
@@ -190,8 +190,7 @@ function ExecutiveJourney() {
               A Tracking Timeline
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-              A reverse-chronological view across three arcs — strategic leadership,
-              advanced education, and the engineering foundations beneath them.
+              A comprehensive look across three distinct professional arcs — strategic product leadership, advanced business education, and the technical engineering foundations beneath them.
             </p>
 
             {/* Legend */}
@@ -291,14 +290,12 @@ function Card({
 }) {
   return (
     <div
-      className={`rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${meta.card} ${
-        align === "right" ? "md:text-right" : "md:text-left"
-      }`}
+      className={`rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${meta.card} ${align === "right" ? "md:text-right" : "md:text-left"
+        }`}
     >
       <div
-        className={`flex items-center gap-2 ${
-          align === "right" ? "md:justify-end" : "md:justify-start"
-        } justify-start`}
+        className={`flex items-center gap-2 ${align === "right" ? "md:justify-end" : "md:justify-start"
+          } justify-start`}
       >
         <span
           className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${meta.chip}`}
