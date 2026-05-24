@@ -262,23 +262,18 @@ function TimelineRow({ m, index }: { m: Milestone; index: number }) {
         </div>
       </div>
 
-      {/* Card wrapper: mobile left-aligned, desktop alternating */}
-      <div
-        className={`pl-14 md:pl-0 md:grid md:grid-cols-2 md:gap-10 ${
-          onRight ? "" : ""
-        }`}
-      >
-        {/* left column on desktop */}
-        <div className={`hidden md:block ${onRight ? "" : "md:pr-10"}`}>
+      {/* Mobile: left-aligned card */}
+      <div className="md:hidden pl-14">
+        <Card m={m} meta={meta} align="left" />
+      </div>
+
+      {/* Desktop: alternating two-column */}
+      <div className="hidden md:grid md:grid-cols-2 md:gap-12">
+        <div className={onRight ? "" : "pr-2"}>
           {!onRight && <Card m={m} meta={meta} align="right" />}
         </div>
-        {/* right column on desktop */}
-        <div className={`md:pl-10 ${onRight ? "" : "md:hidden"}`}>
-          <Card m={m} meta={meta} align="left" />
-        </div>
-        {/* mobile single column (left-aligned) */}
-        <div className="md:hidden">
-          {/* already rendered above via pl-14 wrapper — render once for mobile */}
+        <div className={onRight ? "pl-2" : ""}>
+          {onRight && <Card m={m} meta={meta} align="left" />}
         </div>
       </div>
     </motion.li>
