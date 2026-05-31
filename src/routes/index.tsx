@@ -25,7 +25,7 @@ function Index() {
           <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-emerald-600 blur-3xl" />
         </div>
         <div className="relative mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.8fr_1fr] lg:gap-12">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
