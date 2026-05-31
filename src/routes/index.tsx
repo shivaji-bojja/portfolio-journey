@@ -16,29 +16,29 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col lg:h-[calc(100vh-4rem)] lg:overflow-hidden">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-primary py-24 sm:py-32">
-        <div className="absolute inset-className pointer-events-none opacity-10">
+      <section className="relative overflow-hidden bg-primary py-12 sm:py-16 lg:flex-1 lg:flex lg:items-center">
+        <div className="absolute inset-0 pointer-events-none opacity-10">
           <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-amber-500 blur-3xl" />
           <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-emerald-600 blur-3xl" />
         </div>
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
             className="max-w-3xl"
           >
-            <h1 className="font-display text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="font-display text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl lg:text-5xl">
               Where strategy meets
               <span className="text-amber-400"> creation</span>.
             </h1>
-            <p className="mt-6 text-lg leading-8 text-primary-foreground/80 font-body">
+            <p className="mt-4 text-base leading-7 text-primary-foreground/80 font-body lg:text-lg">
               An executive portfolio and product sandbox bridging data-driven leadership,
               digital strategy and pricing, and modern product experimentation.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-6 flex flex-wrap gap-4">
               <Link
                 to="/executive-journey"
                 className="inline-flex items-center gap-2 rounded-md bg-amber-500 px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-400 font-body"
@@ -57,18 +57,18 @@ function Index() {
         </div>
       </section>
 
-      {/* Three Pillars */}
-      <section className="py-20 sm:py-28">
+      {/* Pillars */}
+      <section className="py-12 sm:py-16 lg:py-8 lg:flex-shrink-0">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <div className="text-center mb-8 lg:mb-6">
+            <h2 className="font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
               Multiple Dimensions
             </h2>
-            <p className="mt-4 text-muted-foreground font-body max-w-2xl mx-auto">
+            <p className="mt-2 text-sm text-muted-foreground font-body max-w-2xl mx-auto">
               Each space is crafted with intent — from corporate leadership to product innovation.
             </p>
           </div>
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             <PillarCard
               icon={<TrendingUp className="h-6 w-6 text-amber-500" />}
               title="Executive Journey"
@@ -86,21 +86,10 @@ function Index() {
           </div>
         </div>
       </section>
-
-      {/* Brief CTA */}
-      <section className="border-t border-border bg-muted/30 py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-display text-2xl font-bold text-foreground sm:text-3xl">
-            Built for clarity. Designed for impact.
-          </h2>
-          <p className="mt-4 text-muted-foreground font-body max-w-xl mx-auto">
-            Every component is modular, responsive, and intentionally scannable.
-          </p>
-        </div>
-      </section>
     </div>
   );
 }
+
 
 function PillarCard({
   icon,
