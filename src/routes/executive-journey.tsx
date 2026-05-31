@@ -518,11 +518,13 @@ function FoundationsCollapsedNode({
   left,
   position,
   onClick,
+  dim,
 }: {
   index: number;
   left: number;
   position: "top" | "bottom";
   onClick: () => void;
+  dim?: boolean;
 }) {
   const isTop = position === "top";
   return (
@@ -531,7 +533,7 @@ function FoundationsCollapsedNode({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.4, delay: index * 0.04 }}
-      className="absolute"
+      className={`absolute transition-opacity duration-300 ${dim ? "opacity-25" : "opacity-100"}`}
       style={{ left, top: 0, height: "100%", width: 220 }}
     >
       <div
