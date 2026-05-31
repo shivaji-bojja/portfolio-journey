@@ -25,36 +25,53 @@ function Index() {
           <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-emerald-600 blur-3xl" />
         </div>
         <div className="relative mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="max-w-3xl"
-          >
-            <h1 className="font-display text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl lg:text-5xl">
-              Where strategy meets
-              <span className="text-amber-400"> creation</span>.
-            </h1>
-            <p className="mt-4 text-base leading-7 text-primary-foreground/80 font-body lg:text-lg">
-              An executive portfolio and product sandbox bridging data-driven leadership,
-              digital strategy and pricing, and modern product experimentation.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-4">
-              <Link
-                to="/executive-journey"
-                className="inline-flex items-center gap-2 rounded-md bg-amber-500 px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-400 font-body"
-              >
-                Explore Journey
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                to="/product-lab"
-                className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/20 bg-transparent px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 font-body"
-              >
-                Enter the Lab
-              </Link>
-            </div>
-          </motion.div>
+          <div className="grid items-center gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="max-w-3xl"
+            >
+              <h1 className="font-display text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl lg:text-5xl">
+                Where strategy meets
+                <span className="text-amber-400"> creation</span>.
+              </h1>
+              <p className="mt-4 text-base leading-7 text-primary-foreground/80 font-body lg:text-lg">
+                An executive portfolio and product sandbox bridging data-driven leadership,
+                digital strategy and pricing, and modern product experimentation.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-4">
+                <Link
+                  to="/executive-journey"
+                  className="inline-flex items-center gap-2 rounded-md bg-amber-500 px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-400 font-body"
+                >
+                  Explore Journey
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  to="/product-lab"
+                  className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/20 bg-transparent px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 font-body"
+                >
+                  Enter the Lab
+                </Link>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.15 }}
+              className="flex justify-center lg:justify-end"
+            >
+              <div className="relative">
+                <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-amber-400/40 to-emerald-500/30 blur-2xl" />
+                <img
+                  src={headshot}
+                  alt="Shivaji Bojja headshot"
+                  className="relative h-56 w-56 sm:h-72 sm:w-72 lg:h-80 lg:w-80 rounded-full object-cover ring-4 ring-amber-400/60 shadow-2xl"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
