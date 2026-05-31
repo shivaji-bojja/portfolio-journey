@@ -586,9 +586,10 @@ function FoundationsCollapsedNode({
 }
 
 /* ---------- Mobile: vertical timeline ---------- */
-function MobileTimeline() {
+function MobileTimeline({ activeFilter }: { activeFilter: Category | null }) {
   const [expanded, setExpanded] = React.useState(false);
-  const visible = expanded ? [...milestones, ...foundationMilestones] : milestones;
+  const autoExpanded = expanded || activeFilter === "foundation";
+  const visible = autoExpanded ? [...milestones, ...foundationMilestones] : milestones;
 
   return (
     <div className="md:hidden">
@@ -597,6 +598,7 @@ function MobileTimeline() {
         <ol className="space-y-6">
           {visible.map((m, i) => {
             const meta = categoryMeta[m.category];
+            const dim = activeFilter !== null && m.category !== activeFilter;
             return (
               <motion.li
                 key={`${m.title}-${i}`}
@@ -604,7 +606,7 @@ function MobileTimeline() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.35, delay: 0.03 * i }}
-                className="relative pl-12"
+                className={`relative pl-12 transition-opacity duration-300 ${dim ? "opacity-25" : "opacity-100"}`}
               >
                 <div
                   className={`absolute left-4 top-3 h-3 w-3 -translate-x-1/2 rounded-full ring-4 ${meta.dot} ${meta.ring}`}
@@ -613,8 +615,8 @@ function MobileTimeline() {
               </motion.li>
             );
           })}
-          {!expanded && (
-            <li className="relative pl-12">
+          {!autoExpanded && (
+            <li className={`relative pl-12 transition-opacity duration-300 ${activeFilter !== null ? "opacity-25" : "opacity-100"}`}>
               <div className="absolute left-4 top-3 h-3 w-3 -translate-x-1/2 rounded-full ring-4 bg-amber-500 ring-amber-500/20" />
               <button
                 type="button"
