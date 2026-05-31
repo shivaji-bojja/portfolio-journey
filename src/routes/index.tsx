@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, TrendingUp, FlaskConical } from "lucide-react";
+import headshot from "@/assets/shivaji-headshot.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
