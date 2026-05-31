@@ -390,7 +390,7 @@ function HorizontalTimeline({ activeFilter }: { activeFilter: Category | null })
                 left={40 + collapsedIndex * 240}
                 position={collapsedIndex % 2 === 0 ? "top" : "bottom"}
                 onClick={() => setExpanded(true)}
-                dim={activeFilter !== null && activeFilter !== "foundation"}
+                dim={activeFilter !== null}
               />
             )}
           </div>
