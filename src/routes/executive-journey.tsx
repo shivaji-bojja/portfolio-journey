@@ -386,7 +386,7 @@ function HorizontalTimeline({ activeFilter }: { activeFilter: Category | null })
           }}
         >
           {/* The rail */}
-          <div className="relative h-[460px]">
+          <div className="relative h-[540px]">
             <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
             <div className="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 bg-gradient-to-r from-amber-400/0 via-emerald-500/40 to-slate-900/60" />
 
