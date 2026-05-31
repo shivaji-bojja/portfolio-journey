@@ -13,6 +13,7 @@ import {
   Target,
   Sparkles,
   MapPin,
+  ChevronRight,
 } from "lucide-react";
 import * as React from "react";
 
@@ -47,7 +48,9 @@ type Milestone = {
   category: Category;
   Icon: React.ComponentType<{ className?: string }>;
   badge: string;
+  hideDate?: boolean;
 };
+
 
 // Reverse chronological: latest -> earliest (left -> right)
 const milestones: Milestone[] = [
@@ -115,51 +118,62 @@ const milestones: Milestone[] = [
     badge: "BBY",
   },
   {
-    period: "2011 – 2012",
-    title: "Business Analyst",
-    org: "Ameriprise Financial",
-    location: "Minneapolis, US",
-    category: "foundation",
-    Icon: TrendingUp,
-    badge: "AMP",
-  },
-  {
-    period: "2007 – 2010",
-    title: "Sr. Software Engineer",
-    org: "Credit Suisse",
-    location: "Pune, India",
-    category: "foundation",
-    Icon: LineChart,
-    badge: "CS",
-  },
-  {
-    period: "2006 – 2007",
-    title: "IT Consultant",
-    org: "McNeil (Johnson & Johnson)",
-    location: "Hyderabad, India",
-    category: "foundation",
-    Icon: Briefcase,
-    badge: "J&J",
-  },
-  {
-    period: "2003 – 2006",
-    title: "Software Engineer",
-    org: "Satyam · Merrill Lynch",
-    location: "Hyderabad, India",
-    category: "foundation",
-    Icon: Code2,
-    badge: "ML",
-  },
-  {
-    period: "2000 – 2003",
+    period: "",
     title: "MCA — Masters in Computer Applications",
     org: "Osmania University",
     location: "Hyderabad, India",
     category: "education",
     Icon: GraduationCap,
     badge: "OU",
+    hideDate: true,
   },
 ];
+
+// Collapsed under "Engineering Foundations" card – shown on expand without dates
+const foundationMilestones: Milestone[] = [
+  {
+    period: "",
+    title: "Business Analyst",
+    org: "Ameriprise Financial",
+    location: "Minneapolis, US",
+    category: "foundation",
+    Icon: TrendingUp,
+    badge: "AMP",
+    hideDate: true,
+  },
+  {
+    period: "",
+    title: "Sr. Software Engineer",
+    org: "Credit Suisse",
+    location: "Pune, India",
+    category: "foundation",
+    Icon: LineChart,
+    badge: "CS",
+    hideDate: true,
+  },
+  {
+    period: "",
+    title: "IT Consultant",
+    org: "McNeil (Johnson & Johnson)",
+    location: "Hyderabad, India",
+    category: "foundation",
+    Icon: Briefcase,
+    badge: "J&J",
+    hideDate: true,
+  },
+  {
+    period: "",
+    title: "Software Engineer",
+    org: "Satyam · Merrill Lynch",
+    location: "Hyderabad, India",
+    category: "foundation",
+    Icon: Code2,
+    badge: "ML",
+    hideDate: true,
+  },
+];
+
+
 
 
 const categoryMeta: Record<
