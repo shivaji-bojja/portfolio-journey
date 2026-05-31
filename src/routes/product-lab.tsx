@@ -31,8 +31,12 @@ function ProductLab() {
   return (
     <div className="flex flex-col">
       {/* Header */}
-      <section className="bg-primary py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-primary py-12 sm:py-16">
+        <div className="absolute inset-0 pointer-events-none opacity-10">
+          <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-amber-500 blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-emerald-600 blur-3xl" />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -42,10 +46,10 @@ function ProductLab() {
               <FlaskConical className="h-3.5 w-3.5" />
               Live Experiments
             </div>
-            <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl">
+            <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl lg:text-5xl">
               Product Lab
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-primary-foreground/80 font-body">
+            <p className="mt-4 max-w-2xl text-base leading-7 text-primary-foreground/80 font-body lg:text-lg">
               A sandbox for product experimentation. Test pricing sensitivity, simulate A/B outcomes,
               and explore referral mechanics — all in one modular workspace.
             </p>

@@ -176,8 +176,12 @@ function ExecutiveJourney() {
   return (
     <div className="flex flex-col font-body">
       {/* Header */}
-      <section className="bg-slate-900 py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-primary py-12 sm:py-16">
+        <div className="absolute inset-0 pointer-events-none opacity-10">
+          <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-amber-500 blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-emerald-600 blur-3xl" />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -186,15 +190,15 @@ function ExecutiveJourney() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300/80">
               Executive Journey
             </p>
-            <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-slate-50 sm:text-5xl">
+            <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl lg:text-5xl">
               A Tracking Timeline
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+            <p className="mt-4 max-w-2xl text-base leading-7 text-primary-foreground/80 lg:text-lg">
               A comprehensive look across three distinct professional arcs — strategic product leadership, advanced business education, and the technical engineering foundations beneath them.
             </p>
 
             {/* Legend */}
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <LegendChip color="bg-slate-700" label="Leadership & Pricing" />
               <LegendChip color="bg-emerald-500" label="Education" />
               <LegendChip color="bg-amber-400" label="Engineering Foundations" />
@@ -204,7 +208,7 @@ function ExecutiveJourney() {
       </section>
 
       {/* Timeline */}
-      <section className="bg-slate-50 py-16 sm:py-24">
+      <section className="bg-muted/30 py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <Timeline />
         </div>
