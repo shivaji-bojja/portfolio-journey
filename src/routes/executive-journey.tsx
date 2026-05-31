@@ -430,21 +430,21 @@ function NodeCard({
           <h3 className="text-[13px] font-semibold leading-snug text-slate-900">
             {m.title}
           </h3>
-          <p className="mt-0.5 text-[12px] font-medium text-slate-600 truncate">
+          <p className="mt-0.5 text-[12px] font-medium text-slate-700 truncate">
             {m.org}
           </p>
         </div>
       </div>
 
       {m.location && (
-        <p className="mt-2 flex items-center gap-1 text-[11px] text-slate-500">
+        <p className="mt-2 flex items-center gap-1 text-[11px] font-medium text-slate-600">
           <MapPin className="h-3 w-3" />
           {m.location}
         </p>
       )}
 
       {m.tag && (
-        <p className="mt-2 rounded-md bg-slate-50 px-2 py-1 text-[10px] font-medium text-slate-600 ring-1 ring-inset ring-slate-200">
+        <p className="mt-2 rounded-md bg-slate-50 px-2 py-1 text-[11px] font-medium text-slate-700 ring-1 ring-inset ring-slate-200">
           {m.tag}
         </p>
       )}
