@@ -62,10 +62,10 @@ function Index() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Three Dimensions
+              Multiple Dimensions
             </h2>
             <p className="mt-4 text-muted-foreground font-body max-w-2xl mx-auto">
-              Each space is crafted with intent — from corporate leadership to holistic wellness to product innovation.
+              Each space is crafted with intent — from corporate leadership to product innovation.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
