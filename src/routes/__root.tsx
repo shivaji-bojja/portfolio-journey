@@ -74,7 +74,7 @@ function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2">
           <span className="font-display text-xl font-bold tracking-tight text-foreground">
-            Portfolio
+            Shivaji Bojja — Portfolio
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
