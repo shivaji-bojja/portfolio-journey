@@ -6,9 +6,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Portfolio & Product Sandbox" },
-      { name: "description", content: "Executive portfolio, yoga ecosystem sandbox, and product lab." },
+      { name: "description", content: "Executive portfolio and product lab." },
       { property: "og:title", content: "Portfolio & Product Sandbox" },
-      { property: "og:description", content: "Executive portfolio, yoga ecosystem sandbox, and product lab." },
+      { property: "og:description", content: "Executive portfolio and product lab." },
     ],
   }),
   component: Index,
