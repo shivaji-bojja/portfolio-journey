@@ -36,7 +36,7 @@ function Index() {
             </h1>
             <p className="mt-6 text-lg leading-8 text-primary-foreground/80 font-body">
               An executive portfolio and product sandbox bridging data-driven leadership,
-              eastern philosophy, and modern product experimentation.
+              digital strategy and pricing, and modern product experimentation.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
