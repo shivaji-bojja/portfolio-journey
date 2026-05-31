@@ -55,6 +55,15 @@ function Index() {
                   Enter the Lab
                 </Link>
               </div>
+              <a
+                href="https://linkedin.com/in/shivajibojja"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary-foreground/80 transition-colors hover:text-amber-400 font-body"
+              >
+                <Linkedin className="h-4 w-4" />
+                <span className="story-link">Connect on LinkedIn</span>
+              </a>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.92 }}
