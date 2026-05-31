@@ -352,7 +352,7 @@ function HorizontalTimeline({ activeFilter }: { activeFilter: Category | null })
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
           <Sparkles className="h-3.5 w-3.5" />
-          Present – 2012 and more
+          Present – 2012 and Beyond
         </div>
         <button
           type="button"
