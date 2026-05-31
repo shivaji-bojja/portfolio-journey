@@ -156,9 +156,6 @@ function Footer() {
             <Link to="/executive-journey" className="text-sm text-muted-foreground hover:text-foreground font-body transition-colors">
               Executive
             </Link>
-            <Link to="/yoga-ecosystem" className="text-sm text-muted-foreground hover:text-foreground font-body transition-colors">
-              Yoga
-            </Link>
             <Link to="/product-lab" className="text-sm text-muted-foreground hover:text-foreground font-body transition-colors">
               Lab
             </Link>
