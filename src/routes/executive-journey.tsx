@@ -52,15 +52,6 @@ type Milestone = {
 // Reverse chronological: latest -> earliest (left -> right)
 const milestones: Milestone[] = [
   {
-    period: "2025 – Present",
-    title: "Masters in AI (In Progress)",
-    org: "Woolf University · by Udacity",
-    tag: "In Progress",
-    category: "education",
-    Icon: Sparkles,
-    badge: "AI",
-  },
-  {
     period: "2023 – 2025",
     title: "Lead Strategic Pricing Manager",
     org: "AT&T Business",
@@ -71,12 +62,13 @@ const milestones: Milestone[] = [
     badge: "AT&T",
   },
   {
-    period: "2021 – Present",
-    title: "MDP",
-    org: "AT&T",
+    period: "2025 – Present",
+    title: "Masters in AI (In Progress)",
+    org: "Woolf University · by Udacity",
+    tag: "In Progress",
     category: "education",
-    Icon: GraduationCap,
-    badge: "MDP",
+    Icon: Sparkles,
+    badge: "AI",
   },
   {
     period: "2018 – 2023",
@@ -88,6 +80,15 @@ const milestones: Milestone[] = [
     badge: "AT&T",
   },
   {
+    period: "2021",
+    title: "MDP",
+    org: "AT&T",
+    category: "education",
+    Icon: GraduationCap,
+    badge: "MDP",
+  },
+
+  {
     period: "2017 – 2018",
     title: "Digital Product Manager",
     org: "Kohl's",
@@ -96,7 +97,7 @@ const milestones: Milestone[] = [
     badge: "KSS",
   },
   {
-    period: "2016 – 2022",
+    period: "2016 – 2020",
     title: "MBA",
     org: "Carlson School of Management · UMN",
     location: "Minneapolis, US",
