@@ -93,13 +93,6 @@ function Header() {
             Executive Journey
           </Link>
           <Link
-            to="/yoga-ecosystem"
-            activeProps={{ className: "text-amber-500 font-medium" }}
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground font-body"
-          >
-            Yoga Ecosystem
-          </Link>
-          <Link
             to="/product-lab"
             activeProps={{ className: "text-amber-500 font-medium" }}
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground font-body"
@@ -136,7 +129,7 @@ function MobileNav() {
         <div className="absolute right-0 top-16 w-64 bg-background border border-border rounded-lg shadow-lg p-4 flex flex-col gap-3">
           <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground font-body" onClick={() => setOpen(false)}>Home</Link>
           <Link to="/executive-journey" className="text-sm font-medium text-muted-foreground hover:text-foreground font-body" onClick={() => setOpen(false)}>Executive Journey</Link>
-          <Link to="/yoga-ecosystem" className="text-sm font-medium text-muted-foreground hover:text-foreground font-body" onClick={() => setOpen(false)}>Yoga Ecosystem</Link>
+          
           <Link to="/product-lab" className="text-sm font-medium text-muted-foreground hover:text-foreground font-body" onClick={() => setOpen(false)}>Product Lab</Link>
         </div>
       )}
@@ -162,9 +155,6 @@ function Footer() {
           <div className="flex items-center gap-6">
             <Link to="/executive-journey" className="text-sm text-muted-foreground hover:text-foreground font-body transition-colors">
               Executive
-            </Link>
-            <Link to="/yoga-ecosystem" className="text-sm text-muted-foreground hover:text-foreground font-body transition-colors">
-              Yoga
             </Link>
             <Link to="/product-lab" className="text-sm text-muted-foreground hover:text-foreground font-body transition-colors">
               Lab

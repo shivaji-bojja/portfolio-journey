@@ -1,14 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, TrendingUp, Leaf, FlaskConical } from "lucide-react";
+import { ArrowRight, TrendingUp, FlaskConical } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Portfolio & Product Sandbox" },
-      { name: "description", content: "Executive portfolio, yoga ecosystem sandbox, and product lab." },
+      { name: "description", content: "Executive portfolio and product lab." },
       { property: "og:title", content: "Portfolio & Product Sandbox" },
-      { property: "og:description", content: "Executive portfolio, yoga ecosystem sandbox, and product lab." },
+      { property: "og:description", content: "Executive portfolio and product lab." },
     ],
   }),
   component: Index,
@@ -68,20 +68,13 @@ function Index() {
               Each space is crafted with intent — from corporate leadership to holistic wellness to product innovation.
             </p>
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2">
             <PillarCard
               icon={<TrendingUp className="h-6 w-6 text-amber-500" />}
               title="Executive Journey"
               description="A timeline of leadership across pricing strategy, enterprise data platforms, and AI workflow orchestration."
               href="/executive-journey"
               accent="bg-slate-900"
-            />
-            <PillarCard
-              icon={<Leaf className="h-6 w-6 text-emerald-600" />}
-              title="Yoga Ecosystem"
-              description="A curated editorial space exploring Sanskrit roots, eastern philosophy, and the science of holistic medicine."
-              href="/yoga-ecosystem"
-              accent="bg-emerald-50"
             />
             <PillarCard
               icon={<FlaskConical className="h-6 w-6 text-amber-500" />}
