@@ -416,6 +416,7 @@ function HorizontalTimeline({ activeFilter }: { activeFilter: Category | null })
             )}
           </div>
         </div>
+        </div>
       </div>
     </div>
   );
