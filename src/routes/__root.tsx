@@ -129,7 +129,7 @@ function MobileNav() {
         <div className="absolute right-0 top-16 w-64 bg-background border border-border rounded-lg shadow-lg p-4 flex flex-col gap-3">
           <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground font-body" onClick={() => setOpen(false)}>Home</Link>
           <Link to="/executive-journey" className="text-sm font-medium text-muted-foreground hover:text-foreground font-body" onClick={() => setOpen(false)}>Executive Journey</Link>
-          <Link to="/yoga-ecosystem" className="text-sm font-medium text-muted-foreground hover:text-foreground font-body" onClick={() => setOpen(false)}>Yoga Ecosystem</Link>
+          
           <Link to="/product-lab" className="text-sm font-medium text-muted-foreground hover:text-foreground font-body" onClick={() => setOpen(false)}>Product Lab</Link>
         </div>
       )}
