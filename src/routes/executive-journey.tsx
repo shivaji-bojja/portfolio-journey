@@ -342,6 +342,10 @@ function HorizontalTimeline({ activeFilter }: { activeFilter: Category | null })
     : milestones;
   const collapsedIndex = milestones.length;
 
+  const scrollBy = (delta: number) => {
+    scrollerRef.current?.scrollBy({ left: delta, behavior: "smooth" });
+  };
+
   return (
     <div className="hidden md:block">
       <div className="mb-4 flex items-center justify-between">
@@ -349,13 +353,30 @@ function HorizontalTimeline({ activeFilter }: { activeFilter: Category | null })
           <Sparkles className="h-3.5 w-3.5" />
           Present – 2012 and more
         </div>
-        <p className="text-xs text-slate-500">Scroll horizontally to explore →</p>
+        <button
+          type="button"
+          onClick={() => scrollBy(480)}
+          className="group inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm transition-all hover:border-slate-300 hover:text-slate-900 hover:shadow-md"
+        >
+          Scroll horizontally to explore
+          <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+        </button>
       </div>
 
-      <div
-        ref={scrollerRef}
-        className="relative overflow-x-auto overflow-y-hidden pb-6 [scrollbar-width:thin]"
-      >
+      <div className="relative">
+        {/* fade edges to hint at more content */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-slate-50 to-transparent"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-slate-50 to-transparent"
+        />
+        <div
+          ref={scrollerRef}
+          className="relative overflow-x-auto overflow-y-hidden pb-6 [scrollbar-width:thin]"
+        >
         <div
           className="relative mx-auto"
           style={{
@@ -394,6 +415,7 @@ function HorizontalTimeline({ activeFilter }: { activeFilter: Category | null })
               />
             )}
           </div>
+        </div>
         </div>
       </div>
     </div>
