@@ -407,11 +407,13 @@ function TimelineNode({
   index,
   left,
   position,
+  dim,
 }: {
   m: Milestone;
   index: number;
   left: number;
   position: "top" | "bottom";
+  dim?: boolean;
 }) {
   const meta = categoryMeta[m.category];
   const isTop = position === "top";
