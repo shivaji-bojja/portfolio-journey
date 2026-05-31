@@ -204,6 +204,10 @@ const categoryMeta: Record<
 };
 
 function ExecutiveJourney() {
+  const [activeFilter, setActiveFilter] = React.useState<Category | null>(null);
+  const toggle = (c: Category) =>
+    setActiveFilter((cur) => (cur === c ? null : c));
+
   return (
     <div className="flex flex-col font-body bg-white">
       {/* Header */}
@@ -235,10 +239,37 @@ function ExecutiveJourney() {
               education into strategic product and pricing leadership.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              <LegendChip color="bg-slate-200" label="Leadership & Pricing" />
-              <LegendChip color="bg-emerald-400" label="Education" />
-              <LegendChip color="bg-amber-400" label="Engineering Foundations" />
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <LegendChip
+                color="bg-slate-200"
+                label="Leadership & Pricing"
+                active={activeFilter === "leadership"}
+                dim={activeFilter !== null && activeFilter !== "leadership"}
+                onClick={() => toggle("leadership")}
+              />
+              <LegendChip
+                color="bg-emerald-400"
+                label="Education"
+                active={activeFilter === "education"}
+                dim={activeFilter !== null && activeFilter !== "education"}
+                onClick={() => toggle("education")}
+              />
+              <LegendChip
+                color="bg-amber-400"
+                label="Engineering Foundations"
+                active={activeFilter === "foundation"}
+                dim={activeFilter !== null && activeFilter !== "foundation"}
+                onClick={() => toggle("foundation")}
+              />
+              {activeFilter && (
+                <button
+                  type="button"
+                  onClick={() => setActiveFilter(null)}
+                  className="text-xs font-medium text-slate-300 underline-offset-2 hover:text-white hover:underline"
+                >
+                  Clear filter
+                </button>
+              )}
             </div>
           </motion.div>
         </div>
@@ -259,22 +290,46 @@ function ExecutiveJourney() {
           }}
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <HorizontalTimeline />
-          <MobileTimeline />
+          <HorizontalTimeline activeFilter={activeFilter} />
+          <MobileTimeline activeFilter={activeFilter} />
         </div>
       </section>
     </div>
   );
 }
 
-function LegendChip({ color, label }: { color: string; label: string }) {
+function LegendChip({
+  color,
+  label,
+  active,
+  dim,
+  onClick,
+}: {
+  color: string;
+  label: string;
+  active?: boolean;
+  dim?: boolean;
+  onClick?: () => void;
+}) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-slate-100 ring-1 ring-inset ring-white/15">
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ring-1 ring-inset transition-all duration-200 ${
+        active
+          ? "bg-white text-slate-900 ring-white shadow-sm"
+          : dim
+            ? "bg-white/5 text-slate-400 ring-white/10 opacity-60 hover:opacity-100"
+            : "bg-white/5 text-slate-100 ring-white/15 hover:bg-white/10"
+      }`}
+    >
       <span className={`h-2 w-2 rounded-full ${color}`} />
       {label}
-    </span>
+    </button>
   );
 }
+
 
 /* ---------- Desktop: horizontal zigzag rail ---------- */
 function HorizontalTimeline() {
