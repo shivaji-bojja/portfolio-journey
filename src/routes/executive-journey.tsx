@@ -270,7 +270,7 @@ function HorizontalTimeline() {
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
           <Sparkles className="h-3.5 w-3.5" />
-          2000 → Present
+          Present → 2000
         </div>
         <p className="text-xs text-slate-500">Scroll horizontally to explore →</p>
       </div>
