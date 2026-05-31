@@ -279,6 +279,12 @@ function LegendChip({ color, label }: { color: string; label: string }) {
 /* ---------- Desktop: horizontal zigzag rail ---------- */
 function HorizontalTimeline() {
   const scrollerRef = React.useRef<HTMLDivElement>(null);
+  const [expanded, setExpanded] = React.useState(false);
+
+  const visible: Milestone[] = expanded
+    ? [...milestones, ...foundationMilestones]
+    : milestones;
+  const collapsedIndex = milestones.length; // position of the foundations card when collapsed
 
   return (
     <div className="hidden md:block">
@@ -296,7 +302,10 @@ function HorizontalTimeline() {
       >
         <div
           className="relative mx-auto"
-          style={{ width: `${milestones.length * 240 + 80}px`, minWidth: "100%" }}
+          style={{
+            width: `${(visible.length + 1) * 240 + 80}px`,
+            minWidth: "100%",
+          }}
         >
           {/* The rail */}
           <div className="relative h-[460px]">
@@ -305,12 +314,12 @@ function HorizontalTimeline() {
             {/* progress accent */}
             <div className="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 bg-gradient-to-r from-amber-400/0 via-emerald-500/40 to-slate-900/60" />
 
-            {milestones.map((m, i) => {
-              const top = i % 2 === 0; // alternate above/below
+            {visible.map((m, i) => {
+              const top = i % 2 === 0;
               const left = 40 + i * 240;
               return (
                 <TimelineNode
-                  key={i}
+                  key={`${m.title}-${i}`}
                   m={m}
                   index={i}
                   left={left}
@@ -318,12 +327,22 @@ function HorizontalTimeline() {
                 />
               );
             })}
+
+            {!expanded && (
+              <FoundationsCollapsedNode
+                index={collapsedIndex}
+                left={40 + collapsedIndex * 240}
+                position={collapsedIndex % 2 === 0 ? "top" : "bottom"}
+                onClick={() => setExpanded(true)}
+              />
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 }
+
 
 function TimelineNode({
   m,
@@ -393,8 +412,13 @@ function NodeCard({
         >
           {m.badge}
         </span>
-        <span className="font-mono text-[10px] text-slate-500">{m.period}</span>
+        {m.hideDate || !m.period ? (
+          <span className="font-mono text-[10px] text-slate-400">&nbsp;</span>
+        ) : (
+          <span className="font-mono text-[10px] text-slate-500">{m.period}</span>
+        )}
       </div>
+
 
       <div className="mt-3 flex items-start gap-2">
         <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-slate-100 text-slate-700">
