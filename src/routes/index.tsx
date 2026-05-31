@@ -62,15 +62,25 @@ function Index() {
               transition={{ duration: 1, ease: "easeOut", delay: 0.15 }}
               className="flex justify-center lg:justify-end"
             >
-              <div className="relative">
-                <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-amber-400/40 to-emerald-500/30 blur-2xl" />
+              <motion.div
+                whileHover={{ y: -6, scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 260, damping: 18 }}
+                className="group relative"
+              >
+                <div
+                  aria-hidden="true"
+                  className="absolute -inset-4 rounded-full bg-gradient-to-br from-amber-400/50 to-emerald-500/40 blur-2xl transition-all duration-500 group-hover:-inset-6 group-hover:from-amber-400/70 group-hover:to-emerald-500/60 group-hover:blur-3xl"
+                />
                 <img
                   src={headshot}
                   alt="Shivaji Bojja headshot"
-                  className="relative h-56 w-56 sm:h-72 sm:w-72 lg:h-80 lg:w-80 rounded-full object-cover ring-4 ring-amber-400/60 shadow-2xl"
+                  loading="eager"
+                  decoding="async"
+                  className="relative h-56 w-56 sm:h-72 sm:w-72 lg:h-80 lg:w-80 rounded-full object-cover ring-4 ring-amber-400/70 shadow-2xl transition-shadow duration-500 group-hover:ring-amber-300 group-hover:shadow-[0_0_60px_-10px_rgba(251,191,36,0.6)]"
                 />
-              </div>
+              </motion.div>
             </motion.div>
+
           </div>
         </div>
       </section>
