@@ -93,13 +93,6 @@ function Header() {
             Executive Journey
           </Link>
           <Link
-            to="/yoga-ecosystem"
-            activeProps={{ className: "text-amber-500 font-medium" }}
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground font-body"
-          >
-            Yoga Ecosystem
-          </Link>
-          <Link
             to="/product-lab"
             activeProps={{ className: "text-amber-500 font-medium" }}
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground font-body"
