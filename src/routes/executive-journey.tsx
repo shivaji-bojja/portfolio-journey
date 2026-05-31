@@ -95,6 +95,7 @@ const milestones: Milestone[] = [
     period: "2017 – 2018",
     title: "Digital Product Manager",
     org: "Kohl's",
+    location: "Milwaukee, WI",
     category: "leadership",
     Icon: Smartphone,
     badge: "KSS",
