@@ -85,7 +85,7 @@ function Index() {
                   alt="Shivaji Bojja headshot"
                   loading="eager"
                   decoding="async"
-                  className="relative h-56 w-56 sm:h-72 sm:w-72 lg:h-80 lg:w-80 rounded-full object-cover ring-4 ring-amber-400/70 shadow-2xl transition-shadow duration-500 group-hover:ring-amber-300 group-hover:shadow-[0_0_60px_-10px_rgba(251,191,36,0.6)]"
+                  className="relative h-40 w-40 sm:h-48 sm:w-48 lg:h-56 lg:w-56 rounded-full object-cover ring-4 ring-amber-400/70 shadow-2xl transition-shadow duration-500 group-hover:ring-amber-300 group-hover:shadow-[0_0_60px_-10px_rgba(251,191,36,0.6)]"
                 />
               </motion.div>
             </motion.div>
