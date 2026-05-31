@@ -332,14 +332,15 @@ function LegendChip({
 
 
 /* ---------- Desktop: horizontal zigzag rail ---------- */
-function HorizontalTimeline() {
+function HorizontalTimeline({ activeFilter }: { activeFilter: Category | null }) {
   const scrollerRef = React.useRef<HTMLDivElement>(null);
   const [expanded, setExpanded] = React.useState(false);
 
-  const visible: Milestone[] = expanded
+  const autoExpanded = expanded || activeFilter === "foundation";
+  const visible: Milestone[] = autoExpanded
     ? [...milestones, ...foundationMilestones]
     : milestones;
-  const collapsedIndex = milestones.length; // position of the foundations card when collapsed
+  const collapsedIndex = milestones.length;
 
   return (
     <div className="hidden md:block">
@@ -364,14 +365,13 @@ function HorizontalTimeline() {
         >
           {/* The rail */}
           <div className="relative h-[460px]">
-            {/* horizontal axis */}
             <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
-            {/* progress accent */}
             <div className="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 bg-gradient-to-r from-amber-400/0 via-emerald-500/40 to-slate-900/60" />
 
             {visible.map((m, i) => {
               const top = i % 2 === 0;
               const left = 40 + i * 240;
+              const dim = activeFilter !== null && m.category !== activeFilter;
               return (
                 <TimelineNode
                   key={`${m.title}-${i}`}
@@ -379,16 +379,18 @@ function HorizontalTimeline() {
                   index={i}
                   left={left}
                   position={top ? "top" : "bottom"}
+                  dim={dim}
                 />
               );
             })}
 
-            {!expanded && (
+            {!autoExpanded && (
               <FoundationsCollapsedNode
                 index={collapsedIndex}
                 left={40 + collapsedIndex * 240}
                 position={collapsedIndex % 2 === 0 ? "top" : "bottom"}
                 onClick={() => setExpanded(true)}
+                dim={activeFilter !== null && activeFilter !== "foundation"}
               />
             )}
           </div>
@@ -397,6 +399,7 @@ function HorizontalTimeline() {
     </div>
   );
 }
+
 
 
 function TimelineNode({
