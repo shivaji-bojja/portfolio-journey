@@ -204,6 +204,10 @@ const categoryMeta: Record<
 };
 
 function ExecutiveJourney() {
+  const [activeFilter, setActiveFilter] = React.useState<Category | null>(null);
+  const toggle = (c: Category) =>
+    setActiveFilter((cur) => (cur === c ? null : c));
+
   return (
     <div className="flex flex-col font-body bg-white">
       {/* Header */}
@@ -235,10 +239,37 @@ function ExecutiveJourney() {
               education into strategic product and pricing leadership.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              <LegendChip color="bg-slate-200" label="Leadership & Pricing" />
-              <LegendChip color="bg-emerald-400" label="Education" />
-              <LegendChip color="bg-amber-400" label="Engineering Foundations" />
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <LegendChip
+                color="bg-slate-200"
+                label="Leadership & Pricing"
+                active={activeFilter === "leadership"}
+                dim={activeFilter !== null && activeFilter !== "leadership"}
+                onClick={() => toggle("leadership")}
+              />
+              <LegendChip
+                color="bg-emerald-400"
+                label="Education"
+                active={activeFilter === "education"}
+                dim={activeFilter !== null && activeFilter !== "education"}
+                onClick={() => toggle("education")}
+              />
+              <LegendChip
+                color="bg-amber-400"
+                label="Engineering Foundations"
+                active={activeFilter === "foundation"}
+                dim={activeFilter !== null && activeFilter !== "foundation"}
+                onClick={() => toggle("foundation")}
+              />
+              {activeFilter && (
+                <button
+                  type="button"
+                  onClick={() => setActiveFilter(null)}
+                  className="text-xs font-medium text-slate-300 underline-offset-2 hover:text-white hover:underline"
+                >
+                  Clear filter
+                </button>
+              )}
             </div>
           </motion.div>
         </div>
@@ -259,32 +290,57 @@ function ExecutiveJourney() {
           }}
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <HorizontalTimeline />
-          <MobileTimeline />
+          <HorizontalTimeline activeFilter={activeFilter} />
+          <MobileTimeline activeFilter={activeFilter} />
         </div>
       </section>
     </div>
   );
 }
 
-function LegendChip({ color, label }: { color: string; label: string }) {
+function LegendChip({
+  color,
+  label,
+  active,
+  dim,
+  onClick,
+}: {
+  color: string;
+  label: string;
+  active?: boolean;
+  dim?: boolean;
+  onClick?: () => void;
+}) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-slate-100 ring-1 ring-inset ring-white/15">
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ring-1 ring-inset transition-all duration-200 ${
+        active
+          ? "bg-white text-slate-900 ring-white shadow-sm"
+          : dim
+            ? "bg-white/5 text-slate-400 ring-white/10 opacity-60 hover:opacity-100"
+            : "bg-white/5 text-slate-100 ring-white/15 hover:bg-white/10"
+      }`}
+    >
       <span className={`h-2 w-2 rounded-full ${color}`} />
       {label}
-    </span>
+    </button>
   );
 }
 
+
 /* ---------- Desktop: horizontal zigzag rail ---------- */
-function HorizontalTimeline() {
+function HorizontalTimeline({ activeFilter }: { activeFilter: Category | null }) {
   const scrollerRef = React.useRef<HTMLDivElement>(null);
   const [expanded, setExpanded] = React.useState(false);
 
-  const visible: Milestone[] = expanded
+  const autoExpanded = expanded || activeFilter === "foundation";
+  const visible: Milestone[] = autoExpanded
     ? [...milestones, ...foundationMilestones]
     : milestones;
-  const collapsedIndex = milestones.length; // position of the foundations card when collapsed
+  const collapsedIndex = milestones.length;
 
   return (
     <div className="hidden md:block">
@@ -309,14 +365,13 @@ function HorizontalTimeline() {
         >
           {/* The rail */}
           <div className="relative h-[460px]">
-            {/* horizontal axis */}
             <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
-            {/* progress accent */}
             <div className="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 bg-gradient-to-r from-amber-400/0 via-emerald-500/40 to-slate-900/60" />
 
             {visible.map((m, i) => {
               const top = i % 2 === 0;
               const left = 40 + i * 240;
+              const dim = activeFilter !== null && m.category !== activeFilter;
               return (
                 <TimelineNode
                   key={`${m.title}-${i}`}
@@ -324,16 +379,18 @@ function HorizontalTimeline() {
                   index={i}
                   left={left}
                   position={top ? "top" : "bottom"}
+                  dim={dim}
                 />
               );
             })}
 
-            {!expanded && (
+            {!autoExpanded && (
               <FoundationsCollapsedNode
                 index={collapsedIndex}
                 left={40 + collapsedIndex * 240}
                 position={collapsedIndex % 2 === 0 ? "top" : "bottom"}
                 onClick={() => setExpanded(true)}
+                dim={activeFilter !== null}
               />
             )}
           </div>
@@ -344,16 +401,19 @@ function HorizontalTimeline() {
 }
 
 
+
 function TimelineNode({
   m,
   index,
   left,
   position,
+  dim,
 }: {
   m: Milestone;
   index: number;
   left: number;
   position: "top" | "bottom";
+  dim?: boolean;
 }) {
   const meta = categoryMeta[m.category];
   const isTop = position === "top";
@@ -364,7 +424,7 @@ function TimelineNode({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.4, delay: index * 0.04 }}
-      className="absolute"
+      className={`absolute transition-opacity duration-300 ${dim ? "opacity-25" : "opacity-100"}`}
       style={{ left, top: 0, height: "100%", width: 220 }}
     >
       {/* connector line */}
@@ -458,11 +518,13 @@ function FoundationsCollapsedNode({
   left,
   position,
   onClick,
+  dim,
 }: {
   index: number;
   left: number;
   position: "top" | "bottom";
   onClick: () => void;
+  dim?: boolean;
 }) {
   const isTop = position === "top";
   return (
@@ -471,7 +533,7 @@ function FoundationsCollapsedNode({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.4, delay: index * 0.04 }}
-      className="absolute"
+      className={`absolute transition-opacity duration-300 ${dim ? "opacity-25" : "opacity-100"}`}
       style={{ left, top: 0, height: "100%", width: 220 }}
     >
       <div
@@ -524,9 +586,10 @@ function FoundationsCollapsedNode({
 }
 
 /* ---------- Mobile: vertical timeline ---------- */
-function MobileTimeline() {
+function MobileTimeline({ activeFilter }: { activeFilter: Category | null }) {
   const [expanded, setExpanded] = React.useState(false);
-  const visible = expanded ? [...milestones, ...foundationMilestones] : milestones;
+  const autoExpanded = expanded || activeFilter === "foundation";
+  const visible = autoExpanded ? [...milestones, ...foundationMilestones] : milestones;
 
   return (
     <div className="md:hidden">
@@ -535,6 +598,7 @@ function MobileTimeline() {
         <ol className="space-y-6">
           {visible.map((m, i) => {
             const meta = categoryMeta[m.category];
+            const dim = activeFilter !== null && m.category !== activeFilter;
             return (
               <motion.li
                 key={`${m.title}-${i}`}
@@ -542,7 +606,7 @@ function MobileTimeline() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.35, delay: 0.03 * i }}
-                className="relative pl-12"
+                className={`relative pl-12 transition-opacity duration-300 ${dim ? "opacity-25" : "opacity-100"}`}
               >
                 <div
                   className={`absolute left-4 top-3 h-3 w-3 -translate-x-1/2 rounded-full ring-4 ${meta.dot} ${meta.ring}`}
@@ -551,8 +615,8 @@ function MobileTimeline() {
               </motion.li>
             );
           })}
-          {!expanded && (
-            <li className="relative pl-12">
+          {!autoExpanded && (
+            <li className={`relative pl-12 transition-opacity duration-300 ${activeFilter !== null ? "opacity-25" : "opacity-100"}`}>
               <div className="absolute left-4 top-3 h-3 w-3 -translate-x-1/2 rounded-full ring-4 bg-amber-500 ring-amber-500/20" />
               <button
                 type="button"
