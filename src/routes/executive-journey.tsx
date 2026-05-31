@@ -415,9 +415,11 @@ function NodeCard({
         {m.hideDate || !m.period ? (
           <span className="font-mono text-[10px] text-slate-400">&nbsp;</span>
         ) : (
-          <span className="font-mono text-[10px] text-slate-500">{m.period}</span>
+          <span className="font-mono text-[11px] font-semibold text-slate-700">{m.period}</span>
         )}
       </div>
+
+
 
 
       <div className="mt-3 flex items-start gap-2">
