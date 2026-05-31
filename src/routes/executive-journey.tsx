@@ -450,18 +450,92 @@ function NodeCard({
   );
 }
 
+/* ---------- Collapsed "Engineering Foundations" node (desktop) ---------- */
+function FoundationsCollapsedNode({
+  index,
+  left,
+  position,
+  onClick,
+}: {
+  index: number;
+  left: number;
+  position: "top" | "bottom";
+  onClick: () => void;
+}) {
+  const isTop = position === "top";
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: isTop ? -12 : 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.4, delay: index * 0.04 }}
+      className="absolute"
+      style={{ left, top: 0, height: "100%", width: 220 }}
+    >
+      <div
+        className="absolute left-1/2 w-px bg-slate-300"
+        style={
+          isTop
+            ? { top: "calc(50% - 70px)", height: 70 }
+            : { top: "50%", height: 70 }
+        }
+      />
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="h-4 w-4 rounded-full ring-4 bg-amber-500 ring-amber-500/20 shadow-sm" />
+      </div>
+      <div
+        className="absolute left-1/2 -translate-x-1/2"
+        style={isTop ? { top: 0 } : { bottom: 0 }}
+      >
+        <button
+          type="button"
+          onClick={onClick}
+          className="group w-[220px] rounded-xl border border-amber-500/30 bg-gradient-to-br from-amber-50 to-white p-4 text-left shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.15)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_16px_36px_-12px_rgba(15,23,42,0.25)]"
+        >
+          <div className="flex items-center justify-between">
+            <span className="inline-flex items-center justify-center rounded-md bg-amber-500 px-2 py-0.5 text-[10px] font-bold tracking-wide text-white">
+              FOUNDATIONS
+            </span>
+            <span className="font-mono text-[10px] text-slate-400">&nbsp;</span>
+          </div>
+          <div className="mt-3 flex items-start gap-2">
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-amber-100 text-amber-700">
+              <Briefcase className="h-3.5 w-3.5" />
+            </div>
+            <div className="min-w-0">
+              <h3 className="text-[13px] font-semibold leading-snug text-slate-900">
+                Engineering Foundations
+              </h3>
+              <p className="mt-0.5 text-[12px] font-medium text-slate-600">
+                {foundationMilestones.length} earlier roles
+              </p>
+            </div>
+          </div>
+          <p className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 group-hover:text-amber-800">
+            Click to view more
+            <ChevronRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+          </p>
+        </button>
+      </div>
+    </motion.div>
+  );
+}
+
 /* ---------- Mobile: vertical timeline ---------- */
 function MobileTimeline() {
+  const [expanded, setExpanded] = React.useState(false);
+  const visible = expanded ? [...milestones, ...foundationMilestones] : milestones;
+
   return (
     <div className="md:hidden">
       <div className="relative">
         <div className="absolute left-4 top-0 bottom-0 w-px bg-slate-200" />
         <ol className="space-y-6">
-          {milestones.map((m, i) => {
+          {visible.map((m, i) => {
             const meta = categoryMeta[m.category];
             return (
               <motion.li
-                key={i}
+                key={`${m.title}-${i}`}
                 initial={{ opacity: 0, x: -8 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
@@ -475,8 +549,35 @@ function MobileTimeline() {
               </motion.li>
             );
           })}
+          {!expanded && (
+            <li className="relative pl-12">
+              <div className="absolute left-4 top-3 h-3 w-3 -translate-x-1/2 rounded-full ring-4 bg-amber-500 ring-amber-500/20" />
+              <button
+                type="button"
+                onClick={() => setExpanded(true)}
+                className="group w-full rounded-xl border border-amber-500/30 bg-gradient-to-br from-amber-50 to-white p-4 text-left shadow-sm transition-all hover:-translate-y-0.5"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="inline-flex items-center justify-center rounded-md bg-amber-500 px-2 py-0.5 text-[10px] font-bold tracking-wide text-white">
+                    FOUNDATIONS
+                  </span>
+                </div>
+                <h3 className="mt-3 text-[13px] font-semibold leading-snug text-slate-900">
+                  Engineering Foundations
+                </h3>
+                <p className="mt-0.5 text-[12px] font-medium text-slate-600">
+                  {foundationMilestones.length} earlier roles
+                </p>
+                <p className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700">
+                  Click to view more
+                  <ChevronRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                </p>
+              </button>
+            </li>
+          )}
         </ol>
       </div>
     </div>
   );
 }
+
