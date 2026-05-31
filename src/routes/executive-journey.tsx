@@ -469,7 +469,11 @@ function TimelineNode({
       {/* card */}
       <div
         className="group absolute left-1/2 -translate-x-1/2"
-        style={isTop ? { top: 0 } : { bottom: 0 }}
+        style={
+          isTop
+            ? { bottom: "calc(50% + 70px)" }
+            : { top: "calc(50% + 70px)" }
+        }
       >
         <NodeCard m={m} meta={meta} />
       </div>
