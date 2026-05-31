@@ -469,7 +469,11 @@ function TimelineNode({
       {/* card */}
       <div
         className="group absolute left-1/2 -translate-x-1/2"
-        style={isTop ? { top: 0 } : { bottom: 0 }}
+        style={
+          isTop
+            ? { bottom: "calc(50% + 70px)" }
+            : { top: "calc(50% + 70px)" }
+        }
       >
         <NodeCard m={m} meta={meta} />
       </div>
@@ -486,7 +490,7 @@ function NodeCard({
 }) {
   return (
     <div
-      className={`w-[220px] rounded-xl border bg-white p-4 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.15)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_16px_36px_-12px_rgba(15,23,42,0.25)] ${meta.accent}`}
+      className={`flex h-[185px] w-[220px] flex-col rounded-xl border bg-white p-4 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.15)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_16px_36px_-12px_rgba(15,23,42,0.25)] ${meta.accent}`}
     >
       <div className="flex items-center justify-between">
         <span
@@ -571,12 +575,16 @@ function FoundationsCollapsedNode({
       </div>
       <div
         className="absolute left-1/2 -translate-x-1/2"
-        style={isTop ? { top: 0 } : { bottom: 0 }}
+        style={
+          isTop
+            ? { bottom: "calc(50% + 70px)" }
+            : { top: "calc(50% + 70px)" }
+        }
       >
         <button
           type="button"
           onClick={onClick}
-          className="group w-[220px] rounded-xl border border-amber-500/30 bg-gradient-to-br from-amber-50 to-white p-4 text-left shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.15)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_16px_36px_-12px_rgba(15,23,42,0.25)]"
+          className="group flex h-[185px] w-[220px] flex-col rounded-xl border border-amber-500/30 bg-gradient-to-br from-amber-50 to-white p-4 text-left shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.15)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_16px_36px_-12px_rgba(15,23,42,0.25)]"
         >
           <div className="flex items-center justify-between">
             <span className="inline-flex items-center justify-center rounded-md bg-amber-500 px-2 py-0.5 text-[10px] font-bold tracking-wide text-white">
