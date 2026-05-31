@@ -228,7 +228,7 @@ function ExecutiveJourney() {
               Executive Journey
             </p>
             <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Two Decades, One Trajectory
+              Product Leadership, Strategic Pricing
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300 lg:text-lg">
               A chronological path from engineering foundations through business
