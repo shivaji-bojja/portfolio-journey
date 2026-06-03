@@ -508,12 +508,14 @@ function MilestoneCard({ m }: { m: Milestone }) {
         <span className="flex h-8 w-8 items-center justify-center rounded-md border border-white/10 bg-white/[0.04]">
           <Icon className="text-[#D9A74A]" size={16} />
         </span>
-        <p
-          className="font-body text-[10px] font-semibold uppercase tracking-[0.22em]"
-          style={{ color: GOLD }}
-        >
-          {m.period}
-        </p>
+        {m.period && (
+          <p
+            className="font-body text-[10px] font-semibold uppercase tracking-[0.22em]"
+            style={{ color: GOLD }}
+          >
+            {m.period}
+          </p>
+        )}
       </div>
       <h3 className="mt-3 font-display text-[15px] font-medium leading-snug text-white">
         {m.title}
