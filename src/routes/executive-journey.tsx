@@ -18,7 +18,9 @@ import {
 } from "lucide-react";
 
 const GOLD = "#D9A74A";
-const BG = "#0B0F19";
+const BG = "#0A0F1D";
+const WORK_BG = "#111827";
+const EDU_BG = "#1E1B4B";
 
 export const Route = createFileRoute("/executive-journey")({
   head: () => ({
@@ -55,7 +57,6 @@ type Milestone = {
   position: "top" | "bottom";
 };
 
-// Ordered left → right (latest first), with exact top/bottom assignments.
 const milestones: Milestone[] = [
   {
     id: "att-pricing",
@@ -75,7 +76,7 @@ const milestones: Milestone[] = [
     id: "mai",
     period: "2026 — PRESENT",
     title: "Masters in AI (In Progress)",
-    org: "Woolf University · by Udacity",
+    org: "Woolf University · Udacity",
     bullets: [
       "Advanced graduate study of applied AI, machine learning systems, and generative architectures.",
     ],
@@ -169,50 +170,26 @@ const milestones: Milestone[] = [
   },
 ];
 
-
-
 type FoundationRole = {
   title: string;
   org: string;
-  location?: string;
-  detail: string;
   icon: React.ComponentType<{ className?: string; size?: number }>;
+  position: "top" | "bottom";
 };
 
+// Alternating above/below, starting ABOVE (since Foundations master card is above).
 const foundations: FoundationRole[] = [
-  {
-    title: "Business Analyst",
-    org: "Ameriprise Financial",
-    location: "Minneapolis, US",
-    detail:
-      "Partnered with business units to map workflows and deliver technical solutions.",
-    icon: LineChart,
-  },
-  {
-    title: "Senior Software Engineer",
-    org: "Credit Suisse",
-    location: "Pune, India",
-    detail:
-      "Developed enterprise-grade financial software systems, core algorithms, and transactional databases.",
-    icon: Landmark,
-  },
-  {
-    title: "IT Consultant",
-    org: "Johnson & Johnson / McNeil",
-    detail:
-      "Platform engineering, system stabilization, and cross-functional technical deployments.",
-    icon: Pill,
-  },
-  {
-    title: "Software Engineer",
-    org: "Merrill Lynch / Satyam",
-    detail:
-      "Maintained backend software logic, executed system migrations, and engineered DB integrations.",
-    icon: Cpu,
-  },
+  { title: "Business Analyst", org: "Ameriprise Financial", icon: LineChart, position: "bottom" },
+  { title: "IT Business Consultant", org: "Wells Fargo", icon: Building2, position: "top" },
+  { title: "Senior Software Engineer", org: "Credit Suisse", icon: Landmark, position: "bottom" },
+  { title: "IT Consultant", org: "Johnson & Johnson / McNeil", icon: Pill, position: "top" },
+  { title: "Software Engineer", org: "Satyam / Merrill Lynch", icon: Cpu, position: "bottom" },
 ];
 
 const FILTERS: Category[] = ["Leadership & Pricing", "Education", "Engineering Foundations"];
+
+// Shared horizontal padding container for header, filters, AND timeline.
+const CONTAINER = "mx-auto w-full max-w-[1600px] px-6 lg:px-12";
 
 function ExecutiveJourney() {
   const [active, setActive] = useState<Category | null>(null);
@@ -221,21 +198,11 @@ function ExecutiveJourney() {
   const isDimmed = (cat: Category) => active !== null && active !== cat;
   const foundationsDimmed = active !== null && active !== "Engineering Foundations";
 
+  const totalDesktopNodes = milestones.length + 1 + (expanded ? foundations.length : 0);
+
   return (
-    <div
-      className="relative min-h-screen text-white overflow-hidden"
-      style={{ backgroundColor: BG }}
-    >
-      {/* Faint grid */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-          backgroundSize: "72px 72px",
-        }}
-      />
+    <div className="relative min-h-screen text-white overflow-hidden" style={{ backgroundColor: BG }}>
+      {/* Soft ambient glow only — no grid tiling */}
       <div
         aria-hidden
         className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full blur-[160px]"
@@ -244,7 +211,7 @@ function ExecutiveJourney() {
 
       {/* HEADER */}
       <section className="relative">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-24">
+        <div className={`${CONTAINER} py-20 lg:py-24`}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -262,8 +229,14 @@ function ExecutiveJourney() {
                 Journey
               </em>
             </h1>
+            <p
+              className="mt-4 font-body text-[11px] font-semibold uppercase tracking-[0.4em]"
+              style={{ color: GOLD }}
+            >
+              Present to 2012 and Beyond
+            </p>
             <div className="mt-6 h-px w-24" style={{ backgroundColor: GOLD }} />
-            <p className="mt-8 max-w-2xl font-body text-base leading-[1.8] text-slate-300">
+            <p className="mt-8 max-w-2xl font-body text-base leading-[1.8] text-[#E2E8F0]">
               A chronological path through executive product and pricing leadership — anchored by
               decades of engineering, data, and analytics foundations.
             </p>
@@ -277,10 +250,10 @@ function ExecutiveJourney() {
                 <button
                   key={f}
                   onClick={() => setActive(isActive ? null : f)}
-                  className={`group relative font-body text-xs uppercase tracking-[0.25em] px-4 py-2 rounded-full border transition-all duration-300 ${
+                  className={`group relative font-body text-xs uppercase tracking-[0.25em] px-4 py-2 rounded-full border transition-all duration-300 cursor-pointer ${
                     isActive
                       ? "border-[#D9A74A] text-[#D9A74A] bg-[#D9A74A]/5"
-                      : "border-white/15 text-white/70 hover:border-white/40 hover:text-white"
+                      : "border-white/15 text-[#E2E8F0]/70 hover:border-white/40 hover:text-white"
                   }`}
                 >
                   {f}
@@ -290,7 +263,7 @@ function ExecutiveJourney() {
             {active && (
               <button
                 onClick={() => setActive(null)}
-                className="font-body text-xs uppercase tracking-[0.25em] px-3 py-2 text-white/40 hover:text-white/80 transition-colors"
+                className="font-body text-xs uppercase tracking-[0.25em] px-3 py-2 text-white/40 hover:text-white/80 transition-colors cursor-pointer"
               >
                 Clear ×
               </button>
@@ -300,36 +273,30 @@ function ExecutiveJourney() {
       </section>
 
       {/* DESKTOP HORIZONTAL TIMELINE */}
-      <section className="relative border-t border-white/5">
+      <section className="relative">
         <div className="hidden lg:block">
-          <div className="relative mx-auto max-w-[1600px] px-6 py-20">
-            <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 mb-6">
+          <div className={`${CONTAINER} py-16`}>
+            <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#E2E8F0]/40 mb-6">
               ↔ Scroll horizontally to explore the timeline
             </p>
             <div className="relative overflow-x-auto pb-10 [scrollbar-color:#D9A74A55_transparent]">
-              <div className="relative" style={{ width: `${(milestones.length + 1) * 340}px` }}>
-                <div className="relative h-[720px]">
-                  {/* Horizontal rail */}
+              <div className="relative" style={{ width: `${totalDesktopNodes * 340}px` }}>
+                <div className="relative h-[760px]">
+                  {/* Gold horizontal rail */}
                   <div
                     aria-hidden
-                    className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-white/10"
-                  />
-                  {/* Active gold overlay */}
-                  <div
-                    aria-hidden
-                    className="absolute left-0 top-1/2 -translate-y-1/2 h-px transition-all duration-700"
+                    className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px transition-all duration-500"
                     style={{
-                      width: active ? "100%" : "0%",
                       backgroundColor: GOLD,
-                      opacity: active ? 0.7 : 0,
-                      boxShadow: active ? `0 0 14px ${GOLD}` : "none",
+                      opacity: active ? 0.95 : 0.55,
+                      boxShadow: active ? `0 0 14px ${GOLD}` : `0 0 6px ${GOLD}66`,
                     }}
                   />
 
                   <div
                     className="grid h-full"
                     style={{
-                      gridTemplateColumns: `repeat(${milestones.length + 1}, minmax(0, 1fr))`,
+                      gridTemplateColumns: `repeat(${totalDesktopNodes}, minmax(0, 1fr))`,
                     }}
                   >
                     {milestones.map((m, i) => (
@@ -345,24 +312,21 @@ function ExecutiveJourney() {
                       onToggle={() => setExpanded((v) => !v)}
                       dimmed={foundationsDimmed}
                     />
+                    <AnimatePresence>
+                      {expanded &&
+                        foundations.map((r, i) => (
+                          <FoundationMiniNode
+                            key={r.title}
+                            role={r}
+                            index={i}
+                            dimmed={foundationsDimmed}
+                          />
+                        ))}
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
             </div>
-
-            <AnimatePresence>
-              {expanded && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="overflow-hidden"
-                >
-                  <FoundationsPanel dimmed={foundationsDimmed} />
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
         </div>
 
@@ -372,7 +336,8 @@ function ExecutiveJourney() {
             <div className="relative">
               <div
                 aria-hidden
-                className="absolute left-4 top-0 bottom-0 w-px bg-white/10"
+                className="absolute left-4 top-0 bottom-0 w-px"
+                style={{ backgroundColor: `${GOLD}55` }}
               />
               <ol className="space-y-10">
                 {milestones.map((m) => (
@@ -393,15 +358,23 @@ function ExecutiveJourney() {
                   />
                   <AnimatePresence>
                     {expanded && (
-                      <motion.div
+                      <motion.ol
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.35 }}
-                        className="overflow-hidden mt-4"
+                        className="overflow-hidden mt-6 space-y-6"
                       >
-                        <FoundationsPanel dimmed={foundationsDimmed} />
-                      </motion.div>
+                        {foundations.map((r) => (
+                          <li key={r.title} className="relative pl-8">
+                            <span
+                              className="absolute left-0 top-4 block h-2 w-2 rounded-full"
+                              style={{ backgroundColor: GOLD }}
+                            />
+                            <FoundationMiniCard role={r} />
+                          </li>
+                        ))}
+                      </motion.ol>
                     )}
                   </AnimatePresence>
                 </li>
@@ -413,7 +386,7 @@ function ExecutiveJourney() {
 
       {/* FOOTER NAV */}
       <section className="relative border-t border-white/5">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div className={`${CONTAINER} py-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6`}>
           <Link
             to="/"
             className="font-body text-sm font-medium transition-opacity hover:opacity-80"
@@ -454,33 +427,30 @@ function HorizontalNode({
         dimmed ? "opacity-20" : "opacity-100"
       }`}
     >
-      {/* TOP CARD */}
       {onTop && (
         <div className="absolute left-1/2 -translate-x-1/2 bottom-1/2 mb-10 w-[300px]">
           <MilestoneCard m={m} />
         </div>
       )}
 
-      {/* Tick line */}
       <div
         aria-hidden
-        className="absolute left-1/2 -translate-x-1/2 w-px bg-white/15"
+        className="absolute left-1/2 -translate-x-1/2 w-px"
         style={{
           height: "36px",
           top: onTop ? "calc(50% - 36px)" : "50%",
+          backgroundColor: `${GOLD}55`,
         }}
       />
 
-      {/* Node */}
       <span
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block h-3 w-3 rounded-full ring-1 ring-white/30 transition-all duration-300"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block h-3 w-3 rounded-full transition-all duration-300"
         style={{
-          backgroundColor: BG,
-          boxShadow: dimmed ? "none" : `0 0 12px ${GOLD}99`,
+          backgroundColor: GOLD,
+          boxShadow: dimmed ? "none" : `0 0 12px ${GOLD}`,
         }}
       />
 
-      {/* BOTTOM CARD */}
       {!onTop && (
         <div className="absolute left-1/2 -translate-x-1/2 top-1/2 mt-10 w-[300px]">
           <MilestoneCard m={m} />
@@ -493,16 +463,13 @@ function HorizontalNode({
 function MilestoneCard({ m }: { m: Milestone }) {
   const Icon = m.icon;
   const isEducation = m.category === "Education";
-  // Education cards get a subtle deep-indigo/steel tint; work cards stay near BG.
-  const cardBg = isEducation
-    ? "linear-gradient(180deg, rgba(40,55,95,0.55) 0%, rgba(20,28,55,0.85) 100%)"
-    : "rgba(13,18,32,0.95)";
-  const cardBorder = isEducation ? "border-indigo-300/15" : "border-slate-400/15";
+  const cardBg = isEducation ? EDU_BG : WORK_BG;
+  const cardBorder = isEducation ? "border-slate-400/25" : "border-white/10";
 
   return (
     <article
-      className={`group rounded-xl border ${cardBorder} backdrop-blur p-5 transition-all duration-300 hover:border-[#D9A74A]/60 hover:-translate-y-0.5 hover:shadow-[0_8px_40px_-12px_#D9A74A33]`}
-      style={{ background: cardBg }}
+      className={`group rounded-xl border ${cardBorder} p-5 transition-all duration-300 hover:border-[#D9A74A]/60 hover:-translate-y-0.5 hover:shadow-[0_8px_40px_-12px_#D9A74A33]`}
+      style={{ backgroundColor: cardBg }}
     >
       <div className="flex items-center gap-2.5">
         <span className="flex h-8 w-8 items-center justify-center rounded-md border border-white/10 bg-white/[0.04]">
@@ -520,11 +487,11 @@ function MilestoneCard({ m }: { m: Milestone }) {
       <h3 className="mt-3 font-display text-[15px] font-medium leading-snug text-white">
         {m.title}
       </h3>
-      <p className="mt-1 font-body text-[11.5px] text-slate-300/80 leading-snug">
+      <p className="mt-1 font-body text-[11.5px] text-[#E2E8F0]/85 leading-snug">
         {m.org}
-        {m.location && <span className="text-slate-400/60"> · {m.location}</span>}
+        {m.location && <span className="text-[#E2E8F0]/55"> · {m.location}</span>}
       </p>
-      <ul className="mt-3 space-y-1.5 font-body text-[11.5px] leading-[1.65] text-slate-200/90">
+      <ul className="mt-3 space-y-1.5 font-body text-[11.5px] leading-[1.65] text-[#E2E8F0]">
         {m.bullets.map((b) => (
           <li key={b} className="flex items-start gap-1.5">
             <span
@@ -540,7 +507,7 @@ function MilestoneCard({ m }: { m: Milestone }) {
           {m.tags.map((t) => (
             <span
               key={t}
-              className="rounded-full border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[9.5px] font-medium tracking-wide text-slate-200/80 font-body"
+              className="rounded-full border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[9.5px] font-medium tracking-wide text-[#E2E8F0]/85 font-body"
             >
               {t}
             </span>
@@ -570,21 +537,21 @@ function FoundationsNode({
         dimmed ? "opacity-20" : "opacity-100"
       }`}
     >
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-1/2 mb-10 w-[300px]">
+        <FoundationsCard expanded={expanded} onToggle={onToggle} dimmed={false} />
+      </div>
+      <div
+        aria-hidden
+        className="absolute left-1/2 -translate-x-1/2 w-px"
+        style={{ height: "36px", top: "calc(50% - 36px)", backgroundColor: `${GOLD}88` }}
+      />
       <span
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block h-3.5 w-3.5 rounded-full"
         style={{
-          backgroundColor: BG,
-          boxShadow: `0 0 0 1.5px ${GOLD}, 0 0 18px ${GOLD}99`,
+          backgroundColor: GOLD,
+          boxShadow: `0 0 18px ${GOLD}`,
         }}
       />
-      <div
-        aria-hidden
-        className="absolute left-1/2 -translate-x-1/2 top-1/2 w-px bg-[#D9A74A]/40"
-        style={{ height: "36px" }}
-      />
-      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 mt-10 w-[300px]">
-        <FoundationsCard expanded={expanded} onToggle={onToggle} dimmed={false} />
-      </div>
     </motion.div>
   );
 }
@@ -601,10 +568,10 @@ function FoundationsCard({
   return (
     <button
       onClick={onToggle}
-      className={`group w-full text-left rounded-xl border backdrop-blur p-5 transition-all duration-300 ${
+      className={`group w-full text-left rounded-xl border p-5 transition-all duration-300 cursor-pointer ${
         dimmed ? "opacity-25" : "opacity-100"
       } border-[#D9A74A]/40 hover:border-[#D9A74A] hover:-translate-y-0.5 hover:shadow-[0_8px_40px_-12px_#D9A74A55]`}
-      style={{ backgroundColor: "rgba(13,18,32,0.95)" }}
+      style={{ backgroundColor: WORK_BG }}
     >
       <div className="flex items-center gap-2.5">
         <span className="flex h-8 w-8 items-center justify-center rounded-md border border-[#D9A74A]/30 bg-[#D9A74A]/5">
@@ -618,14 +585,14 @@ function FoundationsCard({
         </p>
       </div>
       <h3 className="mt-3 font-display text-[15px] font-medium leading-snug text-white">
-        Present – 2012 and Beyond
+        Engineering Foundations
       </h3>
-      <p className="mt-1 font-body text-[11.5px] text-slate-300/70 leading-snug">
-        Ameriprise Financial, Credit Suisse, Johnson & Johnson, Satyam / Merrill Lynch.
+      <p className="mt-1 font-body text-[11.5px] text-[#E2E8F0]/75 leading-snug">
+        Click to view more
       </p>
       <div className="mt-3 flex items-center justify-between">
-        <span className="font-body text-[11px] italic text-slate-300/70">
-          {expanded ? "Click to collapse" : "Click to view more"}
+        <span className="font-body text-[11px] italic text-[#E2E8F0]/70">
+          {expanded ? "Click to collapse" : "Expand timeline"}
         </span>
         <ChevronDown
           size={16}
@@ -637,51 +604,74 @@ function FoundationsCard({
   );
 }
 
-function FoundationsPanel({ dimmed }: { dimmed: boolean }) {
+function FoundationMiniNode({
+  role,
+  index,
+  dimmed,
+}: {
+  role: FoundationRole;
+  index: number;
+  dimmed: boolean;
+}) {
+  const onTop = role.position === "top";
   return (
-    <div
-      className={`mt-10 rounded-2xl border border-white/10 bg-white/[0.02] p-6 lg:p-10 transition-opacity duration-500 ${
-        dimmed ? "opacity-30" : "opacity-100"
-      }`}
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 10 }}
+      transition={{ duration: 0.35, delay: index * 0.06 }}
+      className={`relative flex flex-col items-center ${dimmed ? "opacity-25" : "opacity-100"}`}
     >
-      <p
-        className="font-body text-[10px] font-semibold uppercase tracking-[0.3em]"
-        style={{ color: GOLD }}
-      >
-        Foundational Roles
-      </p>
-      <h4 className="mt-2 font-display text-2xl font-medium text-white">
-        Where the engineering instinct{" "}
-        <em className="italic" style={{ color: GOLD }}>
-          was forged.
-        </em>
-      </h4>
+      {onTop && (
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-1/2 mb-10 w-[260px]">
+          <FoundationMiniCard role={role} />
+        </div>
+      )}
+      <div
+        aria-hidden
+        className="absolute left-1/2 -translate-x-1/2 w-px"
+        style={{
+          height: "36px",
+          top: onTop ? "calc(50% - 36px)" : "50%",
+          backgroundColor: `${GOLD}55`,
+        }}
+      />
+      <span
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block h-2.5 w-2.5 rounded-full"
+        style={{ backgroundColor: GOLD, boxShadow: `0 0 10px ${GOLD}` }}
+      />
+      {!onTop && (
+        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 mt-10 w-[260px]">
+          <FoundationMiniCard role={role} />
+        </div>
+      )}
+    </motion.div>
+  );
+}
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {foundations.map((r) => {
-          const Icon = r.icon;
-          return (
-            <div
-              key={r.title}
-              className="rounded-xl border border-white/10 p-5 transition-colors hover:border-[#D9A74A]/40"
-              style={{ backgroundColor: "rgba(13,18,32,0.85)" }}
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-md border border-white/10 bg-white/[0.03]">
-                <Icon className="text-[#D9A74A]" size={18} />
-              </span>
-              <p className="mt-3 font-display text-sm font-medium text-white">{r.title}</p>
-              <p className="mt-1 font-body text-xs text-slate-300/75">{r.org}</p>
-              {r.location && (
-                <p className="font-body text-[11px] text-slate-400/60">{r.location}</p>
-              )}
-              <p className="mt-3 font-body text-[11.5px] leading-[1.65] text-slate-200/85">
-                {r.detail}
-              </p>
-            </div>
-          );
-        })}
+function FoundationMiniCard({ role }: { role: FoundationRole }) {
+  const Icon = role.icon;
+  return (
+    <article
+      className="rounded-xl border border-white/10 p-4 transition-all duration-300 hover:border-[#D9A74A]/50"
+      style={{ backgroundColor: WORK_BG }}
+    >
+      <div className="flex items-center gap-2.5">
+        <span className="flex h-7 w-7 items-center justify-center rounded-md border border-white/10 bg-white/[0.04]">
+          <Icon className="text-[#D9A74A]" size={14} />
+        </span>
+        <p
+          className="font-body text-[9.5px] font-semibold uppercase tracking-[0.22em]"
+          style={{ color: GOLD }}
+        >
+          Foundations
+        </p>
       </div>
-    </div>
+      <h4 className="mt-2.5 font-display text-[14px] font-medium leading-snug text-white">
+        {role.title}
+      </h4>
+      <p className="mt-1 font-body text-[11.5px] text-[#E2E8F0]/80">{role.org}</p>
+    </article>
   );
 }
 
@@ -693,10 +683,10 @@ function VerticalItem({ m, dimmed }: { m: Milestone; dimmed: boolean }) {
       }`}
     >
       <span
-        className="absolute left-4 top-6 -translate-x-1/2 block h-3 w-3 rounded-full ring-1 ring-white/30"
+        className="absolute left-4 top-6 -translate-x-1/2 block h-3 w-3 rounded-full"
         style={{
-          backgroundColor: BG,
-          boxShadow: dimmed ? "none" : `0 0 12px ${GOLD}77`,
+          backgroundColor: GOLD,
+          boxShadow: dimmed ? "none" : `0 0 12px ${GOLD}`,
         }}
       />
       <MilestoneCard m={m} />
