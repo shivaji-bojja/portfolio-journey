@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 
 const GOLD = "#D9A74A";
+const BG = "#090D1A";
 
 export const Route = createFileRoute("/executive-journey")({
   head: () => ({
@@ -26,7 +27,7 @@ export const Route = createFileRoute("/executive-journey")({
       {
         name: "description",
         content:
-          "A horizontal, premium chronological deep-dive into Shivaji Bojja's professional path — from engineering and analytics roots into enterprise-scale product and pricing leadership.",
+          "A premium horizontal chronology of Shivaji Bojja's executive path — from product and pricing leadership to engineering foundations.",
       },
       { property: "og:title", content: "Executive Journey — Career Timeline" },
       {
@@ -54,14 +55,30 @@ type Milestone = {
   position: "top" | "bottom";
 };
 
+// Ordered left → right (latest first), with exact top/bottom assignments.
 const milestones: Milestone[] = [
   {
+    id: "att-pricing",
+    period: "2023 — Present",
+    title: "Lead Strategic Pricing Manager",
+    org: "AT&T Business",
+    location: "Dallas, TX",
+    bullets: [
+      "Lead a $500M Next-Gen pricing optimization initiative using AI-driven platforms.",
+      "Created automated Azure/Databricks data pipelines, generating $20M+ in incremental revenue.",
+    ],
+    tags: ["Price Optimization", "AI Decisioning", "Databricks"],
+    category: "Leadership & Pricing",
+    icon: TrendingUp,
+    position: "top",
+  },
+  {
     id: "mai",
-    period: "2025 — Present",
+    period: "2026 — Present",
     title: "Masters in AI (In Progress)",
     org: "Woolf University · by Udacity",
     bullets: [
-      "Advanced study of applied AI, machine learning systems, and generative architectures.",
+      "Advanced graduate study of applied AI, machine learning systems, and generative architectures.",
       "Focus on enterprise-grade AI strategy, governance, and responsible deployment.",
     ],
     tags: ["AI Strategy", "Generative AI", "Continuous Learning"],
@@ -70,47 +87,30 @@ const milestones: Milestone[] = [
     position: "bottom",
   },
   {
-    id: "att-pricing",
-    period: "2023 — Present",
-    title: "Lead Strategic Pricing Manager",
-    org: "AT&T Business · VP Events, Oasis",
-    location: "Dallas, TX",
-    bullets: [
-      "Lead a $500M Next-Gen pricing optimization transformation leveraging AI-driven decisioning and enterprise pricing platform integrations.",
-      "Built ETL pipelines using Azure, Databricks, Python, and Snowflake to automate data integration across Quote, Contract, Ordering, Customer, Billing, and Pricing systems.",
-      "Automated channel conflict detection processes that generated over $20M in incremental revenue opportunities.",
-    ],
-    tags: ["Price Optimization", "AI Decisioning", "ETL Pipelines", "Snowflake"],
-    category: "Leadership & Pricing",
-    icon: TrendingUp,
-    position: "top",
-  },
-  {
     id: "mdp",
     period: "2021",
     title: "MDP — Management Development Program",
     org: "AT&T",
     bullets: [
-      "Completed AT&T's highly selective corporate leadership track focused on advanced enterprise management frameworks and strategic executive positioning.",
+      "Selected for AT&T's premier corporate leadership track focusing on strategic executive alignment.",
     ],
-    tags: ["Executive Leadership", "Strategic Management"],
-    category: "Leadership & Pricing",
+    tags: ["Executive Leadership", "Strategy"],
+    category: "Education",
     icon: Award,
     position: "bottom",
   },
   {
     id: "att-lpm",
     period: "2018 — 2023",
-    title: "Lead Product Manager & Sr. Technical PM",
-    org: "AT&T · Omnichannel Architecture & Strategic Platforms",
-    location: "Plano / Dallas, TX",
+    title: "Lead Product Manager & Senior Technical Product Manager",
+    org: "AT&T · Omnichannel Architecture",
+    location: "Dallas, TX",
     bullets: [
-      "Led multi-year omnichannel order management transformations, modernizing legacy platforms into event-driven microservices using Kafka, GraphQL, and MuleSoft APIs.",
-      "Shipped enhanced 'Pizza Tracker' order status experiences integrated with carrier APIs — reduced customer care calls by 1.5M annually and OpEx by $5M.",
-      "Designed and launched a real-time unified inventory platform synchronizing store and warehouse nodes, improving digital conversion by 2%.",
-      "Headed a cross-functional product organization leading 10 Product Managers across 10 Agile Scrum teams.",
+      "Led multi-year omnichannel order management transformation into modern event-driven microservices.",
+      "Reduced operational expenses by $5M and customer service calls by 1.5M annually.",
+      "Launched unified real-time inventory system increasing digital conversion by 2%.",
     ],
-    tags: ["Order Management (OMS)", "Microservices", "Kafka", "Product Leadership"],
+    tags: ["Order Management (OMS)", "Microservices", "Product Leadership"],
     category: "Leadership & Pricing",
     icon: Briefcase,
     position: "top",
@@ -118,61 +118,15 @@ const milestones: Milestone[] = [
   {
     id: "kohls",
     period: "2017 — 2018",
-    title: "Product Manager",
+    title: "Product Manager — Kohl's",
     org: "Kohl's · In-store Digital Innovation",
     location: "Milwaukee, WI",
     bullets: [
-      "Led product strategy and execution for retail digital transformation initiatives including self-checkout, mobile POS, and in-store customer experience modernization.",
-      "Managed omnichannel retail initiatives from concept through pilot execution and enterprise rollout using Jira and Confluence.",
+      "Led digital transformation strategy for self-checkout, mobile POS, and store experience modernization.",
     ],
-    tags: ["Digital Retail", "Mobile POS", "Agile Execution"],
+    tags: ["Digital Retail", "Mobile POS", "Agile"],
     category: "Leadership & Pricing",
     icon: ShoppingBag,
-    position: "bottom",
-  },
-  {
-    id: "mba",
-    period: "2016 — 2020",
-    title: "Master of Business Administration (MBA)",
-    org: "University of Minnesota · Carlson School of Management",
-    location: "Minneapolis, MN",
-    bullets: [
-      "Executive management focus.",
-      "Completed academic internship on image processing using k-cluster algorithms to identify objects in images.",
-    ],
-    tags: ["Business Strategy", "Algorithms"],
-    category: "Education",
-    icon: GraduationCap,
-    position: "top",
-  },
-  {
-    id: "bestbuy",
-    period: "2012 — 2017",
-    title: "Product Manager & Lead Product Analyst",
-    org: "Best Buy · Ecommerce & Omnichannel Order Journey",
-    location: "Minneapolis, MN",
-    bullets: [
-      "Spearheaded end-to-end product delivery of Best Buy's cornerstone Ship-from-Store capability, optimizing supply chain logistics and driving $1M in annual revenue.",
-      "Led product roadmap initiatives optimizing eCommerce cart, checkout, and omnichannel experiences — improving commerce conversion by 10%.",
-      "Integrated big data solution platforms to provide personalized shopping recommendations on mobile and dotcom channels.",
-    ],
-    tags: ["Ship-from-Store", "Checkout Optimization", "Big Data Personalization"],
-    category: "Leadership & Pricing",
-    icon: Store,
-    position: "bottom",
-  },
-  {
-    id: "mca",
-    period: "MCA",
-    title: "Master of Computer Applications",
-    org: "University College of Engineering · Osmania University",
-    location: "Hyderabad, India",
-    bullets: [
-      "Advanced graduate degree in computer science theory, systems architecture, application design, and robust database management.",
-    ],
-    tags: ["Computer Science", "Software Systems"],
-    category: "Education",
-    icon: GraduationCap,
     position: "top",
   },
 ];
@@ -187,18 +141,32 @@ type FoundationRole = {
 
 const foundations: FoundationRole[] = [
   {
+    title: "Product Manager & Lead Product Analyst",
+    org: "Best Buy",
+    location: "Minneapolis, MN",
+    detail:
+      "Delivered Ship-from-Store ($1M annual revenue) and optimized eCommerce checkout, lifting conversion by 10%.",
+    icon: Store,
+  },
+  {
+    title: "MBA",
+    org: "University of Minnesota · Carlson School",
+    detail: "Executive management focus, with applied work in algorithms and image processing.",
+    icon: GraduationCap,
+  },
+  {
     title: "Business Analyst",
     org: "Ameriprise Financial",
     location: "Minneapolis, US",
     detail:
-      "Partnered with business units to map workflows, translate system requirements, and deliver technical solutions.",
+      "Partnered with business units to map workflows and deliver technical solutions.",
     icon: LineChart,
   },
   {
     title: "IT Business Consultant",
     org: "Wells Fargo",
     detail:
-      "Drove core platform support, financial application alignment, and compliance-driven IT architecture mappings.",
+      "Drove core platform support, financial application alignment, and compliance-driven IT architecture.",
     icon: Building2,
   },
   {
@@ -206,21 +174,21 @@ const foundations: FoundationRole[] = [
     org: "Credit Suisse",
     location: "Pune, India",
     detail:
-      "Developed enterprise-grade financial software systems, managing core algorithms and transactional databases.",
+      "Developed enterprise-grade financial software systems, core algorithms, and transactional databases.",
     icon: Landmark,
   },
   {
     title: "IT Consultant",
     org: "Johnson & Johnson / McNeil",
     detail:
-      "Handled platform engineering, system stabilization, and cross-functional technical deployments.",
+      "Platform engineering, system stabilization, and cross-functional technical deployments.",
     icon: Pill,
   },
   {
     title: "Software Engineer",
     org: "Merrill Lynch / Satyam",
     detail:
-      "Maintained backend software logic, executed system migrations, and engineered custom database integrations.",
+      "Maintained backend software logic, executed system migrations, and engineered DB integrations.",
     icon: Cpu,
   },
 ];
@@ -235,15 +203,18 @@ function ExecutiveJourney() {
   const foundationsDimmed = active !== null && active !== "Engineering Foundations";
 
   return (
-    <div className="relative min-h-screen bg-[#0B0F19] text-white overflow-hidden">
+    <div
+      className="relative min-h-screen text-white overflow-hidden"
+      style={{ backgroundColor: BG }}
+    >
       {/* Faint grid */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
             "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
+          backgroundSize: "72px 72px",
         }}
       />
       <div
@@ -274,9 +245,8 @@ function ExecutiveJourney() {
             </h1>
             <div className="mt-6 h-px w-24" style={{ backgroundColor: GOLD }} />
             <p className="mt-8 max-w-2xl font-body text-base leading-[1.8] text-slate-300">
-              A chronological deep-dive into my professional path — tracing my evolution from
-              hands-on software engineering, data engineering, and analytics roots into business
-              transformation, product management, and enterprise-scale executive leadership.
+              A chronological path through executive product and pricing leadership — anchored by
+              decades of engineering, data, and analytics foundations.
             </p>
           </motion.div>
 
@@ -318,21 +288,22 @@ function ExecutiveJourney() {
               ↔ Scroll horizontally to explore the timeline
             </p>
             <div className="relative overflow-x-auto pb-10 [scrollbar-color:#D9A74A55_transparent]">
-              <div className="relative" style={{ width: `${(milestones.length + 1) * 320}px` }}>
+              <div className="relative" style={{ width: `${(milestones.length + 1) * 340}px` }}>
                 <div className="relative h-[720px]">
                   {/* Horizontal rail */}
                   <div
                     aria-hidden
                     className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-white/10"
                   />
+                  {/* Active gold overlay */}
                   <div
                     aria-hidden
                     className="absolute left-0 top-1/2 -translate-y-1/2 h-px transition-all duration-700"
                     style={{
                       width: active ? "100%" : "0%",
                       backgroundColor: GOLD,
-                      opacity: active ? 0.55 : 0,
-                      boxShadow: active ? `0 0 12px ${GOLD}` : "none",
+                      opacity: active ? 0.7 : 0,
+                      boxShadow: active ? `0 0 14px ${GOLD}` : "none",
                     }}
                   />
 
@@ -390,8 +361,11 @@ function ExecutiveJourney() {
                 ))}
                 <li className="relative pl-12">
                   <span
-                    className="absolute left-4 top-6 -translate-x-1/2 block h-3 w-3 rounded-full bg-[#0B0F19]"
-                    style={{ boxShadow: `0 0 0 1px ${GOLD}, 0 0 12px ${GOLD}66` }}
+                    className="absolute left-4 top-6 -translate-x-1/2 block h-3 w-3 rounded-full"
+                    style={{
+                      backgroundColor: BG,
+                      boxShadow: `0 0 0 1px ${GOLD}, 0 0 12px ${GOLD}66`,
+                    }}
                   />
                   <FoundationsCard
                     expanded={expanded}
@@ -463,7 +437,7 @@ function HorizontalNode({
     >
       {/* TOP CARD */}
       {onTop && (
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-1/2 mb-10 w-[280px]">
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-1/2 mb-10 w-[300px]">
           <MilestoneCard m={m} />
         </div>
       )}
@@ -480,13 +454,16 @@ function HorizontalNode({
 
       {/* Node */}
       <span
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block h-3 w-3 rounded-full bg-[#0B0F19] ring-1 ring-white/30 transition-all duration-300"
-        style={{ boxShadow: dimmed ? "none" : `0 0 12px ${GOLD}66` }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block h-3 w-3 rounded-full ring-1 ring-white/30 transition-all duration-300"
+        style={{
+          backgroundColor: BG,
+          boxShadow: dimmed ? "none" : `0 0 12px ${GOLD}99`,
+        }}
       />
 
       {/* BOTTOM CARD */}
       {!onTop && (
-        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 mt-10 w-[280px]">
+        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 mt-10 w-[300px]">
           <MilestoneCard m={m} />
         </div>
       )}
@@ -496,10 +473,20 @@ function HorizontalNode({
 
 function MilestoneCard({ m }: { m: Milestone }) {
   const Icon = m.icon;
+  const isEducation = m.category === "Education";
+  // Education cards get a subtle deep-indigo/steel tint; work cards stay near BG.
+  const cardBg = isEducation
+    ? "linear-gradient(180deg, rgba(40,55,95,0.55) 0%, rgba(20,28,55,0.85) 100%)"
+    : "rgba(13,18,32,0.95)";
+  const cardBorder = isEducation ? "border-indigo-300/15" : "border-slate-400/15";
+
   return (
-    <article className="group rounded-xl border border-white/10 bg-[#0B0F19]/95 backdrop-blur p-5 transition-all duration-300 hover:border-[#D9A74A]/60 hover:-translate-y-0.5 hover:shadow-[0_8px_40px_-12px_#D9A74A33]">
+    <article
+      className={`group rounded-xl border ${cardBorder} backdrop-blur p-5 transition-all duration-300 hover:border-[#D9A74A]/60 hover:-translate-y-0.5 hover:shadow-[0_8px_40px_-12px_#D9A74A33]`}
+      style={{ background: cardBg }}
+    >
       <div className="flex items-center gap-2.5">
-        <span className="flex h-8 w-8 items-center justify-center rounded-md border border-white/10 bg-white/[0.03]">
+        <span className="flex h-8 w-8 items-center justify-center rounded-md border border-white/10 bg-white/[0.04]">
           <Icon className="text-[#D9A74A]" size={16} />
         </span>
         <p
@@ -512,11 +499,11 @@ function MilestoneCard({ m }: { m: Milestone }) {
       <h3 className="mt-3 font-display text-[15px] font-medium leading-snug text-white">
         {m.title}
       </h3>
-      <p className="mt-1 font-body text-[11.5px] text-white/70 leading-snug">
+      <p className="mt-1 font-body text-[11.5px] text-slate-300/80 leading-snug">
         {m.org}
-        {m.location && <span className="text-white/40"> · {m.location}</span>}
+        {m.location && <span className="text-slate-400/60"> · {m.location}</span>}
       </p>
-      <ul className="mt-3 space-y-1.5 font-body text-[11px] leading-[1.6] text-slate-300/90">
+      <ul className="mt-3 space-y-1.5 font-body text-[11.5px] leading-[1.65] text-slate-200/90">
         {m.bullets.map((b) => (
           <li key={b} className="flex items-start gap-1.5">
             <span
@@ -532,7 +519,7 @@ function MilestoneCard({ m }: { m: Milestone }) {
           {m.tags.map((t) => (
             <span
               key={t}
-              className="rounded-full border border-white/10 bg-white/[0.02] px-2 py-0.5 text-[9.5px] font-medium tracking-wide text-white/70 font-body"
+              className="rounded-full border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[9.5px] font-medium tracking-wide text-slate-200/80 font-body"
             >
               {t}
             </span>
@@ -563,15 +550,18 @@ function FoundationsNode({
       }`}
     >
       <span
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block h-3.5 w-3.5 rounded-full bg-[#0B0F19]"
-        style={{ boxShadow: `0 0 0 1.5px ${GOLD}, 0 0 18px ${GOLD}99` }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block h-3.5 w-3.5 rounded-full"
+        style={{
+          backgroundColor: BG,
+          boxShadow: `0 0 0 1.5px ${GOLD}, 0 0 18px ${GOLD}99`,
+        }}
       />
       <div
         aria-hidden
         className="absolute left-1/2 -translate-x-1/2 top-1/2 w-px bg-[#D9A74A]/40"
         style={{ height: "36px" }}
       />
-      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 mt-10 w-[280px]">
+      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 mt-10 w-[300px]">
         <FoundationsCard expanded={expanded} onToggle={onToggle} dimmed={false} />
       </div>
     </motion.div>
@@ -590,9 +580,10 @@ function FoundationsCard({
   return (
     <button
       onClick={onToggle}
-      className={`group w-full text-left rounded-xl border bg-[#0B0F19]/95 backdrop-blur p-5 transition-all duration-300 ${
+      className={`group w-full text-left rounded-xl border backdrop-blur p-5 transition-all duration-300 ${
         dimmed ? "opacity-25" : "opacity-100"
       } border-[#D9A74A]/40 hover:border-[#D9A74A] hover:-translate-y-0.5 hover:shadow-[0_8px_40px_-12px_#D9A74A55]`}
+      style={{ backgroundColor: "rgba(13,18,32,0.95)" }}
     >
       <div className="flex items-center gap-2.5">
         <span className="flex h-8 w-8 items-center justify-center rounded-md border border-[#D9A74A]/30 bg-[#D9A74A]/5">
@@ -606,13 +597,13 @@ function FoundationsCard({
         </p>
       </div>
       <h3 className="mt-3 font-display text-[15px] font-medium leading-snug text-white">
-        Present – 2012 and Beyond
+        2002 – 2017 · Where the instinct was forged
       </h3>
-      <p className="mt-1 font-body text-[11.5px] text-white/55 leading-snug">
-        Foundational tech roles across financial services, healthcare, and enterprise IT.
+      <p className="mt-1 font-body text-[11.5px] text-slate-300/70 leading-snug">
+        Best Buy, Ameriprise, Wells Fargo, Credit Suisse, J&J, Merrill Lynch.
       </p>
       <div className="mt-3 flex items-center justify-between">
-        <span className="font-body text-[11px] italic text-white/60">
+        <span className="font-body text-[11px] italic text-slate-300/70">
           {expanded ? "Click to collapse" : "Click to view more"}
         </span>
         <ChevronDown
@@ -636,7 +627,7 @@ function FoundationsPanel({ dimmed }: { dimmed: boolean }) {
         className="font-body text-[10px] font-semibold uppercase tracking-[0.3em]"
         style={{ color: GOLD }}
       >
-        Foundational Tech Roles
+        Foundational Roles
       </p>
       <h4 className="mt-2 font-display text-2xl font-medium text-white">
         Where the engineering instinct{" "}
@@ -645,23 +636,24 @@ function FoundationsPanel({ dimmed }: { dimmed: boolean }) {
         </em>
       </h4>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {foundations.map((r) => {
           const Icon = r.icon;
           return (
             <div
               key={r.title}
-              className="rounded-xl border border-white/10 bg-[#0B0F19]/80 p-5 transition-colors hover:border-[#D9A74A]/40"
+              className="rounded-xl border border-white/10 p-5 transition-colors hover:border-[#D9A74A]/40"
+              style={{ backgroundColor: "rgba(13,18,32,0.85)" }}
             >
               <span className="flex h-9 w-9 items-center justify-center rounded-md border border-white/10 bg-white/[0.03]">
                 <Icon className="text-[#D9A74A]" size={18} />
               </span>
               <p className="mt-3 font-display text-sm font-medium text-white">{r.title}</p>
-              <p className="mt-1 font-body text-xs text-white/65">{r.org}</p>
+              <p className="mt-1 font-body text-xs text-slate-300/75">{r.org}</p>
               {r.location && (
-                <p className="font-body text-[11px] text-white/40">{r.location}</p>
+                <p className="font-body text-[11px] text-slate-400/60">{r.location}</p>
               )}
-              <p className="mt-3 font-body text-[11.5px] leading-[1.65] text-slate-300/85">
+              <p className="mt-3 font-body text-[11.5px] leading-[1.65] text-slate-200/85">
                 {r.detail}
               </p>
             </div>
@@ -680,8 +672,11 @@ function VerticalItem({ m, dimmed }: { m: Milestone; dimmed: boolean }) {
       }`}
     >
       <span
-        className="absolute left-4 top-6 -translate-x-1/2 block h-3 w-3 rounded-full bg-[#0B0F19] ring-1 ring-white/30"
-        style={{ boxShadow: dimmed ? "none" : `0 0 12px ${GOLD}55` }}
+        className="absolute left-4 top-6 -translate-x-1/2 block h-3 w-3 rounded-full ring-1 ring-white/30"
+        style={{
+          backgroundColor: BG,
+          boxShadow: dimmed ? "none" : `0 0 12px ${GOLD}77`,
+        }}
       />
       <MilestoneCard m={m} />
     </li>
