@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 
 const GOLD = "#D9A74A";
-const BG = "#090D1A";
+const BG = "#0B0F19";
 
 export const Route = createFileRoute("/executive-journey")({
   head: () => ({
