@@ -1,11 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import {
   GraduationCap,
   Briefcase,
   Award,
-  Building2,
   ShoppingBag,
   Store,
   Cpu,
@@ -13,6 +12,7 @@ import {
   Landmark,
   Pill,
   LineChart,
+  Building2,
   ChevronDown,
   Sparkles,
 } from "lucide-react";
@@ -26,13 +26,13 @@ export const Route = createFileRoute("/executive-journey")({
       {
         name: "description",
         content:
-          "A horizontal, premium chronological deep-dive into Shivaji Bojja's professional path — from software engineering and data analytics roots into product management and enterprise-scale executive leadership.",
+          "A horizontal, premium chronological deep-dive into Shivaji Bojja's professional path — from engineering and analytics roots into enterprise-scale product and pricing leadership.",
       },
       { property: "og:title", content: "Executive Journey — Career Timeline" },
       {
         property: "og:description",
         content:
-          "From engineering foundations to executive product leadership across Retail, Telecom, and Supply Chain.",
+          "From engineering foundations to executive product and pricing leadership across Retail, Telecom, and Financial Services.",
       },
     ],
   }),
@@ -47,8 +47,8 @@ type Milestone = {
   title: string;
   org: string;
   location?: string;
-  bullets?: string[];
-  tags?: string[];
+  bullets: string[];
+  tags: string[];
   category: Category;
   icon: React.ComponentType<{ className?: string; size?: number }>;
   position: "top" | "bottom";
@@ -71,14 +71,16 @@ const milestones: Milestone[] = [
   },
   {
     id: "att-pricing",
-    period: "2023 — 2025",
+    period: "2023 — Present",
     title: "Lead Strategic Pricing Manager",
     org: "AT&T Business · VP Events, Oasis",
     location: "Dallas, TX",
     bullets: [
-      "Price optimization, commercial data insights, and scaling tech-enabled product solutions across enterprise business segments.",
+      "Lead a $500M Next-Gen pricing optimization transformation leveraging AI-driven decisioning and enterprise pricing platform integrations.",
+      "Built ETL pipelines using Azure, Databricks, Python, and Snowflake to automate data integration across Quote, Contract, Ordering, Customer, Billing, and Pricing systems.",
+      "Automated channel conflict detection processes that generated over $20M in incremental revenue opportunities.",
     ],
-    tags: ["Pricing Strategy", "Executive Leadership", "B2B"],
+    tags: ["Price Optimization", "AI Decisioning", "ETL Pipelines", "Snowflake"],
     category: "Leadership & Pricing",
     icon: TrendingUp,
     position: "top",
@@ -86,12 +88,12 @@ const milestones: Milestone[] = [
   {
     id: "mdp",
     period: "2021",
-    title: "MDP",
+    title: "MDP — Management Development Program",
     org: "AT&T",
     bullets: [
-      "Selective executive development program preparing leaders for enterprise-scale roles.",
+      "Completed AT&T's highly selective corporate leadership track focused on advanced enterprise management frameworks and strategic executive positioning.",
     ],
-    tags: ["Leadership Development"],
+    tags: ["Executive Leadership", "Strategic Management"],
     category: "Leadership & Pricing",
     icon: Award,
     position: "bottom",
@@ -99,14 +101,16 @@ const milestones: Milestone[] = [
   {
     id: "att-lpm",
     period: "2018 — 2023",
-    title: "Lead Product Manager",
-    org: "AT&T",
-    location: "Plano, TX",
+    title: "Lead Product Manager & Sr. Technical PM",
+    org: "AT&T · Omnichannel Architecture & Strategic Platforms",
+    location: "Plano / Dallas, TX",
     bullets: [
-      "Led product strategy and execution across telecom digital platforms.",
-      "Drove AI-enabled experiences and price optimization initiatives at scale.",
+      "Led multi-year omnichannel order management transformations, modernizing legacy platforms into event-driven microservices using Kafka, GraphQL, and MuleSoft APIs.",
+      "Shipped enhanced 'Pizza Tracker' order status experiences integrated with carrier APIs — reduced customer care calls by 1.5M annually and OpEx by $5M.",
+      "Designed and launched a real-time unified inventory platform synchronizing store and warehouse nodes, improving digital conversion by 2%.",
+      "Headed a cross-functional product organization leading 10 Product Managers across 10 Agile Scrum teams.",
     ],
-    tags: ["Product Strategy", "AI Enablement", "Telecom"],
+    tags: ["Order Management (OMS)", "Microservices", "Kafka", "Product Leadership"],
     category: "Leadership & Pricing",
     icon: Briefcase,
     position: "top",
@@ -114,13 +118,14 @@ const milestones: Milestone[] = [
   {
     id: "kohls",
     period: "2017 — 2018",
-    title: "Digital Product Manager",
-    org: "Kohl's",
+    title: "Product Manager",
+    org: "Kohl's · In-store Digital Innovation",
     location: "Milwaukee, WI",
     bullets: [
-      "Owned digital product roadmap for omni-channel retail experiences.",
+      "Led product strategy and execution for retail digital transformation initiatives including self-checkout, mobile POS, and in-store customer experience modernization.",
+      "Managed omnichannel retail initiatives from concept through pilot execution and enterprise rollout using Jira and Confluence.",
     ],
-    tags: ["Omni-channel", "Retail"],
+    tags: ["Digital Retail", "Mobile POS", "Agile Execution"],
     category: "Leadership & Pricing",
     icon: ShoppingBag,
     position: "bottom",
@@ -128,13 +133,14 @@ const milestones: Milestone[] = [
   {
     id: "mba",
     period: "2016 — 2020",
-    title: "MBA",
-    org: "Carlson School of Management · UMN",
-    location: "Minneapolis, US",
+    title: "Master of Business Administration (MBA)",
+    org: "University of Minnesota · Carlson School of Management",
+    location: "Minneapolis, MN",
     bullets: [
-      "Graduate business education with focus on strategy, analytics, and product leadership.",
+      "Executive management focus.",
+      "Completed academic internship on image processing using k-cluster algorithms to identify objects in images.",
     ],
-    tags: ["Strategy", "Analytics", "Leadership"],
+    tags: ["Business Strategy", "Algorithms"],
     category: "Education",
     icon: GraduationCap,
     position: "top",
@@ -142,13 +148,15 @@ const milestones: Milestone[] = [
   {
     id: "bestbuy",
     period: "2012 — 2017",
-    title: "Product Manager",
-    org: "Best Buy",
-    location: "Minneapolis, US",
+    title: "Product Manager & Lead Product Analyst",
+    org: "Best Buy · Ecommerce & Omnichannel Order Journey",
+    location: "Minneapolis, MN",
     bullets: [
-      "Managed digital product portfolios spanning e-commerce and in-store experiences.",
+      "Spearheaded end-to-end product delivery of Best Buy's cornerstone Ship-from-Store capability, optimizing supply chain logistics and driving $1M in annual revenue.",
+      "Led product roadmap initiatives optimizing eCommerce cart, checkout, and omnichannel experiences — improving commerce conversion by 10%.",
+      "Integrated big data solution platforms to provide personalized shopping recommendations on mobile and dotcom channels.",
     ],
-    tags: ["E-commerce", "Customer Insights"],
+    tags: ["Ship-from-Store", "Checkout Optimization", "Big Data Personalization"],
     category: "Leadership & Pricing",
     icon: Store,
     position: "bottom",
@@ -156,11 +164,13 @@ const milestones: Milestone[] = [
   {
     id: "mca",
     period: "MCA",
-    title: "Masters in Computer Applications",
-    org: "Osmania University",
+    title: "Master of Computer Applications",
+    org: "University College of Engineering · Osmania University",
     location: "Hyderabad, India",
-    bullets: ["Graduate degree in computer applications — formal engineering foundations."],
-    tags: ["Computer Science", "Engineering Foundations"],
+    bullets: [
+      "Advanced graduate degree in computer science theory, systems architecture, application design, and robust database management.",
+    ],
+    tags: ["Computer Science", "Software Systems"],
     category: "Education",
     icon: GraduationCap,
     position: "top",
@@ -170,15 +180,49 @@ const milestones: Milestone[] = [
 type FoundationRole = {
   title: string;
   org: string;
-  location: string;
+  location?: string;
+  detail: string;
   icon: React.ComponentType<{ className?: string; size?: number }>;
 };
 
 const foundations: FoundationRole[] = [
-  { title: "Business Analyst", org: "Ameriprise Financial", location: "Minneapolis, US", icon: LineChart },
-  { title: "Sr. Software Engineer", org: "Credit Suisse", location: "Pune, India", icon: Landmark },
-  { title: "IT Consultant", org: "McNeil (Johnson & Johnson)", location: "Hyderabad, India", icon: Pill },
-  { title: "Software Engineer", org: "Satyam · Merrill Lynch", location: "Hyderabad, India", icon: Cpu },
+  {
+    title: "Business Analyst",
+    org: "Ameriprise Financial",
+    location: "Minneapolis, US",
+    detail:
+      "Partnered with business units to map workflows, translate system requirements, and deliver technical solutions.",
+    icon: LineChart,
+  },
+  {
+    title: "IT Business Consultant",
+    org: "Wells Fargo",
+    detail:
+      "Drove core platform support, financial application alignment, and compliance-driven IT architecture mappings.",
+    icon: Building2,
+  },
+  {
+    title: "Senior Software Engineer",
+    org: "Credit Suisse",
+    location: "Pune, India",
+    detail:
+      "Developed enterprise-grade financial software systems, managing core algorithms and transactional databases.",
+    icon: Landmark,
+  },
+  {
+    title: "IT Consultant",
+    org: "Johnson & Johnson / McNeil",
+    detail:
+      "Handled platform engineering, system stabilization, and cross-functional technical deployments.",
+    icon: Pill,
+  },
+  {
+    title: "Software Engineer",
+    org: "Merrill Lynch / Satyam",
+    detail:
+      "Maintained backend software logic, executed system migrations, and engineered custom database integrations.",
+    icon: Cpu,
+  },
 ];
 
 const FILTERS: Category[] = ["Leadership & Pricing", "Education", "Engineering Foundations"];
@@ -269,23 +313,26 @@ function ExecutiveJourney() {
       {/* DESKTOP HORIZONTAL TIMELINE */}
       <section className="relative border-t border-white/5">
         <div className="hidden lg:block">
-          <div className="relative mx-auto max-w-[1600px] px-10 py-24">
-            <div className="relative overflow-x-auto pb-6">
-              <div className="relative min-w-[1600px]">
-                {/* Horizontal rail */}
-                <div className="relative h-[640px]">
+          <div className="relative mx-auto max-w-[1600px] px-6 py-20">
+            <p className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 mb-6">
+              ↔ Scroll horizontally to explore the timeline
+            </p>
+            <div className="relative overflow-x-auto pb-10 [scrollbar-color:#D9A74A55_transparent]">
+              <div className="relative" style={{ width: `${(milestones.length + 1) * 320}px` }}>
+                <div className="relative h-[720px]">
+                  {/* Horizontal rail */}
                   <div
                     aria-hidden
                     className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-white/10"
                   />
                   <div
                     aria-hidden
-                    className="absolute left-0 top-1/2 -translate-y-1/2 h-px"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 h-px transition-all duration-700"
                     style={{
                       width: active ? "100%" : "0%",
                       backgroundColor: GOLD,
-                      transition: "width 600ms ease",
-                      opacity: active ? 0.6 : 0,
+                      opacity: active ? 0.55 : 0,
+                      boxShadow: active ? `0 0 12px ${GOLD}` : "none",
                     }}
                   />
 
@@ -303,7 +350,6 @@ function ExecutiveJourney() {
                         dimmed={isDimmed(m.category)}
                       />
                     ))}
-                    {/* Engineering Foundations collapsed card */}
                     <FoundationsNode
                       expanded={expanded}
                       onToggle={() => setExpanded((v) => !v)}
@@ -311,23 +357,22 @@ function ExecutiveJourney() {
                     />
                   </div>
                 </div>
-
-                {/* Expanded panel */}
-                <AnimatePresence>
-                  {expanded && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.4, ease: "easeOut" }}
-                      className="overflow-hidden"
-                    >
-                      <FoundationsPanel dimmed={foundationsDimmed} />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </div>
             </div>
+
+            <AnimatePresence>
+              {expanded && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="overflow-hidden"
+                >
+                  <FoundationsPanel dimmed={foundationsDimmed} />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 
@@ -345,8 +390,8 @@ function ExecutiveJourney() {
                 ))}
                 <li className="relative pl-12">
                   <span
-                    className="absolute left-4 top-6 -translate-x-1/2 block h-3 w-3 rounded-full bg-[#0B0F19] ring-1"
-                    style={{ boxShadow: `0 0 0 1px ${GOLD}` }}
+                    className="absolute left-4 top-6 -translate-x-1/2 block h-3 w-3 rounded-full bg-[#0B0F19]"
+                    style={{ boxShadow: `0 0 0 1px ${GOLD}, 0 0 12px ${GOLD}66` }}
                   />
                   <FoundationsCard
                     expanded={expanded}
@@ -405,46 +450,43 @@ function HorizontalNode({
   index: number;
   dimmed: boolean;
 }) {
-  const Icon = m.icon;
   const onTop = m.position === "top";
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: index * 0.06 }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
       className={`relative flex flex-col items-center transition-opacity duration-500 ${
-        dimmed ? "opacity-25" : "opacity-100"
+        dimmed ? "opacity-20" : "opacity-100"
       }`}
     >
       {/* TOP CARD */}
       {onTop && (
-        <div className="absolute bottom-1/2 mb-8 w-[260px]">
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-1/2 mb-10 w-[280px]">
           <MilestoneCard m={m} />
         </div>
       )}
 
-      {/* Connector */}
-      <div className="absolute top-1/2 -translate-y-1/2 flex flex-col items-center">
-        <span
-          className="block h-3 w-3 rounded-full bg-[#0B0F19] ring-1 ring-white/30 transition-all duration-300 group-hover:ring-[#D9A74A]"
-          style={{ boxShadow: dimmed ? "none" : `0 0 12px ${GOLD}55` }}
-        />
-      </div>
-
-      {/* Tick line to card */}
+      {/* Tick line */}
       <div
         aria-hidden
-        className="absolute top-1/2 w-px bg-white/15"
+        className="absolute left-1/2 -translate-x-1/2 w-px bg-white/15"
         style={{
-          height: "32px",
-          transform: onTop ? "translateY(-100%)" : "translateY(0)",
+          height: "36px",
+          top: onTop ? "calc(50% - 36px)" : "50%",
         }}
+      />
+
+      {/* Node */}
+      <span
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block h-3 w-3 rounded-full bg-[#0B0F19] ring-1 ring-white/30 transition-all duration-300"
+        style={{ boxShadow: dimmed ? "none" : `0 0 12px ${GOLD}66` }}
       />
 
       {/* BOTTOM CARD */}
       {!onTop && (
-        <div className="absolute top-1/2 mt-8 w-[260px]">
+        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 mt-10 w-[280px]">
           <MilestoneCard m={m} />
         </div>
       )}
@@ -455,7 +497,7 @@ function HorizontalNode({
 function MilestoneCard({ m }: { m: Milestone }) {
   const Icon = m.icon;
   return (
-    <article className="group rounded-xl border border-white/10 bg-[#0B0F19]/95 backdrop-blur p-5 transition-all duration-300 hover:border-[#D9A74A]/50 hover:-translate-y-0.5">
+    <article className="group rounded-xl border border-white/10 bg-[#0B0F19]/95 backdrop-blur p-5 transition-all duration-300 hover:border-[#D9A74A]/60 hover:-translate-y-0.5 hover:shadow-[0_8px_40px_-12px_#D9A74A33]">
       <div className="flex items-center gap-2.5">
         <span className="flex h-8 w-8 items-center justify-center rounded-md border border-white/10 bg-white/[0.03]">
           <Icon className="text-[#D9A74A]" size={16} />
@@ -467,27 +509,25 @@ function MilestoneCard({ m }: { m: Milestone }) {
           {m.period}
         </p>
       </div>
-      <h3 className="mt-3 font-display text-base font-medium leading-snug text-white">
+      <h3 className="mt-3 font-display text-[15px] font-medium leading-snug text-white">
         {m.title}
       </h3>
-      <p className="mt-1 font-body text-xs text-white/70">
+      <p className="mt-1 font-body text-[11.5px] text-white/70 leading-snug">
         {m.org}
         {m.location && <span className="text-white/40"> · {m.location}</span>}
       </p>
-      {m.bullets && (
-        <ul className="mt-3 space-y-1.5 font-body text-[11.5px] leading-[1.65] text-slate-300/90">
-          {m.bullets.slice(0, 2).map((b) => (
-            <li key={b} className="flex items-start gap-1.5">
-              <span
-                className="mt-1.5 h-1 w-1 shrink-0 rounded-full"
-                style={{ backgroundColor: GOLD }}
-              />
-              <span>{b}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-      {m.tags && m.tags.length > 0 && (
+      <ul className="mt-3 space-y-1.5 font-body text-[11px] leading-[1.6] text-slate-300/90">
+        {m.bullets.map((b) => (
+          <li key={b} className="flex items-start gap-1.5">
+            <span
+              className="mt-1.5 h-1 w-1 shrink-0 rounded-full"
+              style={{ backgroundColor: GOLD }}
+            />
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+      {m.tags.length > 0 && (
         <div className="mt-3 flex flex-wrap gap-1.5">
           {m.tags.map((t) => (
             <span
@@ -517,21 +557,21 @@ function FoundationsNode({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.5 }}
+      transition={{ duration: 0.5, delay: 0.45 }}
       className={`relative flex flex-col items-center transition-opacity duration-500 ${
-        dimmed ? "opacity-25" : "opacity-100"
+        dimmed ? "opacity-20" : "opacity-100"
       }`}
     >
       <span
-        className="absolute top-1/2 -translate-y-1/2 block h-3.5 w-3.5 rounded-full bg-[#0B0F19] ring-2"
-        style={{ boxShadow: `0 0 16px ${GOLD}99`, borderColor: GOLD, color: GOLD }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block h-3.5 w-3.5 rounded-full bg-[#0B0F19]"
+        style={{ boxShadow: `0 0 0 1.5px ${GOLD}, 0 0 18px ${GOLD}99` }}
       />
       <div
         aria-hidden
-        className="absolute top-1/2 w-px bg-white/15"
-        style={{ height: "32px" }}
+        className="absolute left-1/2 -translate-x-1/2 top-1/2 w-px bg-[#D9A74A]/40"
+        style={{ height: "36px" }}
       />
-      <div className="absolute top-1/2 mt-8 w-[260px]">
+      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 mt-10 w-[280px]">
         <FoundationsCard expanded={expanded} onToggle={onToggle} dimmed={false} />
       </div>
     </motion.div>
@@ -552,8 +592,7 @@ function FoundationsCard({
       onClick={onToggle}
       className={`group w-full text-left rounded-xl border bg-[#0B0F19]/95 backdrop-blur p-5 transition-all duration-300 ${
         dimmed ? "opacity-25" : "opacity-100"
-      } border-[#D9A74A]/40 hover:border-[#D9A74A] hover:-translate-y-0.5`}
-      style={{ boxShadow: `inset 0 0 0 1px ${GOLD}10` }}
+      } border-[#D9A74A]/40 hover:border-[#D9A74A] hover:-translate-y-0.5 hover:shadow-[0_8px_40px_-12px_#D9A74A55]`}
     >
       <div className="flex items-center gap-2.5">
         <span className="flex h-8 w-8 items-center justify-center rounded-md border border-[#D9A74A]/30 bg-[#D9A74A]/5">
@@ -566,9 +605,12 @@ function FoundationsCard({
           Engineering Foundations
         </p>
       </div>
-      <h3 className="mt-3 font-display text-base font-medium leading-snug text-white">
+      <h3 className="mt-3 font-display text-[15px] font-medium leading-snug text-white">
         Present – 2012 and Beyond
       </h3>
+      <p className="mt-1 font-body text-[11.5px] text-white/55 leading-snug">
+        Foundational tech roles across financial services, healthcare, and enterprise IT.
+      </p>
       <div className="mt-3 flex items-center justify-between">
         <span className="font-body text-[11px] italic text-white/60">
           {expanded ? "Click to collapse" : "Click to view more"}
@@ -586,7 +628,7 @@ function FoundationsCard({
 function FoundationsPanel({ dimmed }: { dimmed: boolean }) {
   return (
     <div
-      className={`mt-10 rounded-2xl border border-white/10 bg-white/[0.02] p-6 lg:p-8 transition-opacity duration-500 ${
+      className={`mt-10 rounded-2xl border border-white/10 bg-white/[0.02] p-6 lg:p-10 transition-opacity duration-500 ${
         dimmed ? "opacity-30" : "opacity-100"
       }`}
     >
@@ -603,20 +645,25 @@ function FoundationsPanel({ dimmed }: { dimmed: boolean }) {
         </em>
       </h4>
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {foundations.map((r) => {
           const Icon = r.icon;
           return (
             <div
               key={r.title}
-              className="rounded-xl border border-white/10 bg-[#0B0F19]/80 p-4 transition-colors hover:border-[#D9A74A]/40"
+              className="rounded-xl border border-white/10 bg-[#0B0F19]/80 p-5 transition-colors hover:border-[#D9A74A]/40"
             >
               <span className="flex h-9 w-9 items-center justify-center rounded-md border border-white/10 bg-white/[0.03]">
                 <Icon className="text-[#D9A74A]" size={18} />
               </span>
               <p className="mt-3 font-display text-sm font-medium text-white">{r.title}</p>
               <p className="mt-1 font-body text-xs text-white/65">{r.org}</p>
-              <p className="font-body text-[11px] text-white/40">{r.location}</p>
+              {r.location && (
+                <p className="font-body text-[11px] text-white/40">{r.location}</p>
+              )}
+              <p className="mt-3 font-body text-[11.5px] leading-[1.65] text-slate-300/85">
+                {r.detail}
+              </p>
             </div>
           );
         })}
