@@ -371,6 +371,3 @@ function ExploreCard({
     </motion.div>
   );
 }
-
-// keep referenced constant used by inline styles
-void OBSIDIAN;
