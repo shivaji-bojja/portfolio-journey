@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 
 const GOLD = "#D9A74A";
-const BG = "#090D1A";
+const BG = "#0B0F19";
 
 export const Route = createFileRoute("/executive-journey")({
   head: () => ({
@@ -59,13 +59,12 @@ type Milestone = {
 const milestones: Milestone[] = [
   {
     id: "att-pricing",
-    period: "2023 — Present",
+    period: "2023 — PRESENT",
     title: "Lead Strategic Pricing Manager",
     org: "AT&T Business",
     location: "Dallas, TX",
     bullets: [
-      "Lead a $500M Next-Gen pricing optimization initiative using AI-driven platforms.",
-      "Created automated Azure/Databricks data pipelines, generating $20M+ in incremental revenue.",
+      "Lead a $500M Next Gen pricing optimization transformation initiative leveraging AI-driven decisioning.",
     ],
     tags: ["Price Optimization", "AI Decisioning", "Databricks"],
     category: "Leadership & Pricing",
@@ -74,17 +73,30 @@ const milestones: Milestone[] = [
   },
   {
     id: "mai",
-    period: "2026 — Present",
+    period: "2026 — PRESENT",
     title: "Masters in AI (In Progress)",
     org: "Woolf University · by Udacity",
     bullets: [
       "Advanced graduate study of applied AI, machine learning systems, and generative architectures.",
-      "Focus on enterprise-grade AI strategy, governance, and responsible deployment.",
     ],
-    tags: ["AI Strategy", "Generative AI", "Continuous Learning"],
+    tags: ["AI Strategy", "Generative AI"],
     category: "Education",
     icon: GraduationCap,
     position: "bottom",
+  },
+  {
+    id: "att-lpm",
+    period: "2018 — 2023",
+    title: "Lead Product Manager & Senior Technical Product Manager",
+    org: "AT&T",
+    location: "Plano / Dallas, TX",
+    bullets: [
+      "Led multi-year omnichannel order management transformation into modern event-driven microservices.",
+    ],
+    tags: ["Order Management", "Microservices", "Product Leadership"],
+    category: "Leadership & Pricing",
+    icon: Briefcase,
+    position: "top",
   },
   {
     id: "mdp",
@@ -100,26 +112,10 @@ const milestones: Milestone[] = [
     position: "bottom",
   },
   {
-    id: "att-lpm",
-    period: "2018 — 2023",
-    title: "Lead Product Manager & Senior Technical Product Manager",
-    org: "AT&T · Omnichannel Architecture",
-    location: "Dallas, TX",
-    bullets: [
-      "Led multi-year omnichannel order management transformation into modern event-driven microservices.",
-      "Reduced operational expenses by $5M and customer service calls by 1.5M annually.",
-      "Launched unified real-time inventory system increasing digital conversion by 2%.",
-    ],
-    tags: ["Order Management (OMS)", "Microservices", "Product Leadership"],
-    category: "Leadership & Pricing",
-    icon: Briefcase,
-    position: "top",
-  },
-  {
     id: "kohls",
     period: "2017 — 2018",
-    title: "Product Manager — Kohl's",
-    org: "Kohl's · In-store Digital Innovation",
+    title: "Digital Product Manager",
+    org: "Kohl's",
     location: "Milwaukee, WI",
     bullets: [
       "Led digital transformation strategy for self-checkout, mobile POS, and store experience modernization.",
@@ -129,7 +125,51 @@ const milestones: Milestone[] = [
     icon: ShoppingBag,
     position: "top",
   },
+  {
+    id: "mba",
+    period: "2016 — 2020",
+    title: "MBA",
+    org: "Carlson School of Management — UMN",
+    location: "Minneapolis, US",
+    bullets: [
+      "Executive management focus, with applied work in algorithms and image processing.",
+    ],
+    tags: ["Executive Management", "Strategy"],
+    category: "Education",
+    icon: GraduationCap,
+    position: "bottom",
+  },
+  {
+    id: "bestbuy",
+    period: "2012 — 2017",
+    title: "Product Manager & Lead Product Analyst",
+    org: "Best Buy",
+    location: "Minneapolis, US",
+    bullets: [
+      "Delivered Ship-from-Store ($1M annual revenue) and optimized eCommerce checkout, lifting conversion by 10%.",
+    ],
+    tags: ["eCommerce", "Omnichannel", "Analytics"],
+    category: "Leadership & Pricing",
+    icon: Store,
+    position: "top",
+  },
+  {
+    id: "mca",
+    period: "",
+    title: "MCA — Masters in Computer Applications",
+    org: "Osmania University",
+    location: "Hyderabad, India",
+    bullets: [
+      "Graduate foundation in computer science, algorithms, and software systems.",
+    ],
+    tags: ["Computer Science", "Software Systems"],
+    category: "Education",
+    icon: GraduationCap,
+    position: "bottom",
+  },
 ];
+
+
 
 type FoundationRole = {
   title: string;
@@ -141,33 +181,12 @@ type FoundationRole = {
 
 const foundations: FoundationRole[] = [
   {
-    title: "Product Manager & Lead Product Analyst",
-    org: "Best Buy",
-    location: "Minneapolis, MN",
-    detail:
-      "Delivered Ship-from-Store ($1M annual revenue) and optimized eCommerce checkout, lifting conversion by 10%.",
-    icon: Store,
-  },
-  {
-    title: "MBA",
-    org: "University of Minnesota · Carlson School",
-    detail: "Executive management focus, with applied work in algorithms and image processing.",
-    icon: GraduationCap,
-  },
-  {
     title: "Business Analyst",
     org: "Ameriprise Financial",
     location: "Minneapolis, US",
     detail:
       "Partnered with business units to map workflows and deliver technical solutions.",
     icon: LineChart,
-  },
-  {
-    title: "IT Business Consultant",
-    org: "Wells Fargo",
-    detail:
-      "Drove core platform support, financial application alignment, and compliance-driven IT architecture.",
-    icon: Building2,
   },
   {
     title: "Senior Software Engineer",
@@ -489,12 +508,14 @@ function MilestoneCard({ m }: { m: Milestone }) {
         <span className="flex h-8 w-8 items-center justify-center rounded-md border border-white/10 bg-white/[0.04]">
           <Icon className="text-[#D9A74A]" size={16} />
         </span>
-        <p
-          className="font-body text-[10px] font-semibold uppercase tracking-[0.22em]"
-          style={{ color: GOLD }}
-        >
-          {m.period}
-        </p>
+        {m.period && (
+          <p
+            className="font-body text-[10px] font-semibold uppercase tracking-[0.22em]"
+            style={{ color: GOLD }}
+          >
+            {m.period}
+          </p>
+        )}
       </div>
       <h3 className="mt-3 font-display text-[15px] font-medium leading-snug text-white">
         {m.title}
@@ -597,10 +618,10 @@ function FoundationsCard({
         </p>
       </div>
       <h3 className="mt-3 font-display text-[15px] font-medium leading-snug text-white">
-        2002 – 2017 · Where the instinct was forged
+        Present – 2012 and Beyond
       </h3>
       <p className="mt-1 font-body text-[11.5px] text-slate-300/70 leading-snug">
-        Best Buy, Ameriprise, Wells Fargo, Credit Suisse, J&J, Merrill Lynch.
+        Ameriprise Financial, Credit Suisse, Johnson & Johnson, Satyam / Merrill Lynch.
       </p>
       <div className="mt-3 flex items-center justify-between">
         <span className="font-body text-[11px] italic text-slate-300/70">
