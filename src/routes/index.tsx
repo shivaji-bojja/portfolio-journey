@@ -121,21 +121,29 @@ function Index() {
 
               <div className="mt-8 space-y-5 font-body text-base leading-[1.8] text-slate-300 max-w-2xl">
                 <p>
-                  A purpose-driven Product and Technology Leader with a career
-                  spanning hands-on Software Engineering, Business Analysis,
-                  Product Management, and Executive Leadership.
+                  I am a purpose-driven Product Leader whose executive
+                  leadership and product strategy are deeply rooted in my
+                  hands-on background across Software Engineering, Data
+                  Engineering, and Advanced Analysis.
                 </p>
                 <p>
-                  I bridge data-driven strategy with modern product
-                  experimentation — translating ambiguous business problems
-                  into scalable AI, data, and digital solutions.
+                  I specialize in driving AI-enabled digital and business
+                  transformations across complex global industries, including
+                  Retail, E-commerce, Telecom, and Supply Chain. By blending
+                  deep technical expertise with commercial acumen, I build
+                  data-driven, customer-centric strategies that unlock
+                  measurable business value.
                 </p>
                 <p>
-                  My work sits at the intersection of strategy, technology,
-                  and people — building systems and teams that compound value
-                  over time.
+                  My expertise lies at the intersection of product innovation,
+                  price optimization, and modern omni-channel experiences. As
+                  a champion of continuous learning, I focus on scaling robust
+                  AI & Data Strategies, establishing strong AI & Data
+                  Governance, and leading cross-functional teams from vision
+                  to execution in both B2B and B2C environments.
                 </p>
               </div>
+
 
               <div className="mt-9 flex flex-wrap gap-3">
                 {capabilityTags.map((tag) => (
