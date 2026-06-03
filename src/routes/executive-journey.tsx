@@ -181,33 +181,12 @@ type FoundationRole = {
 
 const foundations: FoundationRole[] = [
   {
-    title: "Product Manager & Lead Product Analyst",
-    org: "Best Buy",
-    location: "Minneapolis, MN",
-    detail:
-      "Delivered Ship-from-Store ($1M annual revenue) and optimized eCommerce checkout, lifting conversion by 10%.",
-    icon: Store,
-  },
-  {
-    title: "MBA",
-    org: "University of Minnesota · Carlson School",
-    detail: "Executive management focus, with applied work in algorithms and image processing.",
-    icon: GraduationCap,
-  },
-  {
     title: "Business Analyst",
     org: "Ameriprise Financial",
     location: "Minneapolis, US",
     detail:
       "Partnered with business units to map workflows and deliver technical solutions.",
     icon: LineChart,
-  },
-  {
-    title: "IT Business Consultant",
-    org: "Wells Fargo",
-    detail:
-      "Drove core platform support, financial application alignment, and compliance-driven IT architecture.",
-    icon: Building2,
   },
   {
     title: "Senior Software Engineer",
