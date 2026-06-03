@@ -616,10 +616,10 @@ function FoundationsCard({
         </p>
       </div>
       <h3 className="mt-3 font-display text-[15px] font-medium leading-snug text-white">
-        2002 – 2017 · Where the instinct was forged
+        Present – 2012 and Beyond
       </h3>
       <p className="mt-1 font-body text-[11.5px] text-slate-300/70 leading-snug">
-        Best Buy, Ameriprise, Wells Fargo, Credit Suisse, J&J, Merrill Lynch.
+        Ameriprise Financial, Credit Suisse, Johnson & Johnson, Satyam / Merrill Lynch.
       </p>
       <div className="mt-3 flex items-center justify-between">
         <span className="font-body text-[11px] italic text-slate-300/70">
