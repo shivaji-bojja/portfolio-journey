@@ -1,124 +1,320 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, TrendingUp, FlaskConical, Linkedin } from "lucide-react";
+import {
+  ArrowUpRight,
+  Briefcase,
+  FlaskConical,
+  Brain,
+  Sparkles,
+  Globe2,
+  TrendingUp,
+} from "lucide-react";
 import headshot from "@/assets/shivaji-headshot.jpg";
+
+const GOLD = "#D9A74A";
+const OBSIDIAN = "#0B0F19";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Portfolio & Product Sandbox" },
-      { name: "description", content: "Executive portfolio and product lab." },
-      { property: "og:title", content: "Portfolio & Product Sandbox" },
-      { property: "og:description", content: "Executive portfolio and product lab." },
+      { title: "Shivaji Bojja — Portfolio & Product Sandbox" },
+      { name: "description", content: "Executive portfolio and product lab of Shivaji Bojja — product, AI, and digital transformation leadership." },
+      { property: "og:title", content: "Shivaji Bojja — Portfolio & Product Sandbox" },
+      { property: "og:description", content: "Executive portfolio and product lab of Shivaji Bojja." },
     ],
   }),
   component: Index,
 });
 
+const capabilityTags = [
+  "AI & Data Strategy",
+  "Digital Transformation",
+  "Executive Leadership",
+  "B2B & B2C",
+];
+
+const expertise = [
+  {
+    icon: Brain,
+    eyebrow: "STRATEGIC LEADERSHIP",
+    title: "Product & AI Strategy",
+    bullets: [
+      "Product Strategy",
+      "Product Management Leadership",
+      "AI Strategy",
+      "Data Strategy",
+    ],
+  },
+  {
+    icon: Sparkles,
+    eyebrow: "TRANSFORMATION & INNOVATION",
+    title: "Digital Transformation",
+    bullets: [
+      "Business & Digital Transformation",
+      "Tech & AI-Enabled Solutions",
+      "Purpose-Driven Leadership",
+    ],
+  },
+  {
+    icon: Globe2,
+    eyebrow: "INDUSTRY DOMAIN DEPTH",
+    title: "Sector Expertise",
+    bullets: [
+      "Retail & E-commerce",
+      "Telecom",
+      "Supply Chain",
+      "Omni-channel Systems",
+    ],
+  },
+  {
+    icon: TrendingUp,
+    eyebrow: "VALUE CREATION",
+    title: "Outcomes & Governance",
+    bullets: [
+      "Price Optimization",
+      "Data Insights",
+      "B2C & B2B Solutions",
+      "AI & Data Governance",
+    ],
+  },
+];
+
 function Index() {
   return (
-    <div className="flex flex-col lg:h-[calc(100vh-4rem)] lg:overflow-hidden">
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-primary py-12 sm:py-16 lg:flex-1 lg:flex lg:items-center">
-        <div className="absolute inset-0 pointer-events-none opacity-10">
-          <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-amber-500 blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-emerald-600 blur-3xl" />
+    <div className="bg-[#0B0F19] text-white">
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-32 -right-40 h-[480px] w-[480px] rounded-full bg-[#D9A74A]/10 blur-[140px]" />
+          <div className="absolute -bottom-40 -left-40 h-[480px] w-[480px] rounded-full bg-[#D9A74A]/5 blur-[140px]" />
         </div>
-        <div className="relative mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.8fr_1fr] lg:gap-12">
+
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 lg:py-28">
+          <div className="grid items-center gap-14 lg:grid-cols-[1.5fr_1fr] lg:gap-20">
+            {/* LEFT */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="max-w-3xl"
+              transition={{ duration: 0.9, ease: "easeOut" }}
             >
-              <h1 className="font-display text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl lg:text-5xl">
-                Where strategy meets
-                <span className="text-amber-400"> creation</span>.
-              </h1>
-              <p className="mt-4 text-base leading-7 text-primary-foreground/80 font-body lg:text-lg">
-                An executive portfolio and product sandbox bridging data-driven leadership,
-                digital strategy and pricing, and modern product experimentation.
+              <p
+                className="font-body text-xs font-medium uppercase tracking-[0.35em]"
+                style={{ color: GOLD }}
+              >
+                About Me
               </p>
-              <div className="mt-6 flex flex-wrap gap-4">
+
+              <h1 className="mt-5 font-display text-4xl font-medium leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Where strategy meets{" "}
+                <em
+                  className="font-display italic font-medium"
+                  style={{ color: GOLD }}
+                >
+                  creation.
+                </em>
+              </h1>
+              <div
+                className="mt-6 h-px w-24"
+                style={{ backgroundColor: GOLD }}
+                aria-hidden="true"
+              />
+
+              <div className="mt-8 space-y-5 font-body text-base leading-[1.8] text-slate-300 max-w-2xl">
+                <p>
+                  A purpose-driven Product and Technology Leader with a career
+                  spanning hands-on Software Engineering, Business Analysis,
+                  Product Management, and Executive Leadership.
+                </p>
+                <p>
+                  I bridge data-driven strategy with modern product
+                  experimentation — translating ambiguous business problems
+                  into scalable AI, data, and digital solutions.
+                </p>
+                <p>
+                  My work sits at the intersection of strategy, technology,
+                  and people — building systems and teams that compound value
+                  over time.
+                </p>
+              </div>
+
+              <div className="mt-9 flex flex-wrap gap-3">
+                {capabilityTags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-white/15 bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wide text-white/90 font-body"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-10 flex flex-wrap items-center gap-6">
                 <Link
                   to="/executive-journey"
-                  className="inline-flex items-center gap-2 rounded-md bg-amber-500 px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-400 font-body"
+                  className="inline-flex items-center gap-2 font-body text-sm font-medium text-white transition-colors hover:text-[#D9A74A]"
                 >
-                  Explore Journey
-                  <ArrowRight className="h-4 w-4" />
+                  Explore Journey <ArrowUpRight className="h-4 w-4" />
                 </Link>
                 <Link
                   to="/product-lab"
-                  className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/20 bg-transparent px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 font-body"
+                  className="inline-flex items-center gap-2 font-body text-sm font-medium text-white/70 transition-colors hover:text-[#D9A74A]"
                 >
-                  Enter the Lab
+                  Enter the Lab <ArrowUpRight className="h-4 w-4" />
                 </Link>
+                <a
+                  href="https://linkedin.com/in/shivajibojja"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-body text-sm text-white/60 transition-colors hover:text-[#D9A74A]"
+                >
+                  Connect on LinkedIn →
+                </a>
               </div>
-              <a
-                href="https://linkedin.com/in/shivajibojja"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary-foreground/80 transition-colors hover:text-amber-400 font-body"
-              >
-                <Linkedin className="h-4 w-4" />
-                <span className="story-link">Connect on LinkedIn</span>
-              </a>
             </motion.div>
+
+            {/* RIGHT — Profile Card */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.15 }}
-              className="flex justify-center lg:justify-end"
+              transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
+              className="flex flex-col items-center lg:items-end gap-5"
             >
               <motion.div
-                whileHover={{ y: -6, scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 260, damping: 18 }}
-                className="group relative"
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 220, damping: 20 }}
+                className="relative w-full max-w-[340px]"
               >
                 <div
                   aria-hidden="true"
-                  className="absolute -inset-4 rounded-full bg-gradient-to-br from-amber-400/50 to-emerald-500/40 blur-2xl transition-all duration-500 group-hover:-inset-6 group-hover:from-amber-400/70 group-hover:to-emerald-500/60 group-hover:blur-3xl"
+                  className="absolute -inset-6 rounded-[2rem] blur-3xl opacity-60"
+                  style={{
+                    background:
+                      "radial-gradient(60% 60% at 50% 50%, rgba(217,167,74,0.35) 0%, rgba(217,167,74,0) 70%)",
+                  }}
                 />
-                <img
-                  src={headshot}
-                  alt="Shivaji Bojja headshot"
-                  loading="eager"
-                  decoding="async"
-                  className="relative h-40 w-40 sm:h-48 sm:w-48 lg:h-56 lg:w-56 rounded-full object-cover ring-4 ring-amber-400/70 shadow-2xl transition-shadow duration-500 group-hover:ring-amber-300 group-hover:shadow-[0_0_60px_-10px_rgba(251,191,36,0.6)]"
-                />
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-3 shadow-[0_30px_80px_-20px_rgba(217,167,74,0.35)]">
+                  <img
+                    src={headshot}
+                    alt="Shivaji Bojja headshot"
+                    loading="eager"
+                    decoding="async"
+                    className="w-full h-[380px] sm:h-[420px] object-cover rounded-xl"
+                  />
+                </div>
               </motion.div>
-            </motion.div>
 
+              <span
+                className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-body text-[11px] font-medium uppercase tracking-[0.2em]"
+                style={{ borderColor: GOLD, color: GOLD }}
+              >
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ backgroundColor: GOLD }}
+                />
+                Open to Opportunities
+              </span>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Pillars */}
-      <section className="py-12 sm:py-16 lg:py-8 lg:flex-shrink-0">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 lg:mb-6">
-            <h2 className="font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-              Multiple Dimensions
-            </h2>
-            <p className="mt-2 text-sm text-muted-foreground font-body max-w-2xl mx-auto">
-              Each space is crafted with intent — from corporate leadership to product innovation.
+      {/* CORE EXPERTISE */}
+      <section className="relative border-t border-white/5">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 lg:py-24">
+          <div className="max-w-3xl">
+            <p
+              className="font-body text-xs font-medium uppercase tracking-[0.35em]"
+              style={{ color: GOLD }}
+            >
+              Core Expertise
             </p>
+            <h2 className="mt-4 font-display text-3xl font-medium leading-tight text-white sm:text-4xl lg:text-[2.75rem]">
+              Capabilities at the Intersection of{" "}
+              <em
+                className="font-display italic font-medium"
+                style={{ color: GOLD }}
+              >
+                Technology, Product & Business
+              </em>
+            </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            <PillarCard
-              icon={<TrendingUp className="h-6 w-6 text-amber-500" />}
-              title="Executive Journey"
-              description="A timeline of leadership across pricing strategy, enterprise data platforms, and AI workflow orchestration."
-              href="/executive-journey"
-              accent="bg-slate-900"
+
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {expertise.map((card) => {
+              const Icon = card.icon;
+              return (
+                <motion.div
+                  key={card.title}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className="group rounded-xl border border-white/10 bg-white/[0.02] p-6 transition-colors hover:border-[#D9A74A]/40"
+                >
+                  <div className="flex items-start gap-3">
+                    <span
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/10"
+                      style={{ color: GOLD }}
+                    >
+                      <Icon className="h-4 w-4" strokeWidth={1.5} />
+                    </span>
+                    <div className="leading-tight">
+                      <p
+                        className="font-body text-[10px] font-semibold uppercase tracking-[0.18em]"
+                        style={{ color: GOLD }}
+                      >
+                        {card.eyebrow}
+                      </p>
+                      <p className="mt-1 font-display text-base font-medium text-white">
+                        {card.title}
+                      </p>
+                    </div>
+                  </div>
+                  <ul className="mt-6 space-y-2.5 font-body text-sm text-slate-300">
+                    {card.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2.5">
+                        <span
+                          className="mt-2 h-1 w-1 shrink-0 rounded-full"
+                          style={{ backgroundColor: GOLD }}
+                        />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* EXPLORE FURTHER */}
+      <section className="relative border-t border-white/5">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 lg:py-24">
+          <div className="max-w-3xl">
+            <p
+              className="font-body text-xs font-medium uppercase tracking-[0.35em]"
+              style={{ color: GOLD }}
+            >
+              Explore Further
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-medium leading-tight text-white sm:text-4xl lg:text-[2.75rem]">
+              Dive Deeper Into My Work
+            </h2>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <ExploreCard
+              to="/executive-journey"
+              icon={Briefcase}
+              prefix="01 — Timeline"
+              title="Career Journey"
+              description="A chronological deep-dive into my professional path — from software engineering roots to executive leadership across global industries and complex transformations."
             />
-            <PillarCard
-              icon={<FlaskConical className="h-6 w-6 text-amber-500" />}
-              title="Product Lab"
-              description="Live product experiments: willingness-to-pay surveys, A/B testing frameworks, and e-commerce referral grids."
-              href="/product-lab"
-              accent="bg-slate-50"
+            <ExploreCard
+              to="/product-lab"
+              icon={FlaskConical}
+              prefix="02 — Showcase"
+              title="Portfolio — Product Lab"
+              description="A curated showcase of product innovations, AI-driven solutions, and digital transformation initiatives that have delivered measurable business value."
             />
           </div>
         </div>
@@ -127,43 +323,55 @@ function Index() {
   );
 }
 
-
-function PillarCard({
-  icon,
+function ExploreCard({
+  to,
+  icon: Icon,
+  prefix,
   title,
   description,
-  href,
-  accent,
 }: {
-  icon: React.ReactNode;
+  to: string;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  prefix: string;
   title: string;
   description: string;
-  href: string;
-  accent: string;
 }) {
   return (
-    <motion.div
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.3 }}
-    >
+    <motion.div whileHover={{ y: -6 }} transition={{ duration: 0.35, ease: "easeOut" }}>
       <Link
-        to={href}
-        className="group block h-full rounded-xl border border-border bg-card p-8 transition-shadow hover:shadow-lg"
+        to={to}
+        className="group block h-full rounded-2xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:border-[#D9A74A]/40 hover:bg-white/[0.04]"
       >
-        <div className={`inline-flex items-center justify-center rounded-lg p-3 ${accent} ${accent.includes("slate") ? "text-white" : accent.includes("emerald") ? "text-emerald-700" : "text-slate-700"}`}>
-          {icon}
+        <div className="flex items-start justify-between">
+          <span className="flex h-11 w-11 items-center justify-center rounded-md border border-white/15 text-white/80 transition-colors group-hover:text-[#D9A74A] group-hover:border-[#D9A74A]/50">
+            <Icon className="h-5 w-5" strokeWidth={1.5} />
+          </span>
+          <ArrowUpRight
+            className="h-5 w-5 text-white/40 transition-all duration-300 group-hover:text-[#D9A74A] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+          />
         </div>
-        <h3 className="mt-6 font-display text-xl font-semibold text-card-foreground">
+        <p
+          className="mt-8 font-body text-[11px] font-semibold uppercase tracking-[0.25em]"
+          style={{ color: GOLD }}
+        >
+          {prefix}
+        </p>
+        <h3 className="mt-3 font-display text-2xl font-medium text-white">
           {title}
         </h3>
-        <p className="mt-3 text-muted-foreground font-body leading-relaxed">
+        <p className="mt-4 font-body text-sm leading-[1.75] text-slate-300/90 max-w-md">
           {description}
         </p>
-        <div className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-amber-500 transition-colors group-hover:text-amber-600 font-body">
-          Explore
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </div>
+        <span
+          className="mt-8 inline-flex items-center gap-1.5 font-body text-sm font-medium"
+          style={{ color: GOLD }}
+        >
+          Explore <span aria-hidden="true">→</span>
+        </span>
       </Link>
     </motion.div>
   );
 }
+
+// keep referenced constant used by inline styles
+void OBSIDIAN;
