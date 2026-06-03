@@ -104,14 +104,15 @@ function Index() {
               </p>
 
               <h1 className="mt-5 font-display text-4xl font-medium leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Where strategy meets{" "}
+                Architecting intelligence. Delivering velocity.{" "}
                 <em
                   className="font-display italic font-medium"
                   style={{ color: GOLD }}
                 >
-                  creation.
+                  Driving growth.
                 </em>
               </h1>
+
               <div
                 className="mt-6 h-px w-24"
                 style={{ backgroundColor: GOLD }}
