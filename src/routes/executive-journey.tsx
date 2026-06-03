@@ -19,8 +19,8 @@ import {
 
 const GOLD = "#D9A74A";
 const BG = "#0A0F1D";
-const WORK_BG = "#111827";
 const EDU_BG = "#1E1B4B";
+const FOUNDATION_BG = "#1F2937";
 
 export const Route = createFileRoute("/executive-journey")({
   head: () => ({
@@ -173,22 +173,56 @@ const milestones: Milestone[] = [
 type FoundationRole = {
   title: string;
   org: string;
+  bullet: string;
   icon: React.ComponentType<{ className?: string; size?: number }>;
   position: "top" | "bottom";
 };
 
-// Alternating above/below, starting ABOVE (since Foundations master card is above).
 const foundations: FoundationRole[] = [
-  { title: "Business Analyst", org: "Ameriprise Financial", icon: LineChart, position: "bottom" },
-  { title: "IT Business Consultant", org: "Wells Fargo", icon: Building2, position: "top" },
-  { title: "Senior Software Engineer", org: "Credit Suisse", icon: Landmark, position: "bottom" },
-  { title: "IT Consultant", org: "Johnson & Johnson / McNeil", icon: Pill, position: "top" },
-  { title: "Software Engineer", org: "Satyam / Merrill Lynch", icon: Cpu, position: "bottom" },
+  {
+    title: "Business Analyst",
+    org: "Ameriprise Financial",
+    bullet:
+      "Gathered business requirements and translated workflow logic for financial system integrations.",
+    icon: LineChart,
+    position: "bottom",
+  },
+  {
+    title: "IT Business Consultant",
+    org: "Wells Fargo",
+    bullet:
+      "Managed core platform alignment, financial workflows, and compliance-driven technical architecture mapping.",
+    icon: Building2,
+    position: "top",
+  },
+  {
+    title: "Senior Software Engineer",
+    org: "Credit Suisse",
+    bullet:
+      "Developed core transactional database algorithms and engineered backend logic for financial software systems.",
+    icon: Landmark,
+    position: "bottom",
+  },
+  {
+    title: "IT Consultant",
+    org: "Johnson & Johnson / McNeil",
+    bullet:
+      "Handled systems stabilization, platform configurations, and technical framework deployments.",
+    icon: Pill,
+    position: "top",
+  },
+  {
+    title: "Software Engineer",
+    org: "Satyam / Merrill Lynch",
+    bullet:
+      "Maintained legacy codebases, executed data migrations, and engineered custom database scripts.",
+    icon: Cpu,
+    position: "bottom",
+  },
 ];
 
 const FILTERS: Category[] = ["Leadership & Pricing", "Education", "Engineering Foundations"];
 
-// Shared horizontal padding container for header, filters, AND timeline.
 const CONTAINER = "mx-auto w-full max-w-[1600px] px-6 lg:px-12";
 
 function ExecutiveJourney() {
@@ -198,11 +232,11 @@ function ExecutiveJourney() {
   const isDimmed = (cat: Category) => active !== null && active !== cat;
   const foundationsDimmed = active !== null && active !== "Engineering Foundations";
 
-  const totalDesktopNodes = milestones.length + 1 + (expanded ? foundations.length : 0);
+  const baseNodes = milestones.length + 1; // milestones + foundations master
+  const totalDesktopNodes = baseNodes + (expanded ? foundations.length : 0);
 
   return (
     <div className="relative min-h-screen text-white overflow-hidden" style={{ backgroundColor: BG }}>
-      {/* Soft ambient glow only — no grid tiling */}
       <div
         aria-hidden
         className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full blur-[160px]"
@@ -229,12 +263,6 @@ function ExecutiveJourney() {
                 Journey
               </em>
             </h1>
-            <p
-              className="mt-4 font-body text-[11px] font-semibold uppercase tracking-[0.4em]"
-              style={{ color: GOLD }}
-            >
-              Present to 2012 and Beyond
-            </p>
             <div className="mt-6 h-px w-24" style={{ backgroundColor: GOLD }} />
             <p className="mt-8 max-w-2xl font-body text-base leading-[1.8] text-[#E2E8F0]">
               A chronological path through executive product and pricing leadership — anchored by
@@ -242,7 +270,6 @@ function ExecutiveJourney() {
             </p>
           </motion.div>
 
-          {/* FILTERS */}
           <div className="mt-12 flex flex-wrap gap-3">
             {FILTERS.map((f) => {
               const isActive = active === f;
@@ -275,12 +302,25 @@ function ExecutiveJourney() {
       {/* DESKTOP HORIZONTAL TIMELINE */}
       <section className="relative">
         <div className="hidden lg:block">
-          <div className={`${CONTAINER} py-16`}>
+          <div className={`${CONTAINER} pb-16`}>
+            {/* Subheading floating above timeline, aligned with rail start */}
+            <p
+              className="font-body text-[11px] font-semibold uppercase tracking-[0.4em] mb-4"
+              style={{ color: GOLD }}
+            >
+              Present — 2012 and Beyond
+            </p>
             <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#E2E8F0]/40 mb-6">
               ↔ Scroll horizontally to explore the timeline
             </p>
+
             <div className="relative overflow-x-auto pb-10 [scrollbar-color:#D9A74A55_transparent]">
-              <div className="relative" style={{ width: `${totalDesktopNodes * 340}px` }}>
+              <motion.div
+                className="relative"
+                animate={{ width: `${totalDesktopNodes * 340}px` }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                style={{ width: `${totalDesktopNodes * 340}px` }}
+              >
                 <div className="relative h-[760px]">
                   {/* Gold horizontal rail */}
                   <div
@@ -294,7 +334,7 @@ function ExecutiveJourney() {
                   />
 
                   <div
-                    className="grid h-full"
+                    className="grid h-full transition-all duration-500 ease-in-out"
                     style={{
                       gridTemplateColumns: `repeat(${totalDesktopNodes}, minmax(0, 1fr))`,
                     }}
@@ -325,7 +365,7 @@ function ExecutiveJourney() {
                     </AnimatePresence>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -333,6 +373,12 @@ function ExecutiveJourney() {
         {/* MOBILE / TABLET VERTICAL TIMELINE */}
         <div className="lg:hidden">
           <div className="mx-auto max-w-3xl px-6 py-16">
+            <p
+              className="font-body text-[11px] font-semibold uppercase tracking-[0.4em] mb-8"
+              style={{ color: GOLD }}
+            >
+              Present — 2012 and Beyond
+            </p>
             <div className="relative">
               <div
                 aria-hidden
@@ -356,13 +402,13 @@ function ExecutiveJourney() {
                     onToggle={() => setExpanded((v) => !v)}
                     dimmed={foundationsDimmed}
                   />
-                  <AnimatePresence>
+                  <AnimatePresence initial={false}>
                     {expanded && (
                       <motion.ol
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.35 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
                         className="overflow-hidden mt-6 space-y-6"
                       >
                         {foundations.map((r) => (
@@ -463,8 +509,19 @@ function HorizontalNode({
 function MilestoneCard({ m }: { m: Milestone }) {
   const Icon = m.icon;
   const isEducation = m.category === "Education";
-  const cardBg = isEducation ? EDU_BG : WORK_BG;
-  const cardBorder = isEducation ? "border-slate-400/25" : "border-white/10";
+
+  // Work cards = bright white. Education = deep indigo.
+  const cardBg = isEducation ? EDU_BG : "#FFFFFF";
+  const cardBorder = isEducation ? "border-indigo-300/20" : "border-white/30";
+  const titleColor = isEducation ? "text-white" : "text-[#0A0F1D]";
+  const orgColor = isEducation ? "text-slate-200" : "text-[#1F2937]";
+  const orgMuted = isEducation ? "text-slate-400" : "text-[#6B7280]";
+  const bulletColor = isEducation ? "text-slate-200" : "text-[#374151]";
+  const tagBorder = isEducation ? "border-white/15" : "border-[#0A0F1D]/15";
+  const tagBg = isEducation ? "bg-white/[0.04]" : "bg-[#0A0F1D]/[0.04]";
+  const tagText = isEducation ? "text-slate-200" : "text-[#374151]";
+  const iconBoxBg = isEducation ? "bg-white/[0.04]" : "bg-[#0A0F1D]/[0.04]";
+  const iconBoxBorder = isEducation ? "border-white/10" : "border-[#0A0F1D]/10";
 
   return (
     <article
@@ -472,7 +529,7 @@ function MilestoneCard({ m }: { m: Milestone }) {
       style={{ backgroundColor: cardBg }}
     >
       <div className="flex items-center gap-2.5">
-        <span className="flex h-8 w-8 items-center justify-center rounded-md border border-white/10 bg-white/[0.04]">
+        <span className={`flex h-8 w-8 items-center justify-center rounded-md border ${iconBoxBorder} ${iconBoxBg}`}>
           <Icon className="text-[#D9A74A]" size={16} />
         </span>
         {m.period && (
@@ -484,14 +541,14 @@ function MilestoneCard({ m }: { m: Milestone }) {
           </p>
         )}
       </div>
-      <h3 className="mt-3 font-display text-[15px] font-medium leading-snug text-white">
+      <h3 className={`mt-3 font-display text-[15px] font-medium leading-snug ${titleColor}`}>
         {m.title}
       </h3>
-      <p className="mt-1 font-body text-[11.5px] text-[#E2E8F0]/85 leading-snug">
+      <p className={`mt-1 font-body text-[11.5px] leading-snug ${orgColor}`}>
         {m.org}
-        {m.location && <span className="text-[#E2E8F0]/55"> · {m.location}</span>}
+        {m.location && <span className={orgMuted}> · {m.location}</span>}
       </p>
-      <ul className="mt-3 space-y-1.5 font-body text-[11.5px] leading-[1.65] text-[#E2E8F0]">
+      <ul className={`mt-3 space-y-1.5 font-body text-[11.5px] leading-[1.65] ${bulletColor}`}>
         {m.bullets.map((b) => (
           <li key={b} className="flex items-start gap-1.5">
             <span
@@ -507,7 +564,7 @@ function MilestoneCard({ m }: { m: Milestone }) {
           {m.tags.map((t) => (
             <span
               key={t}
-              className="rounded-full border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[9.5px] font-medium tracking-wide text-[#E2E8F0]/85 font-body"
+              className={`rounded-full border ${tagBorder} ${tagBg} px-2 py-0.5 text-[9.5px] font-medium tracking-wide ${tagText} font-body`}
             >
               {t}
             </span>
@@ -571,7 +628,7 @@ function FoundationsCard({
       className={`group w-full text-left rounded-xl border p-5 transition-all duration-300 cursor-pointer ${
         dimmed ? "opacity-25" : "opacity-100"
       } border-[#D9A74A]/40 hover:border-[#D9A74A] hover:-translate-y-0.5 hover:shadow-[0_8px_40px_-12px_#D9A74A55]`}
-      style={{ backgroundColor: WORK_BG }}
+      style={{ backgroundColor: FOUNDATION_BG }}
     >
       <div className="flex items-center gap-2.5">
         <span className="flex h-8 w-8 items-center justify-center rounded-md border border-[#D9A74A]/30 bg-[#D9A74A]/5">
@@ -585,18 +642,18 @@ function FoundationsCard({
         </p>
       </div>
       <h3 className="mt-3 font-display text-[15px] font-medium leading-snug text-white">
-        Engineering Foundations
+        Foundational Engineering Tier
       </h3>
       <p className="mt-1 font-body text-[11.5px] text-[#E2E8F0]/75 leading-snug">
-        Click to view more
+        Five formative roles across financial services, healthcare, and telecom.
       </p>
       <div className="mt-3 flex items-center justify-between">
         <span className="font-body text-[11px] italic text-[#E2E8F0]/70">
-          {expanded ? "Click to collapse" : "Expand timeline"}
+          {expanded ? "Click to collapse" : "Expand timeline →"}
         </span>
         <ChevronDown
           size={16}
-          className="text-[#D9A74A] transition-transform duration-300"
+          className="text-[#D9A74A] transition-transform duration-500"
           style={{ transform: expanded ? "rotate(180deg)" : "rotate(0deg)" }}
         />
       </div>
@@ -616,14 +673,16 @@ function FoundationMiniNode({
   const onTop = role.position === "top";
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 10 }}
-      transition={{ duration: 0.35, delay: index * 0.06 }}
-      className={`relative flex flex-col items-center ${dimmed ? "opacity-25" : "opacity-100"}`}
+      initial={{ opacity: 0, y: 12, scale: 0.96 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 12, scale: 0.96 }}
+      transition={{ duration: 0.5, ease: "easeInOut", delay: index * 0.08 }}
+      className={`relative flex flex-col items-center transition-opacity duration-500 ${
+        dimmed ? "opacity-25" : "opacity-100"
+      }`}
     >
       {onTop && (
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-1/2 mb-10 w-[260px]">
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-1/2 mb-10 w-[280px]">
           <FoundationMiniCard role={role} />
         </div>
       )}
@@ -641,7 +700,7 @@ function FoundationMiniNode({
         style={{ backgroundColor: GOLD, boxShadow: `0 0 10px ${GOLD}` }}
       />
       {!onTop && (
-        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 mt-10 w-[260px]">
+        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 mt-10 w-[280px]">
           <FoundationMiniCard role={role} />
         </div>
       )}
@@ -653,11 +712,11 @@ function FoundationMiniCard({ role }: { role: FoundationRole }) {
   const Icon = role.icon;
   return (
     <article
-      className="rounded-xl border border-white/10 p-4 transition-all duration-300 hover:border-[#D9A74A]/50"
-      style={{ backgroundColor: WORK_BG }}
+      className="rounded-xl border border-dashed border-[#D9A74A]/30 p-4 transition-all duration-300 hover:border-[#D9A74A]/70 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)]"
+      style={{ backgroundColor: FOUNDATION_BG }}
     >
       <div className="flex items-center gap-2.5">
-        <span className="flex h-7 w-7 items-center justify-center rounded-md border border-white/10 bg-white/[0.04]">
+        <span className="flex h-7 w-7 items-center justify-center rounded-md border border-[#D9A74A]/30 bg-[#D9A74A]/5">
           <Icon className="text-[#D9A74A]" size={14} />
         </span>
         <p
@@ -670,7 +729,10 @@ function FoundationMiniCard({ role }: { role: FoundationRole }) {
       <h4 className="mt-2.5 font-display text-[14px] font-medium leading-snug text-white">
         {role.title}
       </h4>
-      <p className="mt-1 font-body text-[11.5px] text-[#E2E8F0]/80">{role.org}</p>
+      <p className="mt-1 font-body text-[11.5px] text-slate-300">{role.org}</p>
+      <p className="mt-2.5 font-body text-[11px] leading-[1.6] text-slate-400">
+        {role.bullet}
+      </p>
     </article>
   );
 }
