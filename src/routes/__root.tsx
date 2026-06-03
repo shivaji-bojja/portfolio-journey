@@ -70,35 +70,28 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#0B0F19]/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2">
-          <span className="font-display text-xl font-bold tracking-tight text-foreground">
+          <span className="font-body text-base font-medium tracking-tight text-white">
             Shivaji Bojja — Portfolio
           </span>
         </Link>
-        <nav className="hidden md:flex items-center gap-6">
-          <Link
-            to="/"
-            activeProps={{ className: "text-amber-500 font-medium" }}
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground font-body"
-          >
-            Home
-          </Link>
-          <Link
-            to="/executive-journey"
-            activeProps={{ className: "text-amber-500 font-medium" }}
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground font-body"
-          >
-            Executive Journey
-          </Link>
-          <Link
-            to="/product-lab"
-            activeProps={{ className: "text-amber-500 font-medium" }}
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground font-body"
-          >
-            Product Lab
-          </Link>
+        <nav className="hidden md:flex items-center gap-10">
+          {[
+            { to: "/", label: "Home" },
+            { to: "/executive-journey", label: "Executive Journey" },
+            { to: "/product-lab", label: "Product Lab" },
+          ].map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              activeProps={{ className: "text-[#D9A74A]" }}
+              className="text-sm font-normal tracking-wide text-white/70 transition-colors duration-300 hover:text-[#D9A74A] font-body"
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
         <MobileNav />
       </div>
@@ -112,7 +105,7 @@ function MobileNav() {
     <div className="md:hidden">
       <button
         onClick={() => setOpen(!open)}
-        className="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground hover:bg-muted"
+        className="inline-flex items-center justify-center rounded-md p-2 text-white/70 hover:text-[#D9A74A]"
         aria-label="Toggle menu"
       >
         {open ? (
@@ -126,11 +119,10 @@ function MobileNav() {
         )}
       </button>
       {open && (
-        <div className="absolute right-0 top-16 w-64 bg-background border border-border rounded-lg shadow-lg p-4 flex flex-col gap-3">
-          <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground font-body" onClick={() => setOpen(false)}>Home</Link>
-          <Link to="/executive-journey" className="text-sm font-medium text-muted-foreground hover:text-foreground font-body" onClick={() => setOpen(false)}>Executive Journey</Link>
-          
-          <Link to="/product-lab" className="text-sm font-medium text-muted-foreground hover:text-foreground font-body" onClick={() => setOpen(false)}>Product Lab</Link>
+        <div className="absolute right-4 top-16 w-64 bg-[#0B0F19] border border-white/10 rounded-lg shadow-lg p-4 flex flex-col gap-3">
+          <Link to="/" className="text-sm font-normal text-white/70 hover:text-[#D9A74A] font-body" onClick={() => setOpen(false)}>Home</Link>
+          <Link to="/executive-journey" className="text-sm font-normal text-white/70 hover:text-[#D9A74A] font-body" onClick={() => setOpen(false)}>Executive Journey</Link>
+          <Link to="/product-lab" className="text-sm font-normal text-white/70 hover:text-[#D9A74A] font-body" onClick={() => setOpen(false)}>Product Lab</Link>
         </div>
       )}
     </div>
