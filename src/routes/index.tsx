@@ -12,7 +12,6 @@ import {
 import headshot from "@/assets/shivaji-headshot.jpg";
 
 const GOLD = "#D9A74A";
-const OBSIDIAN = "#0B0F19";
 
 export const Route = createFileRoute("/")({
   head: () => ({
