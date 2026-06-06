@@ -366,10 +366,11 @@ function WTPSurvey() {
 }
 
 function PriceSlider({ label, value, onChange }: { label: string; value: number; onChange: (v: string) => void }) {
+  const id = React.useId();
   return (
     <div>
       <div className="flex items-center justify-between">
-        <label className="font-body text-sm text-slate-300">{label}</label>
+        <label htmlFor={id} className="font-body text-sm text-slate-300">{label}</label>
         <span
           className="inline-flex items-center rounded-md border px-2 py-0.5 font-body text-sm font-semibold"
           style={{ borderColor: GOLD, color: GOLD }}
@@ -378,12 +379,14 @@ function PriceSlider({ label, value, onChange }: { label: string; value: number;
         </span>
       </div>
       <input
+        id={id}
         type="range"
         min={9}
         max={199}
         step={1}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        aria-label={label}
         className="mt-2 h-2 w-full cursor-pointer appearance-none rounded-lg bg-white/10 accent-[#D9A74A]"
       />
     </div>
