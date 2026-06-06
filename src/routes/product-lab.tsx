@@ -30,6 +30,21 @@ export const Route = createFileRoute("/product-lab")({
         content:
           "Live product experiments and data-driven sandbox showcasing AI, pricing, and product innovation.",
       },
+      { property: "og:url", content: "https://shivajibojja.com/product-lab" },
+    ],
+    links: [{ rel: "canonical", href: "https://shivajibojja.com/product-lab" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Product Lab — Portfolio & Sandbox",
+          url: "https://shivajibojja.com/product-lab",
+          description:
+            "A curated sandbox of live product experiments including Van Westendorp pricing, A/B testing frameworks, and e-commerce mechanics.",
+        }),
+      },
     ],
   }),
   component: ProductLab,

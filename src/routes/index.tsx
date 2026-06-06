@@ -20,6 +20,31 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Executive portfolio and product lab of Shivaji Bojja — product, AI, and digital transformation leadership." },
       { property: "og:title", content: "Shivaji Bojja — Portfolio & Product Sandbox" },
       { property: "og:description", content: "Executive portfolio and product lab of Shivaji Bojja." },
+      { property: "og:url", content: "https://shivajibojja.com/" },
+    ],
+    links: [{ rel: "canonical", href: "https://shivajibojja.com/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Shivaji Bojja",
+          jobTitle: "Product Leader",
+          url: "https://shivajibojja.com/",
+          sameAs: ["https://www.linkedin.com/in/shivajibojja/"],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Shivaji Bojja — Portfolio",
+          url: "https://shivajibojja.com/",
+          description: "Executive portfolio and product lab of Shivaji Bojja.",
+        }),
+      },
     ],
   }),
   component: Index,

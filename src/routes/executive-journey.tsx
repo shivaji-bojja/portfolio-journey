@@ -37,6 +37,23 @@ export const Route = createFileRoute("/executive-journey")({
         content:
           "From engineering foundations to executive product and pricing leadership across Retail, Telecom, and Financial Services.",
       },
+      { property: "og:url", content: "https://shivajibojja.com/executive-journey" },
+    ],
+    links: [{ rel: "canonical", href: "https://shivajibojja.com/executive-journey" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Shivaji Bojja",
+          jobTitle: "Product Leader",
+          description:
+            "Executive product and pricing leader with a career spanning engineering foundations, digital transformation, and AI-driven product strategy across Retail, Telecom, and Financial Services.",
+          url: "https://shivajibojja.com/executive-journey",
+          sameAs: ["https://www.linkedin.com/in/shivajibojja/"],
+        }),
+      },
     ],
   }),
   component: ExecutiveJourney,

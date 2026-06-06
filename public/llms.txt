@@ -1,0 +1,9 @@
+# Shivaji Bojja — Portfolio
+
+> Executive portfolio and product sandbox of Shivaji Bojja — product, AI, pricing, and digital transformation leadership.
+
+## Pages
+
+- [Home](/): Overview of Shivaji Bojja's executive portfolio, expertise, and capabilities.
+- [Executive Journey](/executive-journey): Career timeline from engineering foundations to product and pricing leadership.
+- [Product Lab](/product-lab): Interactive product experiments including Van Westendorp pricing, A/B tests, and e-commerce mechanics.
