@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useId } from "react";
 import {
   ArrowUpRight,
   ArrowRight,
@@ -29,6 +29,21 @@ export const Route = createFileRoute("/product-lab")({
         property: "og:description",
         content:
           "Live product experiments and data-driven sandbox showcasing AI, pricing, and product innovation.",
+      },
+      { property: "og:url", content: "https://shivajibojja.com/product-lab" },
+    ],
+    links: [{ rel: "canonical", href: "https://shivajibojja.com/product-lab" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Product Lab — Portfolio & Sandbox",
+          url: "https://shivajibojja.com/product-lab",
+          description:
+            "A curated sandbox of live product experiments including Van Westendorp pricing, A/B testing frameworks, and e-commerce mechanics.",
+        }),
       },
     ],
   }),
@@ -366,10 +381,11 @@ function WTPSurvey() {
 }
 
 function PriceSlider({ label, value, onChange }: { label: string; value: number; onChange: (v: string) => void }) {
+  const id = useId();
   return (
     <div>
       <div className="flex items-center justify-between">
-        <label className="font-body text-sm text-slate-300">{label}</label>
+        <label htmlFor={id} className="font-body text-sm text-slate-300">{label}</label>
         <span
           className="inline-flex items-center rounded-md border px-2 py-0.5 font-body text-sm font-semibold"
           style={{ borderColor: GOLD, color: GOLD }}
@@ -378,12 +394,14 @@ function PriceSlider({ label, value, onChange }: { label: string; value: number;
         </span>
       </div>
       <input
+        id={id}
         type="range"
         min={9}
         max={199}
         step={1}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        aria-label={label}
         className="mt-2 h-2 w-full cursor-pointer appearance-none rounded-lg bg-white/10 accent-[#D9A74A]"
       />
     </div>
@@ -598,9 +616,9 @@ function ReferralGrid() {
                 </span>
               )}
             </div>
-            <h3 className="mt-3 font-display text-lg font-medium text-white transition-colors group-hover:text-[#D9A74A]">
+            <h2 className="mt-3 font-display text-lg font-medium text-white transition-colors group-hover:text-[#D9A74A]">
               {p.name}
-            </h3>
+            </h2>
             <div className="mt-2 flex items-center gap-1">
               <Star className="h-3.5 w-3.5" style={{ color: GOLD, fill: GOLD }} />
               <span className="font-body text-sm font-medium text-white">{p.rating}</span>
