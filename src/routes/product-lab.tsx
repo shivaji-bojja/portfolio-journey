@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useId } from "react";
 import {
   ArrowUpRight,
   ArrowRight,
@@ -366,7 +366,7 @@ function WTPSurvey() {
 }
 
 function PriceSlider({ label, value, onChange }: { label: string; value: number; onChange: (v: string) => void }) {
-  const id = React.useId();
+  const id = useId();
   return (
     <div>
       <div className="flex items-center justify-between">
