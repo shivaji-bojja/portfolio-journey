@@ -601,9 +601,9 @@ function ReferralGrid() {
                 </span>
               )}
             </div>
-            <h3 className="mt-3 font-display text-lg font-medium text-white transition-colors group-hover:text-[#D9A74A]">
+            <h2 className="mt-3 font-display text-lg font-medium text-white transition-colors group-hover:text-[#D9A74A]">
               {p.name}
-            </h3>
+            </h2>
             <div className="mt-2 flex items-center gap-1">
               <Star className="h-3.5 w-3.5" style={{ color: GOLD, fill: GOLD }} />
               <span className="font-body text-sm font-medium text-white">{p.rating}</span>

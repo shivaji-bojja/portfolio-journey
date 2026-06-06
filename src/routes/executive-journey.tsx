@@ -541,9 +541,9 @@ function MilestoneCard({ m }: { m: Milestone }) {
           </p>
         )}
       </div>
-      <h3 className={`mt-3 font-display text-[15px] font-medium leading-snug ${titleColor}`}>
+      <h2 className={`mt-3 font-display text-[15px] font-medium leading-snug ${titleColor}`}>
         {m.title}
-      </h3>
+      </h2>
       <p className={`mt-1 font-body text-[11.5px] leading-snug ${orgColor}`}>
         {m.org}
         {m.location && <span className={orgMuted}> · {m.location}</span>}
