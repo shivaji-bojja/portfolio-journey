@@ -51,12 +51,14 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const capabilityTags = [
-  "AI & Data Strategy",
-  "Digital Transformation",
-  "Executive Leadership",
-  "B2B & B2C",
+const metrics = [
+  { value: "15+", label: "Years Experience" },
+  { value: "4", label: "Industries" },
+  { value: "$500M+", label: "Revenue Impact" },
+  { value: "B2B + B2C", label: "Environments" },
 ];
+
+const profileBadges = ["Dallas, TX", "B2B & B2C", "Global Industries"];
 
 const expertise = [
   {
