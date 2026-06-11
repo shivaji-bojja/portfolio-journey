@@ -135,11 +135,11 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="w-full bg-[#0b111e] mt-20 text-slate-100 antialiased font-sans">
+    <div className="w-full bg-[#0b111e] mt-8 text-slate-100 antialiased font-sans">
       {/* GET IN TOUCH SECTION */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="border border-zinc-800/80 bg-[#121215] rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl">
-          <div className="space-y-3">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-8">
+        <div className="border border-zinc-800/80 bg-[#121215] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl">
+          <div className="space-y-2">
             <span className="text-xs uppercase tracking-widest text-amber-500 font-semibold font-body block">
               Get in Touch
             </span>
@@ -162,7 +162,7 @@ function Footer() {
       </section>
 
       {/* FOOTER NAV BAR */}
-      <footer className="border-t border-zinc-900/60 bg-[#0b111e] py-8">
+      <footer className="border-t border-zinc-900/60 bg-[#0b111e] py-5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs tracking-wider text-zinc-500 uppercase font-body">
           <div className="font-medium">
             © {currentYear} SHIVAJI BOJJA - PRODUCT & TECHNOLOGY LEADER

@@ -116,14 +116,14 @@ function Index() {
           <div className="absolute -bottom-40 -left-40 h-[480px] w-[480px] rounded-full bg-[#D9A74A]/5 blur-[140px]" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 lg:py-28">
-          <div className="grid items-center gap-14 lg:grid-cols-[1.5fr_1fr] lg:gap-20">
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-12 lg:py-16">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.5fr_1fr] lg:gap-12">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: "easeOut" }}
             >
-              <div className="space-y-6 max-w-3xl">
+              <div className="space-y-4 max-w-3xl">
                 <div className="space-y-1">
                   <span className="text-xs uppercase tracking-widest text-amber-500 font-medium font-body">
                     About Me
@@ -141,7 +141,7 @@ function Index() {
                   <span className="italic font-serif text-amber-500/90">Driving growth.</span>
                 </h1>
 
-                <div className="space-y-4 text-zinc-400 text-sm md:text-base leading-relaxed font-body">
+                <div className="space-y-3 text-zinc-400 text-sm md:text-base leading-relaxed font-body">
                   <p>
                     I am a purpose-driven Product and Technology Leader with a career spanning hands-on Software Engineering, Business Analysis, Product Management, and Executive Leadership. I specialize in driving AI-enabled digital and business transformations across complex global industries — Retail, E-commerce, Telecom, and Supply Chain.
                   </p>
@@ -150,7 +150,7 @@ function Index() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-zinc-900 mt-8">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-5 border-t border-zinc-900 mt-5">
                   {metrics.map((m) => (
                     <div key={m.label} className="space-y-1">
                       <div className="text-2xl md:text-3xl font-serif text-amber-500">{m.value}</div>
@@ -160,7 +160,7 @@ function Index() {
                 </div>
               </div>
 
-              <div className="mt-10 flex flex-wrap items-center gap-3">
+              <div className="mt-6 flex flex-wrap items-center gap-2.5">
                 <Link
                   to="/executive-journey"
                   className="inline-flex items-center gap-2 rounded-full bg-amber-500 px-6 py-3 font-body text-sm font-semibold text-zinc-950 transition-all hover:bg-amber-600 hover:shadow-[0_10px_30px_-10px_rgba(217,167,74,0.6)]"
@@ -189,7 +189,7 @@ function Index() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-              className="flex flex-col items-center lg:items-end gap-5"
+              className="flex flex-col items-center lg:items-end gap-3"
             >
               <motion.div
                 whileHover={{ y: -6 }}
@@ -210,7 +210,7 @@ function Index() {
                     alt="Shivaji Bojja headshot"
                     loading="eager"
                     decoding="async"
-                    className="w-full h-[380px] sm:h-[420px] object-cover rounded-xl"
+                    className="w-full h-[300px] sm:h-[340px] object-cover rounded-xl"
                   />
                 </div>
               </motion.div>
@@ -237,12 +237,12 @@ function Index() {
 
       {/* CORE EXPERTISE */}
       <section className="relative border-t border-zinc-900">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12 lg:py-14">
           <div className="max-w-3xl">
             <span className="text-xs uppercase tracking-widest text-amber-500 font-medium font-body">
               Core Expertise
             </span>
-            <h2 className="mt-4 font-serif text-3xl font-medium leading-tight text-zinc-100 sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="mt-2 font-serif text-3xl font-medium leading-tight text-zinc-100 sm:text-4xl lg:text-[2.75rem]">
               Capabilities at the Intersection of{" "}
               <em className="italic font-serif text-amber-500/90">
                 Technology, Product & Business
@@ -250,7 +250,7 @@ function Index() {
             </h2>
           </div>
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {expertise.map((card) => {
               const Icon = card.icon;
               return (
@@ -258,7 +258,7 @@ function Index() {
                   key={card.title}
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
-                  className="group rounded-xl border border-zinc-800/80 bg-[#121215] p-6 transition-colors hover:border-amber-500/40"
+                  className="group rounded-xl border border-zinc-800/80 bg-[#121215] p-5 transition-colors hover:border-amber-500/40"
                 >
                   <div className="flex items-start gap-3">
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-zinc-800 text-amber-500">
@@ -273,7 +273,7 @@ function Index() {
                       </p>
                     </div>
                   </div>
-                  <ul className="mt-6 space-y-2.5 font-body text-sm text-zinc-400">
+                  <ul className="mt-4 space-y-2 font-body text-sm text-zinc-400">
                     {card.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-2.5">
                         <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-amber-500" />
@@ -290,17 +290,17 @@ function Index() {
 
       {/* EXPLORE FURTHER */}
       <section className="relative border-t border-zinc-900">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12 lg:py-14">
           <div className="max-w-3xl">
             <span className="text-xs uppercase tracking-widest text-amber-500 font-medium font-body">
               Explore Further
             </span>
-            <h2 className="mt-4 font-serif text-3xl font-medium leading-tight text-zinc-100 sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="mt-2 font-serif text-3xl font-medium leading-tight text-zinc-100 sm:text-4xl lg:text-[2.75rem]">
               Dive Deeper Into My Work
             </h2>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
             <ExploreCard
               to="/executive-journey"
               icon={Briefcase}
@@ -339,7 +339,7 @@ function ExploreCard({
     <motion.div whileHover={{ y: -6 }} transition={{ duration: 0.35, ease: "easeOut" }}>
       <Link
         to={to}
-        className="group block h-full rounded-2xl border border-zinc-800/80 bg-[#121215] p-8 transition-all hover:border-amber-500/40 hover:bg-[#16161a]"
+        className="group block h-full rounded-2xl border border-zinc-800/80 bg-[#121215] p-6 transition-all hover:border-amber-500/40 hover:bg-[#16161a]"
       >
         <div className="flex items-start justify-between">
           <span className="flex h-11 w-11 items-center justify-center rounded-md border border-zinc-800 text-zinc-400 transition-colors group-hover:text-amber-500 group-hover:border-amber-500/50">
@@ -347,16 +347,16 @@ function ExploreCard({
           </span>
           <ArrowRight className="h-5 w-5 text-zinc-500 transition-all duration-300 group-hover:text-amber-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </div>
-        <p className="mt-8 font-body text-[11px] font-semibold uppercase tracking-[0.25em] text-amber-500">
+        <p className="mt-5 font-body text-[11px] font-semibold uppercase tracking-[0.25em] text-amber-500">
           {prefix}
         </p>
-        <h3 className="mt-3 font-serif text-2xl font-medium text-zinc-100">
+        <h3 className="mt-2 font-serif text-2xl font-medium text-zinc-100">
           {title}
         </h3>
-        <p className="mt-4 font-body text-sm leading-[1.75] text-zinc-400 max-w-md">
+        <p className="mt-3 font-body text-sm leading-[1.75] text-zinc-400 max-w-md">
           {description}
         </p>
-        <span className="mt-8 inline-flex items-center gap-1.5 font-body text-sm font-medium text-amber-500">
+        <span className="mt-5 inline-flex items-center gap-1.5 font-body text-sm font-medium text-amber-500">
           Explore <span aria-hidden="true">→</span>
         </span>
       </Link>
