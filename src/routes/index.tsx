@@ -257,6 +257,17 @@ function Index() {
                 />
                 Open to Opportunities
               </span>
+
+              <div className="flex flex-col items-center lg:items-end gap-2">
+                {profileBadges.map((b) => (
+                  <span
+                    key={b}
+                    className="rounded-full border border-white/15 bg-white/[0.03] px-4 py-1.5 font-body text-xs font-medium tracking-wide text-white/90"
+                  >
+                    {b}
+                  </span>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
