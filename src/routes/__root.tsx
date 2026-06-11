@@ -9,6 +9,8 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
+import { Mail } from "lucide-react";
+
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -70,10 +72,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#0B0F19]/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-zinc-900 bg-[#0b111e]/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2">
-          <span className="font-body text-base font-medium tracking-tight text-white">
+          <span className="font-body text-base font-medium tracking-tight text-zinc-100">
             Shivaji Bojja — Portfolio
           </span>
         </Link>
@@ -86,8 +88,8 @@ function Header() {
             <Link
               key={item.to}
               to={item.to}
-              activeProps={{ className: "text-[#D9A74A]" }}
-              className="text-sm font-normal tracking-wide text-white/70 transition-colors duration-300 hover:text-[#D9A74A] font-body"
+              activeProps={{ className: "text-amber-500" }}
+              className="text-sm font-normal tracking-wide text-zinc-400 transition-colors duration-300 hover:text-amber-500 font-body"
             >
               {item.label}
             </Link>
@@ -105,7 +107,7 @@ function MobileNav() {
     <div className="md:hidden">
       <button
         onClick={() => setOpen(!open)}
-        className="inline-flex items-center justify-center rounded-md p-2 text-white/70 hover:text-[#D9A74A]"
+        className="inline-flex items-center justify-center rounded-md p-2 text-zinc-400 hover:text-amber-500"
         aria-label="Toggle menu"
       >
         {open ? (
@@ -119,10 +121,10 @@ function MobileNav() {
         )}
       </button>
       {open && (
-        <div className="absolute right-4 top-16 w-64 bg-[#0B0F19] border border-white/10 rounded-lg shadow-lg p-4 flex flex-col gap-3">
-          <Link to="/" className="text-sm font-normal text-white/70 hover:text-[#D9A74A] font-body" onClick={() => setOpen(false)}>Home</Link>
-          <Link to="/executive-journey" className="text-sm font-normal text-white/70 hover:text-[#D9A74A] font-body" onClick={() => setOpen(false)}>Executive Journey</Link>
-          <Link to="/product-lab" className="text-sm font-normal text-white/70 hover:text-[#D9A74A] font-body" onClick={() => setOpen(false)}>Product Lab</Link>
+        <div className="absolute right-4 top-16 w-64 bg-[#0b111e] border border-zinc-800 rounded-lg shadow-lg p-4 flex flex-col gap-3">
+          <Link to="/" className="text-sm font-normal text-zinc-400 hover:text-amber-500 font-body" onClick={() => setOpen(false)}>Home</Link>
+          <Link to="/executive-journey" className="text-sm font-normal text-zinc-400 hover:text-amber-500 font-body" onClick={() => setOpen(false)}>Executive Journey</Link>
+          <Link to="/product-lab" className="text-sm font-normal text-zinc-400 hover:text-amber-500 font-body" onClick={() => setOpen(false)}>Product Lab</Link>
         </div>
       )}
     </div>
@@ -133,28 +135,46 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-background">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex flex-col items-center md:items-start gap-1">
-            <p className="text-sm text-muted-foreground font-body">
-              Built with precision and purpose.
-            </p>
-            <p className="text-xs text-muted-foreground/70 font-body">
-              &copy; {currentYear} All rights reserved.
+    <div className="w-full bg-[#0b111e] mt-20 text-slate-100 antialiased font-sans">
+      {/* GET IN TOUCH SECTION */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="border border-zinc-800/80 bg-[#121215] rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl">
+          <div className="space-y-3">
+            <span className="text-xs uppercase tracking-widest text-amber-500 font-semibold font-body block">
+              Get in Touch
+            </span>
+            <h2 className="text-2xl md:text-3xl font-serif text-white tracking-tight">
+              Open to executive opportunities
+            </h2>
+            <p className="text-zinc-400 text-sm md:text-base max-w-xl font-body leading-relaxed">
+              Available for CPO, VP Product, Director of Product, and AI Strategy leadership roles across global enterprises.
             </p>
           </div>
-          <div className="flex items-center gap-6">
-            <Link to="/executive-journey" className="text-sm text-muted-foreground hover:text-foreground font-body transition-colors">
-              Executive
-            </Link>
-            <Link to="/product-lab" className="text-sm text-muted-foreground hover:text-foreground font-body transition-colors">
-              Lab
-            </Link>
+          
+          <a 
+            href="mailto:shivaji.bojja@gmail.com" 
+            className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-zinc-950 font-semibold px-6 py-3.5 rounded-full transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap font-body text-sm"
+          >
+            <Mail className="w-4 h-4 stroke-[2.5]" />
+            Send a Message
+          </a>
+        </div>
+      </section>
+
+      {/* FOOTER NAV BAR */}
+      <footer className="border-t border-zinc-900/60 bg-[#0b111e] py-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs tracking-wider text-zinc-500 uppercase font-body">
+          <div className="font-medium">
+            © {currentYear} SHIVAJI BOJJA - PRODUCT & TECHNOLOGY LEADER
+          </div>
+          <div className="flex items-center gap-6 normal-case text-sm font-medium text-zinc-400">
+            <a href="https://linkedin.com/in/shivajibojja" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 transition-colors">LinkedIn</a>
+            <a href="https://github.com/shivaji-bojja" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 transition-colors">GitHub</a>
+            <a href="mailto:shivaji.bojja@gmail.com" className="hover:text-amber-500 transition-colors">shivaji.bojja@gmail.com</a>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   );
 }
 
@@ -207,7 +227,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="bg-[#0b111e] text-slate-100 antialiased">
         {children}
         <Scripts />
       </body>
@@ -220,7 +240,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col bg-[#0b111e] text-slate-100 antialiased">
         <Header />
         <main className="flex-1">
           <Outlet />

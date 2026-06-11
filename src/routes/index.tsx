@@ -12,8 +12,6 @@ import {
 } from "lucide-react";
 import headshot from "@/assets/shivaji-headshot.jpg";
 
-const GOLD = "#D9A74A";
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -33,7 +31,10 @@ export const Route = createFileRoute("/")({
           name: "Shivaji Bojja",
           jobTitle: "Product Leader",
           url: "https://shivajibojja.com/",
-          sameAs: ["https://www.linkedin.com/in/shivajibojja/"],
+          sameAs: [
+            "https://www.linkedin.com/in/shivajibojja/",
+            "https://github.com/shivaji-bojja",
+          ],
         }),
       },
       {
@@ -108,8 +109,7 @@ const expertise = [
 
 function Index() {
   return (
-    <div className="bg-[#0B0F19] text-white">
-      {/* HERO */}
+    <div className="bg-[#0b111e] text-slate-100">
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-32 -right-40 h-[480px] w-[480px] rounded-full bg-[#D9A74A]/10 blur-[140px]" />
@@ -118,90 +118,58 @@ function Index() {
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-20 lg:py-28">
           <div className="grid items-center gap-14 lg:grid-cols-[1.5fr_1fr] lg:gap-20">
-            {/* LEFT */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: "easeOut" }}
             >
-              <p
-                className="font-body text-xs font-medium uppercase tracking-[0.35em]"
-                style={{ color: GOLD }}
-              >
-                About Me
-              </p>
-              <p className="mt-2 font-display text-lg font-medium text-white/80">
-                Shivaji Bojja
-              </p>
+              <div className="space-y-6 max-w-3xl">
+                <div className="space-y-1">
+                  <span className="text-xs uppercase tracking-widest text-amber-500 font-medium font-body">
+                    About Me
+                  </span>
+                  <h2 className="text-xl font-medium text-zinc-400 font-body">
+                    Shivaji Bojja
+                  </h2>
+                </div>
 
-              <h1 className="mt-5 font-display text-4xl font-medium leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Architecting intelligence. Delivering velocity.{" "}
-                <em
-                  className="font-serif italic font-normal"
-                  style={{ color: GOLD, fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
-                >
-                  Driving growth.
-                </em>
-              </h1>
+                <h1 className="text-4xl md:text-6xl font-serif tracking-tight text-zinc-100 leading-tight">
+                  Architecting intelligence.
+                  <br />
+                  Delivering velocity.
+                  <br />
+                  <span className="italic font-serif text-amber-500/90">Driving growth.</span>
+                </h1>
 
-              <div
-                className="mt-6 h-px w-24"
-                style={{ backgroundColor: GOLD }}
-                aria-hidden="true"
-              />
+                <div className="space-y-4 text-zinc-400 text-sm md:text-base leading-relaxed font-body">
+                  <p>
+                    I am a purpose-driven Product and Technology Leader with a career spanning hands-on Software Engineering, Business Analysis, Product Management, and Executive Leadership. I specialize in driving AI-enabled digital and business transformations across complex global industries — Retail, E-commerce, Telecom, and Supply Chain.
+                  </p>
+                  <p>
+                    By blending deep technical expertise with commercial acumen, I build data-driven, customer-centric strategies that unlock measurable business value. My expertise lies at the intersection of product innovation, price optimization, and modern omni-channel experiences.
+                  </p>
+                </div>
 
-              <div className="mt-8 space-y-5 font-body text-base leading-[1.8] text-slate-300 max-w-2xl">
-                <p>
-                  I am a purpose-driven Product Leader whose executive
-                  leadership and product strategy are deeply rooted in my
-                  hands-on background across Software Engineering, Data
-                  Engineering, and Advanced Analysis.
-                </p>
-                <p>
-                  I specialize in driving AI-enabled digital and business
-                  transformations across complex global industries, including
-                  Retail, E-commerce, Telecom, and Supply Chain. By blending
-                  deep technical expertise with commercial acumen, I build
-                  data-driven, customer-centric strategies that unlock
-                  measurable business value.
-                </p>
-                <p>
-                  My expertise lies at the intersection of product innovation,
-                  price optimization, and modern omni-channel experiences. As
-                  a champion of continuous learning, I focus on scaling robust
-                  AI & Data Strategies, establishing strong AI & Data
-                  Governance, and leading cross-functional teams from vision
-                  to execution in both B2B and B2C environments.
-                </p>
-              </div>
-
-              {/* METRICS */}
-              <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4 max-w-2xl">
-                {metrics.map((m) => (
-                  <div key={m.label} className="border-l border-[#D9A74A]/40 pl-4">
-                    <p
-                      className="font-display text-2xl sm:text-3xl font-semibold leading-tight"
-                      style={{ color: GOLD }}
-                    >
-                      {m.value}
-                    </p>
-                    <p className="mt-1 font-body text-xs uppercase tracking-[0.15em] text-slate-300/80">
-                      {m.label}
-                    </p>
-                  </div>
-                ))}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-zinc-900 mt-8">
+                  {metrics.map((m) => (
+                    <div key={m.label} className="space-y-1">
+                      <div className="text-2xl md:text-3xl font-serif text-amber-500">{m.value}</div>
+                      <div className="text-xs tracking-wider text-zinc-500 uppercase font-body">{m.label}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div className="mt-10 flex flex-wrap items-center gap-3">
                 <Link
                   to="/executive-journey"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#D9A74A] px-6 py-3 font-body text-sm font-semibold text-[#0B0F19] transition-all hover:bg-[#E5B65C] hover:shadow-[0_10px_30px_-10px_rgba(217,167,74,0.6)]"
+                  className="inline-flex items-center gap-2 rounded-full bg-amber-500 px-6 py-3 font-body text-sm font-semibold text-zinc-950 transition-all hover:bg-amber-600 hover:shadow-[0_10px_30px_-10px_rgba(217,167,74,0.6)]"
                 >
                   Explore Career Journey <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   to="/product-lab"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-transparent px-6 py-3 font-body text-sm font-medium text-white transition-colors hover:border-[#D9A74A]/60 hover:text-[#D9A74A]"
+                  className="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-transparent px-6 py-3 font-body text-sm font-medium text-slate-300 transition-colors hover:border-amber-500/60 hover:text-amber-500"
                 >
                   Enter the Lab <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -209,7 +177,7 @@ function Index() {
                   href="https://linkedin.com/in/shivajibojja"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-transparent px-6 py-3 font-body text-sm font-medium text-white transition-colors hover:border-[#D9A74A]/60 hover:text-[#D9A74A]"
+                  className="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-transparent px-6 py-3 font-body text-sm font-medium text-slate-300 transition-colors hover:border-amber-500/60 hover:text-amber-500"
                 >
                   <Mail className="h-4 w-4" /> Connect on LinkedIn
                 </a>
@@ -236,7 +204,7 @@ function Index() {
                       "radial-gradient(60% 60% at 50% 50%, rgba(217,167,74,0.35) 0%, rgba(217,167,74,0) 70%)",
                   }}
                 />
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-3 shadow-[0_30px_80px_-20px_rgba(217,167,74,0.35)]">
+                <div className="relative overflow-hidden rounded-2xl border border-zinc-800/80 bg-[#121215] p-3 shadow-[0_30px_80px_-20px_rgba(217,167,74,0.35)]">
                   <img
                     src={headshot}
                     alt="Shivaji Bojja headshot"
@@ -247,14 +215,8 @@ function Index() {
                 </div>
               </motion.div>
 
-              <span
-                className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-body text-[11px] font-medium uppercase tracking-[0.2em]"
-                style={{ borderColor: GOLD, color: GOLD }}
-              >
-                <span
-                  className="h-1.5 w-1.5 rounded-full"
-                  style={{ backgroundColor: GOLD }}
-                />
+              <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/50 px-4 py-1.5 font-body text-[11px] font-medium uppercase tracking-[0.2em] text-amber-500">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
                 Open to Opportunities
               </span>
 
@@ -262,7 +224,7 @@ function Index() {
                 {profileBadges.map((b) => (
                   <span
                     key={b}
-                    className="rounded-full border border-white/15 bg-white/[0.03] px-4 py-1.5 font-body text-xs font-medium tracking-wide text-white/90"
+                    className="inline-block rounded-full border border-slate-800 bg-slate-900/40 px-3 py-1 font-mono text-[11px] tracking-wide text-slate-300"
                   >
                     {b}
                   </span>
@@ -274,21 +236,15 @@ function Index() {
       </section>
 
       {/* CORE EXPERTISE */}
-      <section className="relative border-t border-white/5">
+      <section className="relative border-t border-zinc-900">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 lg:py-24">
           <div className="max-w-3xl">
-            <p
-              className="font-body text-xs font-medium uppercase tracking-[0.35em]"
-              style={{ color: GOLD }}
-            >
+            <span className="text-xs uppercase tracking-widest text-amber-500 font-medium font-body">
               Core Expertise
-            </p>
-            <h2 className="mt-4 font-display text-3xl font-medium leading-tight text-white sm:text-4xl lg:text-[2.75rem]">
+            </span>
+            <h2 className="mt-4 font-serif text-3xl font-medium leading-tight text-zinc-100 sm:text-4xl lg:text-[2.75rem]">
               Capabilities at the Intersection of{" "}
-              <em
-                className="font-display italic font-medium"
-                style={{ color: GOLD }}
-              >
+              <em className="italic font-serif text-amber-500/90">
                 Technology, Product & Business
               </em>
             </h2>
@@ -302,34 +258,25 @@ function Index() {
                   key={card.title}
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
-                  className="group rounded-xl border border-white/10 bg-white/[0.02] p-6 transition-colors hover:border-[#D9A74A]/40"
+                  className="group rounded-xl border border-zinc-800/80 bg-[#121215] p-6 transition-colors hover:border-amber-500/40"
                 >
                   <div className="flex items-start gap-3">
-                    <span
-                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/10"
-                      style={{ color: GOLD }}
-                    >
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-zinc-800 text-amber-500">
                       <Icon className="h-4 w-4" strokeWidth={1.5} />
                     </span>
                     <div className="leading-tight">
-                      <p
-                        className="font-body text-[10px] font-semibold uppercase tracking-[0.18em]"
-                        style={{ color: GOLD }}
-                      >
+                      <p className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-500">
                         {card.eyebrow}
                       </p>
-                      <p className="mt-1 font-display text-base font-medium text-white">
+                      <p className="mt-1 font-serif text-base font-medium text-zinc-100">
                         {card.title}
                       </p>
                     </div>
                   </div>
-                  <ul className="mt-6 space-y-2.5 font-body text-sm text-slate-300">
+                  <ul className="mt-6 space-y-2.5 font-body text-sm text-zinc-400">
                     {card.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-2.5">
-                        <span
-                          className="mt-2 h-1 w-1 shrink-0 rounded-full"
-                          style={{ backgroundColor: GOLD }}
-                        />
+                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-amber-500" />
                         <span>{b}</span>
                       </li>
                     ))}
@@ -342,16 +289,13 @@ function Index() {
       </section>
 
       {/* EXPLORE FURTHER */}
-      <section className="relative border-t border-white/5">
+      <section className="relative border-t border-zinc-900">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 lg:py-24">
           <div className="max-w-3xl">
-            <p
-              className="font-body text-xs font-medium uppercase tracking-[0.35em]"
-              style={{ color: GOLD }}
-            >
+            <span className="text-xs uppercase tracking-widest text-amber-500 font-medium font-body">
               Explore Further
-            </p>
-            <h2 className="mt-4 font-display text-3xl font-medium leading-tight text-white sm:text-4xl lg:text-[2.75rem]">
+            </span>
+            <h2 className="mt-4 font-serif text-3xl font-medium leading-tight text-zinc-100 sm:text-4xl lg:text-[2.75rem]">
               Dive Deeper Into My Work
             </h2>
           </div>
@@ -395,33 +339,24 @@ function ExploreCard({
     <motion.div whileHover={{ y: -6 }} transition={{ duration: 0.35, ease: "easeOut" }}>
       <Link
         to={to}
-        className="group block h-full rounded-2xl border border-white/10 bg-white/[0.02] p-8 transition-all hover:border-[#D9A74A]/40 hover:bg-white/[0.04]"
+        className="group block h-full rounded-2xl border border-zinc-800/80 bg-[#121215] p-8 transition-all hover:border-amber-500/40 hover:bg-[#16161a]"
       >
         <div className="flex items-start justify-between">
-          <span className="flex h-11 w-11 items-center justify-center rounded-md border border-white/15 text-white/80 transition-colors group-hover:text-[#D9A74A] group-hover:border-[#D9A74A]/50">
+          <span className="flex h-11 w-11 items-center justify-center rounded-md border border-zinc-800 text-zinc-400 transition-colors group-hover:text-amber-500 group-hover:border-amber-500/50">
             <Icon className="h-5 w-5" strokeWidth={1.5} />
           </span>
-          <ArrowRight
-            className="h-5 w-5 text-white/40 transition-all duration-300 group-hover:text-[#D9A74A] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-          />
-
+          <ArrowRight className="h-5 w-5 text-zinc-500 transition-all duration-300 group-hover:text-amber-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </div>
-        <p
-          className="mt-8 font-body text-[11px] font-semibold uppercase tracking-[0.25em]"
-          style={{ color: GOLD }}
-        >
+        <p className="mt-8 font-body text-[11px] font-semibold uppercase tracking-[0.25em] text-amber-500">
           {prefix}
         </p>
-        <h3 className="mt-3 font-display text-2xl font-medium text-white">
+        <h3 className="mt-3 font-serif text-2xl font-medium text-zinc-100">
           {title}
         </h3>
-        <p className="mt-4 font-body text-sm leading-[1.75] text-slate-300/90 max-w-md">
+        <p className="mt-4 font-body text-sm leading-[1.75] text-zinc-400 max-w-md">
           {description}
         </p>
-        <span
-          className="mt-8 inline-flex items-center gap-1.5 font-body text-sm font-medium"
-          style={{ color: GOLD }}
-        >
+        <span className="mt-8 inline-flex items-center gap-1.5 font-body text-sm font-medium text-amber-500">
           Explore <span aria-hidden="true">→</span>
         </span>
       </Link>

@@ -95,7 +95,7 @@ const showcases: Showcase[] = [
 
 function ProductLab() {
   return (
-    <div className="bg-[#0B0F19] text-white">
+    <div className="bg-[#0b111e] text-slate-100">
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">

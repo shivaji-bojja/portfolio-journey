@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 
 const GOLD = "#D9A74A";
-const BG = "#0A0F1D";
+const BG = "#0b111e";
 const EDU_BG = "#1E1B4B";
 const FOUNDATION_BG = "#1F2937";
 
@@ -51,7 +51,10 @@ export const Route = createFileRoute("/executive-journey")({
           description:
             "Executive product and pricing leader with a career spanning engineering foundations, digital transformation, and AI-driven product strategy across Retail, Telecom, and Financial Services.",
           url: "https://shivajibojja.com/executive-journey",
-          sameAs: ["https://www.linkedin.com/in/shivajibojja/"],
+          sameAs: [
+            "https://www.linkedin.com/in/shivajibojja/",
+            "https://github.com/shivaji-bojja",
+          ],
         }),
       },
     ],
