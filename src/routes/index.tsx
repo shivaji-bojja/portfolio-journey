@@ -130,12 +130,15 @@ function Index() {
               >
                 About Me
               </p>
+              <p className="mt-2 font-display text-lg font-medium text-white/80">
+                Shivaji Bojja
+              </p>
 
               <h1 className="mt-5 font-display text-4xl font-medium leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Architecting intelligence. Delivering velocity.{" "}
                 <em
-                  className="font-display italic font-medium"
-                  style={{ color: GOLD }}
+                  className="font-serif italic font-normal"
+                  style={{ color: GOLD, fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
                 >
                   Driving growth.
                 </em>
@@ -172,38 +175,43 @@ function Index() {
                 </p>
               </div>
 
-
-              <div className="mt-9 flex flex-wrap gap-3">
-                {capabilityTags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-white/15 bg-white/[0.03] px-4 py-1.5 text-xs font-medium tracking-wide text-white/90 font-body"
-                  >
-                    {tag}
-                  </span>
+              {/* METRICS */}
+              <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4 max-w-2xl">
+                {metrics.map((m) => (
+                  <div key={m.label} className="border-l border-[#D9A74A]/40 pl-4">
+                    <p
+                      className="font-display text-2xl sm:text-3xl font-semibold leading-tight"
+                      style={{ color: GOLD }}
+                    >
+                      {m.value}
+                    </p>
+                    <p className="mt-1 font-body text-xs uppercase tracking-[0.15em] text-slate-300/80">
+                      {m.label}
+                    </p>
+                  </div>
                 ))}
               </div>
 
-              <div className="mt-10 flex flex-wrap items-center gap-6">
+              <div className="mt-10 flex flex-wrap items-center gap-3">
                 <Link
                   to="/executive-journey"
-                  className="inline-flex items-center gap-2 font-body text-sm font-medium text-white transition-colors hover:text-[#D9A74A]"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#D9A74A] px-6 py-3 font-body text-sm font-semibold text-[#0B0F19] transition-all hover:bg-[#E5B65C] hover:shadow-[0_10px_30px_-10px_rgba(217,167,74,0.6)]"
                 >
-                  Explore Journey <ArrowUpRight className="h-4 w-4" />
+                  Explore Career Journey <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   to="/product-lab"
-                  className="inline-flex items-center gap-2 font-body text-sm font-medium text-white/70 transition-colors hover:text-[#D9A74A]"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-transparent px-6 py-3 font-body text-sm font-medium text-white transition-colors hover:border-[#D9A74A]/60 hover:text-[#D9A74A]"
                 >
-                  Enter the Lab <ArrowUpRight className="h-4 w-4" />
+                  Enter the Lab <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a
                   href="https://linkedin.com/in/shivajibojja"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-body text-sm text-white/60 transition-colors hover:text-[#D9A74A]"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-transparent px-6 py-3 font-body text-sm font-medium text-white transition-colors hover:border-[#D9A74A]/60 hover:text-[#D9A74A]"
                 >
-                  Connect on LinkedIn →
+                  <Mail className="h-4 w-4" /> Connect on LinkedIn
                 </a>
               </div>
             </motion.div>
