@@ -401,9 +401,10 @@ function ExploreCard({
           <span className="flex h-11 w-11 items-center justify-center rounded-md border border-white/15 text-white/80 transition-colors group-hover:text-[#D9A74A] group-hover:border-[#D9A74A]/50">
             <Icon className="h-5 w-5" strokeWidth={1.5} />
           </span>
-          <ArrowUpRight
+          <ArrowRight
             className="h-5 w-5 text-white/40 transition-all duration-300 group-hover:text-[#D9A74A] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
           />
+
         </div>
         <p
           className="mt-8 font-body text-[11px] font-semibold uppercase tracking-[0.25em]"
