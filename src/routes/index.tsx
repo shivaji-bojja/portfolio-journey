@@ -318,6 +318,33 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* CHATBOT */}
+      <section className="relative border-t border-zinc-900">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12 lg:py-14">
+          <div className="max-w-3xl">
+            <span className="text-xs uppercase tracking-widest text-amber-500 font-medium font-body">
+              Ask Me Anything
+            </span>
+            <h2 className="mt-2 font-serif text-3xl font-medium leading-tight text-zinc-100 sm:text-4xl lg:text-[2.75rem]">
+              Chat with my AI Assistant
+            </h2>
+            <p className="mt-3 font-body text-sm leading-[1.75] text-zinc-400">
+              Ask about my experience, projects, or leadership approach — powered by a custom resume chatbot.
+            </p>
+          </div>
+          <div className="mt-8 overflow-hidden rounded-2xl border border-zinc-800/80 bg-[#121215] shadow-xl">
+            <iframe
+              src="https://shivaji79-resume-chatbot.hf.space"
+              title="Resume Chatbot"
+              frameBorder="0"
+              width="100%"
+              height="650"
+              className="block w-full"
+            />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
