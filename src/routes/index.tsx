@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import type { ComponentType } from "react";
 import {
   ArrowRight,
-  Mail,
+  Linkedin,
   Briefcase,
   FlaskConical,
   Brain,
@@ -10,6 +11,10 @@ import {
   Globe2,
   TrendingUp,
 } from "lucide-react";
+import type { FileRouteTypes } from "@/routeTree.gen";
+
+const CHATBOT_VISIBLE_HEIGHT = 640;
+const GRADIO_FOOTER_CLIP = 48;
 import headshot from "@/assets/shivaji-headshot.jpg";
 
 export const Route = createFileRoute("/")({
@@ -179,7 +184,7 @@ function Index() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-transparent px-6 py-3 font-body text-sm font-medium text-slate-300 transition-colors hover:border-amber-500/60 hover:text-amber-500"
                 >
-                  <Mail className="h-4 w-4" /> Connect on LinkedIn
+                  <Linkedin className="h-4 w-4" /> Connect on LinkedIn
                 </a>
               </div>
             </motion.div>
@@ -334,18 +339,16 @@ function Index() {
             </p>
           </div>
 
-          {/* The wrapper container height is fixed at 600px, cutting off everything else */}
           <div
-            className="mt-8 overflow-hidden rounded-2xl border border-zinc-800/80 bg-[#121215] shadow-xl"
-            style={{ position: "relative", overflow: "hidden", height: "600px" }}
+            className="relative mt-8 overflow-hidden rounded-2xl border border-zinc-800/80 bg-[#121215] shadow-xl"
+            style={{ height: CHATBOT_VISIBLE_HEIGHT }}
           >
-            {/* The iframe is 645px tall, pushing the Gradio footer past the bottom crop boundary */}
             <iframe
               src="https://shivaji79-resume-chatbot.hf.space?__theme=dark"
               title="Resume Chatbot"
-              frameBorder="0"
-              className="block w-full"
-              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "645px", border: "none" }}
+              loading="lazy"
+              className="absolute left-0 top-0 w-full border-0"
+              style={{ height: CHATBOT_VISIBLE_HEIGHT + GRADIO_FOOTER_CLIP }}
             />
           </div>
         </div>
@@ -361,8 +364,8 @@ function ExploreCard({
   title,
   description,
 }: {
-  to: string;
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  to: FileRouteTypes["to"];
+  icon: ComponentType<{ className?: string; strokeWidth?: number }>;
   prefix: string;
   title: string;
   description: string;
