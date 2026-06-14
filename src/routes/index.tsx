@@ -333,9 +333,9 @@ function Index() {
               Ask about my experience, projects, or leadership approach — powered by a custom resume chatbot.
             </p>
           </div>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-zinc-800/80 bg-[#121215] shadow-xl">
+          <div className="mt-8 overflow-hidden rounded-2xl border border-zinc-800/80 bg-[#121215] shadow-xl" style={{ overflow: "hidden" }}>
             <iframe
-              src="https://shivaji79-resume-chatbot.hf.space"
+              src="https://shivaji79-resume-chatbot.hf.space?__theme=dark"
               title="Resume Chatbot"
               frameBorder="0"
               width="100%"
