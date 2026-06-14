@@ -13,8 +13,8 @@ import {
 } from "lucide-react";
 import type { FileRouteTypes } from "@/routeTree.gen";
 
-const CHATBOT_VISIBLE_HEIGHT = 640;
-const GRADIO_FOOTER_CLIP = 48;
+//const CHATBOT_VISIBLE_HEIGHT = 640;
+//const GRADIO_FOOTER_CLIP = 48;
 import headshot from "@/assets/shivaji-headshot.jpg";
 
 export const Route = createFileRoute("/")({
@@ -339,18 +339,18 @@ function Index() {
             </p>
           </div>
 
-          <div
+          {/* <div
             className="relative mt-8 overflow-hidden rounded-2xl border border-zinc-800/80 bg-[#121215] shadow-xl"
-            // style={{ height: CHATBOT_VISIBLE_HEIGHT }}
-            style={{ height: "600px" }} // hardcoded height to fix issue with chatbot
-          >
+            style={{ height: CHATBOT_VISIBLE_HEIGHT }}
+            //style={{ height: "600px" }} // hardcoded height to fix issue with chatbot
+          > */}
+          <div className="relative mt-8 overflow-hidden rounded-2xl border border-zinc-800/80 bg-[#121215] shadow-xl h-[520px] sm:h-[640px]">
             <iframe
               src="https://shivaji79-resume-chatbot.hf.space?__theme=dark"
               title="Resume Chatbot"
               loading="lazy"
               sandbox="allow-scripts allow-same-origin allow-forms"
-              className="absolute left-0 top-0 w-full border-0"
-              style={{ height: CHATBOT_VISIBLE_HEIGHT + GRADIO_FOOTER_CLIP }}
+              className="w-full h-full border-0 pointer-events-auto"
             />
           </div>
         </div>
