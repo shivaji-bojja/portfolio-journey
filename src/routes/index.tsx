@@ -341,7 +341,8 @@ function Index() {
 
           <div
             className="relative mt-8 overflow-hidden rounded-2xl border border-zinc-800/80 bg-[#121215] shadow-xl"
-            style={{ height: CHATBOT_VISIBLE_HEIGHT }}
+            // style={{ height: CHATBOT_VISIBLE_HEIGHT }}
+            style={{ height: "600px" }} // hardcoded height to fix issue with chatbot
           >
             <iframe
               src="https://shivaji79-resume-chatbot.hf.space?__theme=dark"
