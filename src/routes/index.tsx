@@ -347,6 +347,7 @@ function Index() {
               src="https://shivaji79-resume-chatbot.hf.space?__theme=dark"
               title="Resume Chatbot"
               loading="lazy"
+              sandbox="allow-scripts allow-same-origin allow-forms"
               className="absolute left-0 top-0 w-full border-0"
               style={{ height: CHATBOT_VISIBLE_HEIGHT + GRADIO_FOOTER_CLIP }}
             />
