@@ -333,14 +333,19 @@ function Index() {
               Ask about my experience, projects, or leadership approach — powered by a custom resume chatbot.
             </p>
           </div>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-zinc-800/80 bg-[#121215] shadow-xl" style={{ overflow: "hidden" }}>
+
+          {/* The wrapper container height is fixed at 600px, cutting off everything else */}
+          <div
+            className="mt-8 overflow-hidden rounded-2xl border border-zinc-800/80 bg-[#121215] shadow-xl"
+            style={{ position: "relative", overflow: "hidden", height: "600px" }}
+          >
+            {/* The iframe is 645px tall, pushing the Gradio footer past the bottom crop boundary */}
             <iframe
               src="https://shivaji79-resume-chatbot.hf.space?__theme=dark"
               title="Resume Chatbot"
               frameBorder="0"
-              width="100%"
-              height="650"
               className="block w-full"
+              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "645px", border: "none" }}
             />
           </div>
         </div>
