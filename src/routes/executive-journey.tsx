@@ -85,7 +85,7 @@ const milestones: Milestone[] = [
     org: "AT&T Business",
     location: "Dallas, TX",
     bullets: [
-      "Lead a $500M Next Gen pricing optimization transformation initiative leveraging AI-driven decisioning.",
+      "Lead a $100M AI & Data enabled pricing optimization transformation initiative leveraging AI-driven decisioning.",
     ],
     tags: ["Price Optimization", "AI Decisioning", "Databricks"],
     category: "Leadership & Pricing",
@@ -297,11 +297,10 @@ function ExecutiveJourney() {
                 <button
                   key={f}
                   onClick={() => setActive(isActive ? null : f)}
-                  className={`group relative font-body text-xs uppercase tracking-[0.25em] px-4 py-2 rounded-full border transition-all duration-300 cursor-pointer ${
-                    isActive
+                  className={`group relative font-body text-xs uppercase tracking-[0.25em] px-4 py-2 rounded-full border transition-all duration-300 cursor-pointer ${isActive
                       ? "border-[#D9A74A] text-[#D9A74A] bg-[#D9A74A]/5"
                       : "border-white/15 text-[#E2E8F0]/70 hover:border-white/40 hover:text-white"
-                  }`}
+                    }`}
                 >
                   {f}
                 </button>
@@ -489,9 +488,8 @@ function HorizontalNode({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      className={`relative flex flex-col items-center transition-opacity duration-500 ${
-        dimmed ? "opacity-20" : "opacity-100"
-      }`}
+      className={`relative flex flex-col items-center transition-opacity duration-500 ${dimmed ? "opacity-20" : "opacity-100"
+        }`}
     >
       {onTop && (
         <div className="absolute left-1/2 -translate-x-1/2 bottom-1/2 mb-10 w-[300px]">
@@ -610,9 +608,8 @@ function FoundationsNode({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.45 }}
-      className={`relative flex flex-col items-center transition-opacity duration-500 ${
-        dimmed ? "opacity-20" : "opacity-100"
-      }`}
+      className={`relative flex flex-col items-center transition-opacity duration-500 ${dimmed ? "opacity-20" : "opacity-100"
+        }`}
     >
       <div className="absolute left-1/2 -translate-x-1/2 bottom-1/2 mb-10 w-[300px]">
         <FoundationsCard expanded={expanded} onToggle={onToggle} dimmed={false} />
@@ -645,9 +642,8 @@ function FoundationsCard({
   return (
     <button
       onClick={onToggle}
-      className={`group w-full text-left rounded-xl border p-5 transition-all duration-300 cursor-pointer ${
-        dimmed ? "opacity-25" : "opacity-100"
-      } border-[#D9A74A]/40 hover:border-[#D9A74A] hover:-translate-y-0.5 hover:shadow-[0_8px_40px_-12px_#D9A74A55]`}
+      className={`group w-full text-left rounded-xl border p-5 transition-all duration-300 cursor-pointer ${dimmed ? "opacity-25" : "opacity-100"
+        } border-[#D9A74A]/40 hover:border-[#D9A74A] hover:-translate-y-0.5 hover:shadow-[0_8px_40px_-12px_#D9A74A55]`}
       style={{ backgroundColor: FOUNDATION_BG }}
     >
       <div className="flex items-center gap-2.5">
@@ -697,9 +693,8 @@ function FoundationMiniNode({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 12, scale: 0.96 }}
       transition={{ duration: 0.5, ease: "easeInOut", delay: index * 0.08 }}
-      className={`relative flex flex-col items-center transition-opacity duration-500 ${
-        dimmed ? "opacity-25" : "opacity-100"
-      }`}
+      className={`relative flex flex-col items-center transition-opacity duration-500 ${dimmed ? "opacity-25" : "opacity-100"
+        }`}
     >
       {onTop && (
         <div className="absolute left-1/2 -translate-x-1/2 bottom-1/2 mb-10 w-[280px]">
@@ -760,9 +755,8 @@ function FoundationMiniCard({ role }: { role: FoundationRole }) {
 function VerticalItem({ m, dimmed }: { m: Milestone; dimmed: boolean }) {
   return (
     <li
-      className={`relative pl-12 transition-opacity duration-500 ${
-        dimmed ? "opacity-25" : "opacity-100"
-      }`}
+      className={`relative pl-12 transition-opacity duration-500 ${dimmed ? "opacity-25" : "opacity-100"
+        }`}
     >
       <span
         className="absolute left-4 top-6 -translate-x-1/2 block h-3 w-3 rounded-full"
