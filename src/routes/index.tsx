@@ -60,7 +60,7 @@ export const Route = createFileRoute("/")({
 const metrics = [
   { value: "15+", label: "Years Experience" },
   { value: "4", label: "Industries" },
-  { value: "$500M+", label: "Revenue Impact" },
+  { value: "$100M+", label: "Revenue Impact" },
   { value: "B2B + B2C", label: "Environments" },
 ];
 
