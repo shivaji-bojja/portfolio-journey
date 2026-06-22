@@ -222,7 +222,7 @@ function Index() {
 
               <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/50 px-4 py-1.5 font-body text-[11px] font-medium uppercase tracking-[0.2em] text-amber-500">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
-                Open to Opportunities
+                Let's Connect
               </span>
 
               <div className="flex flex-col items-center lg:items-end gap-2">

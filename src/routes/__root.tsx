@@ -144,15 +144,15 @@ function Footer() {
               Get in Touch
             </span>
             <h2 className="text-2xl md:text-3xl font-serif text-white tracking-tight">
-              Open to executive opportunities
+              Open to sharing ideas and insights
             </h2>
             <p className="text-zinc-400 text-sm md:text-base max-w-xl font-body leading-relaxed">
               Available for CPO, VP Product, Director of Product, and AI Strategy leadership roles across global enterprises.
             </p>
           </div>
-          
-          <a 
-            href="mailto:shivaji.bojja@gmail.com" 
+
+          <a
+            href="mailto:shivaji.bojja@gmail.com"
             className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-zinc-950 font-semibold px-6 py-3.5 rounded-full transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap font-body text-sm"
           >
             <Mail className="w-4 h-4 stroke-[2.5]" />
