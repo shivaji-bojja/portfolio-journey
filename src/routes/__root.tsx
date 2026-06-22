@@ -144,7 +144,7 @@ function Footer() {
               Get in Touch
             </span>
             <h2 className="text-2xl md:text-3xl font-serif text-white tracking-tight">
-              Open to sharing ideas and insights
+              Open to sharing ideas
             </h2>
             <p className="text-zinc-400 text-sm md:text-base max-w-xl font-body leading-relaxed">
               Available for CPO, VP Product, Director of Product, and AI Strategy leadership roles across global enterprises.
