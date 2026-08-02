@@ -335,7 +335,10 @@ function Index() {
               Chat with my AI Assistant
             </h2>
             <p className="mt-3 font-body text-sm leading-[1.75] text-zinc-400">
-              Ask about my experience, projects, or leadership approach — powered by a custom resume chatbot.
+
+              Have questions about my work, AI initiatives, product leadership, or strategic thinking?
+              <br />My custom AI assistant is here to answer your questions.
+
             </p>
           </div>
 

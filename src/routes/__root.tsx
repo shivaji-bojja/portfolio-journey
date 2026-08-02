@@ -147,7 +147,9 @@ function Footer() {
               Open to sharing ideas
             </h2>
             <p className="text-zinc-400 text-sm md:text-base max-w-xl font-body leading-relaxed">
-              Available for CPO, VP Product, Director of Product, and AI Strategy leadership roles across global enterprises.
+              Open to connecting with leaders, innovators, and teams building the future of AI and Digital products.
+
+              Available to explore strategic collaborations and exchange ideas on Digital & AI Transformation, Product Leadership, Enterprise AI, Pricing Strategy, Data Strategy, and Innovation.
             </p>
           </div>
 
