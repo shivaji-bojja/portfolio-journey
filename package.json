@@ -89,6 +89,9 @@
   "overrides": {
     "seroval": "^1.6.0",
     "seroval-plugins": "^1.6.0",
-    "js-yaml": "^4.1.2"
+    "js-yaml": "^4.1.2",
+    "undici": "^7.29.0",
+    "ws": "^8.21.1",
+    "sharp": "^0.35.3"
   }
 }
