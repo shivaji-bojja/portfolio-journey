@@ -147,9 +147,11 @@ function Footer() {
               Open to sharing ideas
             </h2>
             <p className="text-zinc-400 text-sm md:text-base max-w-xl font-body leading-relaxed">
-              Open to connecting with leaders, innovators, and teams building the future of AI and Digital products.
+              Open to connecting with leaders, innovators, and teams building the future of AI and digital products.
+              <br />
+              <br />
+              I welcome opportunities to collaborate strategically and exchange ideas on AI and digital transformation, product leadership, enterprise AI, pricing strategy, data strategy, and innovation.
 
-              Available to explore strategic collaborations and exchange ideas on Digital & AI Transformation, Product Leadership, Enterprise AI, Pricing Strategy, Data Strategy, and Innovation.
             </p>
           </div>
 
