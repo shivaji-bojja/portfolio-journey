@@ -153,8 +153,8 @@ function Index() {
                   <p>
                     I bridge <span className="font-bold text-zinc-200">technology, product, data, and commercial strategy</span> to turn complex business challenges into customer-centric products and measurable outcomes.
                   </p>
-                  <p className="font-bold">
-                    AI • Product Innovation • Pricing Strategy • Omnichannel Experiences
+                  <p>
+                    <span className="font-bold text-zinc-200">AI • E-commerce • Product Innovation • Pricing Strategy</span>
                   </p>
                 </div>
 
