@@ -130,15 +130,15 @@ function Index() {
             >
               <div className="space-y-4 max-w-3xl">
                 <div className="space-y-1">
-                  <span className="text-xs uppercase tracking-widest text-amber-500 font-medium font-body">
+                  <span className="text-sm uppercase tracking-widest text-amber-500 font-medium font-body">
                     About Me
                   </span>
-                  <h2 className="text-xl font-medium text-zinc-400 font-body">
+                  <h2 className="text-2xl font-medium text-zinc-400 font-body">
                     Shivaji Bojja
                   </h2>
                 </div>
 
-                <h1 className="text-4xl md:text-6xl font-serif tracking-tight text-zinc-100 leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif tracking-tight text-zinc-100 leading-tight">
                   Architecting intelligence.
                   <br />
                   Delivering velocity.
@@ -146,12 +146,15 @@ function Index() {
                   <span className="italic font-serif text-amber-500/90">Driving growth.</span>
                 </h1>
 
-                <div className="space-y-3 text-zinc-400 text-sm md:text-base leading-relaxed font-body">
+                <div className="space-y-3 text-zinc-400 text-base md:text-lg leading-relaxed font-body">
                   <p>
-                    I am a purpose-driven Product and Technology Leader with a career spanning hands-on Software Engineering, Business Analysis, Product Management, and Executive Leadership. I specialize in driving AI-enabled digital and business transformations across complex global industries — Retail, E-commerce, Telecom, and Supply Chain.
+                    Product & Technology Leader focused on <span className="font-bold text-zinc-200">AI-enabled transformation, digital innovation, and growth</span> across Retail, E-commerce, Telecom, and Supply Chain.
                   </p>
                   <p>
-                    By blending deep technical expertise with commercial acumen, I build data-driven, customer-centric strategies that unlock measurable business value. My expertise lies at the intersection of product innovation, price optimization, and modern omni-channel experiences.
+                    I bridge <span className="font-bold text-zinc-200">technology, product, data, and commercial strategy</span> to turn complex business challenges into customer-centric products and measurable outcomes.
+                  </p>
+                  <p className="font-bold">
+                    AI • Product Innovation • Pricing Strategy • Omnichannel Experiences
                   </p>
                 </div>
 
@@ -159,7 +162,7 @@ function Index() {
                   {metrics.map((m) => (
                     <div key={m.label} className="space-y-1">
                       <div className="text-2xl md:text-3xl font-serif text-amber-500">{m.value}</div>
-                      <div className="text-xs tracking-wider text-zinc-500 uppercase font-body">{m.label}</div>
+                      <div className="text-sm tracking-wider text-zinc-500 uppercase font-body">{m.label}</div>
                     </div>
                   ))}
                 </div>
@@ -168,13 +171,13 @@ function Index() {
               <div className="mt-6 flex flex-wrap items-center gap-2.5">
                 <Link
                   to="/executive-journey"
-                  className="inline-flex items-center gap-2 rounded-full bg-amber-500 px-6 py-3 font-body text-sm font-semibold text-zinc-950 transition-all hover:bg-amber-600 hover:shadow-[0_10px_30px_-10px_rgba(217,167,74,0.6)]"
+                  className="inline-flex items-center gap-2 rounded-full bg-amber-500 px-6 py-3 font-body text-base font-semibold text-zinc-950 transition-all hover:bg-amber-600 hover:shadow-[0_10px_30px_-10px_rgba(217,167,74,0.6)]"
                 >
                   Explore Career Journey <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   to="/product-lab"
-                  className="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-transparent px-6 py-3 font-body text-sm font-medium text-slate-300 transition-colors hover:border-amber-500/60 hover:text-amber-500"
+                  className="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-transparent px-6 py-3 font-body text-base font-medium text-slate-300 transition-colors hover:border-amber-500/60 hover:text-amber-500"
                 >
                   Enter the Lab <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -182,7 +185,7 @@ function Index() {
                   href="https://linkedin.com/in/shivajibojja"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-transparent px-6 py-3 font-body text-sm font-medium text-slate-300 transition-colors hover:border-amber-500/60 hover:text-amber-500"
+                  className="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-transparent px-6 py-3 font-body text-base font-medium text-slate-300 transition-colors hover:border-amber-500/60 hover:text-amber-500"
                 >
                   <Linkedin className="h-4 w-4" /> Connect on LinkedIn
                 </a>

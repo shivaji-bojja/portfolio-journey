@@ -109,12 +109,12 @@ function ProductLab() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <p
-              className="font-body text-xs font-medium uppercase tracking-[0.35em]"
+              className="font-body text-sm font-medium uppercase tracking-[0.35em]"
               style={{ color: GOLD }}
             >
               Product Sandbox
             </p>
-            <h1 className="mt-5 font-display text-4xl font-medium leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-display text-3xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-white">
               Where Data Architecture Meets{" "}
               <em
                 className="font-display italic font-medium"
@@ -128,7 +128,7 @@ function ProductLab() {
               style={{ backgroundColor: GOLD }}
               aria-hidden="true"
             />
-            <p className="mt-8 max-w-2xl font-body text-base leading-[1.8] text-slate-300">
+            <p className="mt-8 max-w-2xl font-body text-base md:text-lg leading-[1.8] text-slate-300">
               A curated space showcasing how hands-on software and data
               engineering roots seamlessly transition into scalable AI
               strategies. Explore live product experiments, data pipelines,
@@ -421,9 +421,8 @@ function MetricRow({
 }) {
   return (
     <div
-      className={`flex items-center gap-4 rounded-lg border p-4 ${
-        highlight ? "border-[#D9A74A]/40 bg-[#D9A74A]/[0.06]" : "border-white/10 bg-white/[0.02]"
-      }`}
+      className={`flex items-center gap-4 rounded-lg border p-4 ${highlight ? "border-[#D9A74A]/40 bg-[#D9A74A]/[0.06]" : "border-white/10 bg-white/[0.02]"
+        }`}
     >
       <div
         className="flex h-9 w-9 items-center justify-center rounded-full border"
@@ -467,9 +466,8 @@ function ABTestingFramework() {
               <button
                 key={v}
                 onClick={() => { setVariant(v); setSimulated(false); }}
-                className={`flex-1 rounded-md py-2.5 font-body text-sm font-semibold transition-all ${
-                  variant === v ? "bg-white/10 text-white" : "text-slate-400 hover:text-white"
-                }`}
+                className={`flex-1 rounded-md py-2.5 font-body text-sm font-semibold transition-all ${variant === v ? "bg-white/10 text-white" : "text-slate-400 hover:text-white"
+                  }`}
               >
                 Variant {v}
               </button>

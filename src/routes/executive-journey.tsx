@@ -272,19 +272,19 @@ function ExecutiveJourney() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <p
-              className="font-body text-xs font-medium uppercase tracking-[0.35em]"
+              className="font-body text-sm font-medium uppercase tracking-[0.35em]"
               style={{ color: GOLD }}
             >
               Career Timeline
             </p>
-            <h1 className="mt-5 font-display text-4xl font-medium leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-display text-3xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-white">
               My Executive{" "}
               <em className="font-display italic font-medium" style={{ color: GOLD }}>
                 Journey
               </em>
             </h1>
             <div className="mt-6 h-px w-24" style={{ backgroundColor: GOLD }} />
-            <p className="mt-8 max-w-2xl font-body text-base leading-[1.8] text-[#E2E8F0]">
+            <p className="mt-8 max-w-2xl font-body text-base md:text-lg leading-[1.8] text-[#E2E8F0]">
               A chronological path through executive product and pricing leadership — anchored by
               decades of engineering, data, and analytics foundations.
             </p>
@@ -297,9 +297,9 @@ function ExecutiveJourney() {
                 <button
                   key={f}
                   onClick={() => setActive(isActive ? null : f)}
-                  className={`group relative font-body text-xs uppercase tracking-[0.25em] px-4 py-2 rounded-full border transition-all duration-300 cursor-pointer ${isActive
-                      ? "border-[#D9A74A] text-[#D9A74A] bg-[#D9A74A]/5"
-                      : "border-white/15 text-[#E2E8F0]/70 hover:border-white/40 hover:text-white"
+                  className={`group relative font-body text-sm uppercase tracking-[0.25em] px-4 py-2 rounded-full border transition-all duration-300 cursor-pointer ${isActive
+                    ? "border-[#D9A74A] text-[#D9A74A] bg-[#D9A74A]/5"
+                    : "border-white/15 text-[#E2E8F0]/70 hover:border-white/40 hover:text-white"
                     }`}
                 >
                   {f}
@@ -309,7 +309,7 @@ function ExecutiveJourney() {
             {active && (
               <button
                 onClick={() => setActive(null)}
-                className="font-body text-xs uppercase tracking-[0.25em] px-3 py-2 text-white/40 hover:text-white/80 transition-colors cursor-pointer"
+                className="font-body text-sm uppercase tracking-[0.25em] px-3 py-2 text-white/40 hover:text-white/80 transition-colors cursor-pointer"
               >
                 Clear ×
               </button>
